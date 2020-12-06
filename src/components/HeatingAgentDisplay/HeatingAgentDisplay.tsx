@@ -15,7 +15,7 @@ export default function HeatingAgentDisplay() {
     const uri = heating?.state ? '/api/heating/off' : '/api/heating/on'
     const {data} = await httpClient(uri)
     setHeating(data)
-  }, [])
+  }, [heating?.state])
 
   return (
     <div className="flex flex-col items-center">
