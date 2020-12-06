@@ -1,0 +1,9 @@
+.root {
+  @apply 
+    w-screen h-screen bg-gray-200 text-green-800 flex flex-col justify-center items-center
+    dark:bg-gray-800 dark:text-yellow-200
+}
+
+.icon {
+  @apply mx-4 w-12 h-12 fill-current
+}

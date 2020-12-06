@@ -1,0 +1,21 @@
+@tailwind base;
+
+@font-face {
+  font-family: "SFProDisplay";
+  src: url("/fonts/SFProDisplay/SFProDisplay-Medium.otf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SFProRounded";
+  src: url("/fonts/SFProRounded/SFProRounded-Medium.otf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}
+
+
+@tailwind components;
+@tailwind utilities;
