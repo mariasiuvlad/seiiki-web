@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const BASE_URL = process.env.HEATING_API_URL || 'localhost:3000/heating';
+const BASE_URL = process.env.HEATING_API_URL || '';
 
 const config = {baseURL: BASE_URL};
 const httpClient = Axios.create(config);
