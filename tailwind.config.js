@@ -1,8 +1,5 @@
 module.exports = {
-  purge: {
-    enabled: false,
-    content: []
-  },
+  purge: ['./src/**/*.tsx'],
   darkMode: 'media', // or 'media' or 'class'
   experimental: {
     applyComplexClasses: true
