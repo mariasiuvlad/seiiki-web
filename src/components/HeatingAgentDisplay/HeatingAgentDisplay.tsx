@@ -1,16 +1,18 @@
 import React, {useMemo} from 'react'
 
+import style from './HeatingAgentDisplay.module.css'
+
 export default function HeatingAgentDisplay({heating, onToggle}) {
-  const label = useMemo(() => (heating?.state ? 'Turn Off' : 'Turn On'), [heating])
+  const label = useMemo(() => (heating?.state ? 'Turn Off' : 'Turn On'), [
+    heating
+  ])
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-xl tracking-tight font-sans p-4">
-        Heating is {heating?.state ? 'On' : 'Off'} at this time
+    <div className={style.root}>
+      <h1 className={style.title}>
+        Heating is {heating?.state ? 'on' : 'off'}
       </h1>
-      <button
-        className="py-2 px-4 bg-blue-400 text-white border-b-4 border-blue-600"
-        onClick={onToggle}>
+      <button className={style.button} onClick={onToggle}>
         {label}
       </button>
     </div>

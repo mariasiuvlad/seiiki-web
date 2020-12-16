@@ -1,3 +1,4 @@
+import Layout from 'components/atoms/Layout'
 import HeatingAgentDisplay from 'components/HeatingAgentDisplay'
 import Head from 'next/head'
 import React from 'react'
@@ -9,7 +10,11 @@ export default function Home() {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeatingAgentDisplay />
+      <Layout>
+        <div className="flex flex-grow items-center justify-center">
+          <HeatingAgentDisplay />
+        </div>
+      </Layout>
     </>
   )
 }
