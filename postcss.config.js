@@ -1,5 +1,18 @@
-const plugins = ['tailwindcss', 'postcss-preset-env']
+const plugins = [
+  'tailwindcss',
+  [
+    'postcss-preset-env',
+    {
+      stage: 1,
+      features: {
+        'focus-within-pseudo-class': false
+      }
+    }
+  ]
+]
+
+const storybookPlugins = [require('tailwindcss'), require('postcss-preset-env')]
 
 module.exports = {
-  plugins: process.env.IS_STORYBOOK ? plugins.map((p) => require(p)) : plugins
+  plugins: process.env.IS_STORYBOOK ? storybookPlugins : plugins
 }
