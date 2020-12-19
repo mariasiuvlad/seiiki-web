@@ -1,20 +1,10 @@
-import Layout from 'components/atoms/Layout'
-import HeatingAgentDisplay from 'components/HeatingAgentDisplay'
-import Head from 'next/head'
 import React from 'react'
+import dynamic from 'next/dynamic'
+
+const HomePage = dynamic(() => import('components/organisms/Home'), {
+  ssr: false // disable ssr so we can use suspense
+})
 
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Homepage</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Layout>
-        <div className="flex flex-grow items-center justify-center">
-          <HeatingAgentDisplay />
-        </div>
-      </Layout>
-    </>
-  )
+  return <HomePage />
 }

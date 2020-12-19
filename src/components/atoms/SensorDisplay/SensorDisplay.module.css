@@ -1,0 +1,15 @@
+.root {
+  @apply flex flex-col border border-gray-200 dark:border-gray-600 border-b-0;
+}
+
+.conditionsContainer {
+  @apply flex flex-row flex-grow justify-between
+}
+
+.conditionsItem {
+  @apply p-2
+}
+
+.time {
+  @apply p-2 text-right text-sm opacity-60
+}

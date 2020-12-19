@@ -1,16 +1,21 @@
 import Axios, {AxiosRequestConfig} from 'axios'
 
-const HEATING_AGENT_IP = 'http://192.168.0.102'
-const ON = `${HEATING_AGENT_IP}/on`
-const OFF = `${HEATING_AGENT_IP}/off`
-const STATUS = `${HEATING_AGENT_IP}`
+const Hostname = process.env.HEATING_AGENT_ADDR || '192.168.0.102'
+const Actions = {
+  On: process.env.HEATING_AGENT_ON || '/on',
+  Off: process.env.HEATING_AGENT_OFF || '/off',
+  Status: process.env.HEATING_AGENT_STATUS || '/'
+}
 
 const config: AxiosRequestConfig = {
+  baseURL: `http://${Hostname}`,
   method: 'GET',
   headers: {Accept: 'application/json'}
 }
 
-const action = (url) => {
+console.log('@config', config)
+
+const client = (url: string) => {
   try {
     return Axios({url, ...config})
   } catch (err) {
@@ -19,13 +24,13 @@ const action = (url) => {
 }
 
 export async function turnOn() {
-  return action(ON)
+  return client(Actions.On)
 }
 
 export async function turnOff() {
-  return action(OFF)
+  return client(Actions.Off)
 }
 
 export async function status() {
-  return action(STATUS)
+  return client(Actions.Status)
 }
