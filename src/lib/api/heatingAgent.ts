@@ -13,8 +13,6 @@ const config: AxiosRequestConfig = {
   headers: {Accept: 'application/json'}
 }
 
-console.log('@config', config)
-
 const client = (url: string) => {
   try {
     return Axios({url, ...config})
