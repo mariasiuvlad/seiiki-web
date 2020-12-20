@@ -2,7 +2,7 @@ import db from 'lib/db'
 import * as reading from 'lib/db/reading'
 
 export default async function handler(req, res) {
-  const {rows: data, rowCount} = await db.query(reading.Latest)
+  const {rows: data, rowCount} = await db.query(reading.Last24Hours)
 
   if (rowCount === 0) {
     res.statusCode = 204
@@ -11,5 +11,5 @@ export default async function handler(req, res) {
 
   res.statusCode = 200
   res.setHeader('Content-Type', 'application/json')
-  res.end(JSON.stringify(data[0]))
+  res.end(JSON.stringify(data))
 }

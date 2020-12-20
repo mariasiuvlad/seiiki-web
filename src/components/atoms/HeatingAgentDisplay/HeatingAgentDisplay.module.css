@@ -1,5 +1,5 @@
 .root {
-  @apply flex flex-col items-center border border-gray-200 dark:border-gray-600 rounded-sm p-8;
+  @apply flex flex-col items-center p-8;
 }
 
 .title {

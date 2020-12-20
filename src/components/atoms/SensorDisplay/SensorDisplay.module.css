@@ -1,15 +1,15 @@
 .root {
-  @apply flex flex-col border border-gray-200 dark:border-gray-600 border-b-0;
+  @apply flex flex-col;
 }
 
 .conditionsContainer {
-  @apply flex flex-row flex-grow justify-between
+  @apply flex flex-row flex-grow justify-between;
 }
 
 .conditionsItem {
-  @apply p-2
+  @apply p-2;
 }
 
 .time {
-  @apply p-2 text-right text-sm opacity-60
+  @apply p-2 text-left text-sm opacity-60;
 }

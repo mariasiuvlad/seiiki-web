@@ -1,7 +1,6 @@
 import db from 'lib/db'
 import * as reading from 'lib/db/reading'
 
-/** @TODO extract db related code */
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.statusCode = 404

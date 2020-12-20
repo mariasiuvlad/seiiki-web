@@ -11,7 +11,9 @@ export default function SensorDisplay({data}) {
         <p className={style.conditionsItem}>{data.humi}%</p>
       </div>
       <p className={style.time}>
-        {DateTime.fromISO(data.time).toLocaleString(DateTime.TIME_24_SIMPLE)}
+        {DateTime.fromISO(data.time).toLocaleString(
+          Object.assign(DateTime.TIME_24_SIMPLE, {weekday: 'short'})
+        )}
       </p>
     </div>
   ) : (
