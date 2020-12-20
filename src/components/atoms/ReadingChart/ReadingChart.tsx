@@ -1,46 +1,14 @@
 import React from 'react'
-import {
-  XAxis,
-  Tooltip,
-  YAxis,
-  AreaChart,
-  Area,
-  TooltipProps,
-  Legend
-} from 'recharts'
+import {XAxis, Tooltip, YAxis, AreaChart, Area, TooltipProps} from 'recharts'
 import {DateTime} from 'luxon'
+import CustomTooltip from './Tooltip'
 
-const colorMap = {
+export const colorMap = {
   humi: 'text-blue-600 dark:text-blue-400',
   temp: 'text-red-600 dark:text-red-400'
 }
 
-const CustomTooltip = ({active, payload, label}: TooltipProps) => {
-  if (!active || !payload) return null
-  return (
-    <div className="w-28 bg-white dark:bg-gray-900 px-4 py-2 border border-gray-200 rounded-md opacity-90">
-      <p className="text-sm font-thin mb-2">{label}</p>
-      {payload.map(({value, dataKey}) => (
-        <p key={dataKey as string}>
-          <span
-            className={`uppercase ${
-              colorMap[dataKey as string]
-            } text-xs font-black mr-4`}>
-            {dataKey}
-          </span>
-          <span className="">{value}</span>
-        </p>
-      ))}
-    </div>
-  )
-}
-
-export default function ReadingChart({
-  className,
-  data,
-  humi = false,
-  temp = false
-}) {
+export default function ReadingChart({className = '', data, humi = false, temp = false}) {
   return (
     <div className={className} style={{margin: -6}}>
       <AreaChart
@@ -48,18 +16,21 @@ export default function ReadingChart({
         height={120}
         data={data.map((item) => ({
           ...item,
-          time: DateTime.fromISO(item.time).toLocaleString(
+          timestamp: DateTime.fromISO(item.timestamp).toLocaleString(
             DateTime.TIME_24_SIMPLE
           )
         }))}>
         <XAxis
           height={0}
-          dataKey="time"
+          dataKey="timestamp"
           tick={false}
           axisLine={false}
-          tickFormatter={({time}) =>
-            DateTime.fromISO(time).toLocaleString(DateTime.TIME_24_SIMPLE)
-          }
+          tickFormatter={({timestamp}) => {
+            console.log(timestamp)
+            return DateTime.fromISO(timestamp).toLocaleString(
+              DateTime.TIME_24_SIMPLE
+            )
+          }}
         />
         {temp && (
           <YAxis

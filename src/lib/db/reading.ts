@@ -10,8 +10,13 @@ export const Latest = `
   LIMIT 1
 `
 
-export const Last24Hours = `
-  SELECT * FROM public.reading
-  WHERE time >= NOW() - INTERVAL '4 HOURS'
-  ORDER BY time ASC
+export const Chart = `
+  SELECT time_bucket(INTERVAL '1 hour' * $1, time) AS timestamp,
+    sensor_id, COUNT(*),
+    ROUND(AVG(temp)::numeric,2) AS temp,
+    ROUND(AVG(humi)::numeric,2) AS humi
+  FROM reading
+  WHERE time > NOW() - INTERVAL '1 hours' * $2
+  GROUP BY timestamp, sensor_id
+  ORDER BY timestamp ASC, temp DESC;
 `
