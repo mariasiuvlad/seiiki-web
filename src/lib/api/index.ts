@@ -1,7 +1,8 @@
 import Axios, {AxiosRequestConfig} from 'axios'
 
 const Config: AxiosRequestConfig = {
-  method: 'GET'
+  method: 'GET',
+  timeout: 4 * 1000 // 4s timeout
 }
 
 const delay = (v) => {
