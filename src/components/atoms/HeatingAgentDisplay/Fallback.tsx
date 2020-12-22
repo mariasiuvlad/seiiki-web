@@ -8,7 +8,7 @@ export default function HeatingAgentDisplay({className}) {
     <div className={cx(className, style.root, 'animate-pulse')}>
       <div className="h-6 mb-2">
         <h1 className={style.title}>
-          <div className="h-5 w-32 bg-black dark:bg-white opacity-30 rounded" />
+          <span className="h-5 w-32 bg-black dark:bg-white opacity-30 rounded" />
         </h1>
       </div>
       <button className={style.button} disabled>

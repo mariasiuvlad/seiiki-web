@@ -8,11 +8,11 @@ export default function SensorDisplayFallback() {
     <div className={cx(style.root, 'animate-pulse')}>
       <div className={style.conditionsContainer}>
         <p className={style.conditionsItem}>
-          <div className="h-4 bg-gray-900 opacity-30 rounded w-32" />
+          <span className="h-4 bg-gray-900 opacity-30 rounded w-32" />
         </p>
       </div>
       <p className={style.time}>
-        <div className="h-4 bg-gray-900 opacity-30 rounded w-12" />
+        <span className="h-4 bg-gray-900 opacity-30 rounded w-12" />
       </p>
     </div>
   )
