@@ -1,0 +1,25 @@
+.button {
+  @apply py-2 px-4 rounded-md;
+  @apply flex flex-row text-center;
+  @apply focus:outline-none;
+}
+
+.primary {
+  @apply bg-blue-700 border-b-4 border-blue-800 text-gray-200;
+}
+
+.secondary {
+  @apply border border-b-4 
+}
+
+.small {
+  @apply py-1 px-2 text-xs
+}
+
+.medium {
+  @apply text-sm
+}
+
+.large {
+  @apply text-base
+}

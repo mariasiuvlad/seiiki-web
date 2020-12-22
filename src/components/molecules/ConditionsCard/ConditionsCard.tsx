@@ -22,7 +22,7 @@ export default function ConditionsCard() {
 
   return (
     <div className={cx(style.card, 'flex flex-col')}>
-      <div className="-m-px p-px bg-white dark:bg-gray-900">
+      <div>
         <div className="flex flex-row items-center px-2 pt-1 text-sm">
           <SelectControl className={style.intervalSelector} />
         </div>
@@ -37,8 +37,8 @@ export default function ConditionsCard() {
         )}
       </div>
       <div className="flex flex-row">
-        <SensorDisplay />
-        <HeatingAgentDisplay className="border-l border-black dark:border-white border-opacity-30 flex-grow" />
+        <SensorDisplay className="border-r border-black dark:border-white border-opacity-30" />
+        <HeatingAgentDisplay className="flex-grow" />
       </div>
     </div>
   )

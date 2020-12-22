@@ -9,6 +9,22 @@ export const colorMap = {
   temp: 'text-red-600 dark:text-red-400'
 }
 
+interface Reading {
+  timestamp: string
+  sensor_id: string
+  temp: number
+  humi: number
+}
+export interface ReadingChartProps {
+  /**
+   * Custom className
+   */
+  className?: string
+  humi: boolean
+  temp: boolean
+  data: Reading[]
+}
+
 export default function ReadingChart({className = '', data, humi = false, temp = false}) {
   return (
     <div className={className} style={{width: 400, height: 120, margin: -6}}>

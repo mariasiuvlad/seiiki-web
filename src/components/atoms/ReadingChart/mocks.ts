@@ -1,4 +1,4 @@
-const mocks = [
+export default [
   {
     timestamp: '2020-12-21T00:00:00.000Z',
     sensor_id: 'bedroom',
@@ -84,9 +84,3 @@ const mocks = [
     humi: 40.88
   }
 ]
-
-export default mocks.map((m) => ({
-  ...m,
-  temp: 0,
-  humi: 0
-}))

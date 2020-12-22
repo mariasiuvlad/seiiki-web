@@ -5,7 +5,7 @@ import HeatingAgentDisplayFallback from './Fallback'
 
 export default function HeatingAgentDisplay(props) {
   const ErrorComponent = () => (
-    <h1 className="self-center text-center flex-grow">Heating agent unreachable</h1>
+    <h1 className="self-center text-center flex-grow px-4">Heating agent unreachable</h1>
   )
 
   return (
