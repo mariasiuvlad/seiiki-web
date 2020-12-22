@@ -6,8 +6,11 @@ export default function useCollapsible(
 ): [boolean, React.FC<{className?: string}>] {
   const [collapsed, setCollapsed] = useState(initialValue)
 
-  const Button = ({className}) => (
-    <button className={className} onClick={() => setCollapsed((c) => !c)}>
+  const Control = ({className}) => (
+    <button
+      aria-label="Collapse"
+      className={className}
+      onClick={() => setCollapsed((c) => !c)}>
       {collapsed ? (
         <CaretUp className="w-4 h-4" />
       ) : (
@@ -16,5 +19,5 @@ export default function useCollapsible(
     </button>
   )
 
-  return [collapsed, Button]
+  return [collapsed, Control]
 }

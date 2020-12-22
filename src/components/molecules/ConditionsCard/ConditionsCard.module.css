@@ -3,7 +3,7 @@
 }
 
 .card {
-  @apply relative flex flex-col rounded-md border bg-gray-50 dark:bg-gray-800 dark:border-gray-500;
+  @apply relative rounded-md border bg-gray-50 dark:bg-gray-900 border-black dark:border-white border-opacity-30;
 }
 
 .collapseButton {

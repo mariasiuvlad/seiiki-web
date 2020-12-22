@@ -1,7 +1,8 @@
 import React from 'react'
-import {XAxis, Tooltip, YAxis, AreaChart, Area, TooltipProps} from 'recharts'
+import {XAxis, Tooltip, YAxis, AreaChart, Area} from 'recharts'
 import {DateTime} from 'luxon'
 import CustomTooltip from './Tooltip'
+import {dateToString} from 'lib/date'
 
 export const colorMap = {
   humi: 'text-blue-600 dark:text-blue-400',
@@ -10,27 +11,20 @@ export const colorMap = {
 
 export default function ReadingChart({className = '', data, humi = false, temp = false}) {
   return (
-    <div className={className} style={{margin: -6}}>
+    <div className={className} style={{width: 400, height: 120, margin: -6}}>
       <AreaChart
         width={400}
         height={120}
         data={data.map((item) => ({
           ...item,
-          timestamp: DateTime.fromISO(item.timestamp).toLocaleString(
-            DateTime.TIME_24_SIMPLE
-          )
+          timestamp: dateToString(item.timestamp, DateTime.TIME_24_SIMPLE)
         }))}>
         <XAxis
           height={0}
           dataKey="timestamp"
           tick={false}
           axisLine={false}
-          tickFormatter={({timestamp}) => {
-            console.log(timestamp)
-            return DateTime.fromISO(timestamp).toLocaleString(
-              DateTime.TIME_24_SIMPLE
-            )
-          }}
+          tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
         />
         {temp && (
           <YAxis

@@ -1,12 +1,19 @@
-import {Loader} from 'icons'
 import React from 'react'
+import cx from 'classnames'
 
 import style from './HeatingAgentDisplay.module.css'
 
-export default function HeatingAgentDisplayFallback() {
+export default function HeatingAgentDisplay({className}) {
   return (
-    <div className={style.root}>
-      <Loader className="w-16 h-16 fill-current" />
+    <div className={cx(className, style.root, 'animate-pulse')}>
+      <div className="h-6 mb-2">
+        <h1 className={style.title}>
+          <div className="h-5 w-32 bg-black dark:bg-white opacity-30 rounded" />
+        </h1>
+      </div>
+      <button className={style.button} disabled>
+        <div className="h-4 w-24 bg-white opacity-30 rounded" />
+      </button>
     </div>
   )
 }

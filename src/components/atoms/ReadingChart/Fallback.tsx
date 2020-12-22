@@ -1,9 +1,14 @@
+import React from 'react'
+import cx from 'classnames'
+
 import {Loader} from 'icons'
 
-export default function ReadingChartFallback() {
+export default function ReadingChartFallback({className}) {
   return (
-    <div className="flex flex-col border border-gray-200 dark:border-gray-600 border-b-0">
-      <Loader className="w-16 h-16 fill-current" />
+    <div className={cx(className)} style={{width: 400, height: 120, margin: -6}}>
+      <div className="h-full w-full flex items-center justify-center">
+        <Loader className="w-16 h-16 fill-current opacity-30" />
+      </div>
     </div>
   )
 }

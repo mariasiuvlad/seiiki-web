@@ -1,21 +1,31 @@
 @tailwind base;
-
-@font-face {
-  font-family: "SFProDisplay";
-  src: url("/fonts/SFProDisplay/SFProDisplay-Medium.otf");
-  font-style: medium;
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SFProRounded";
-  src: url("/fonts/SFProRounded/SFProRounded-Medium.otf");
-  font-style: medium;
-  font-weight: 500;
-  font-display: swap;
-}
-
-
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Medium.otf');
+    font-style: medium;
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Medium.otf');
+    font-style: medium;
+    font-weight: 500;
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-md bg-gray-50 dark:bg-gray-800 dark:border-white border-black border-opacity-30;
+  }
+  
+  .fullscreen {
+    @apply flex h-screen w-screen dark:text-gray-200 dark:bg-gray-800;
+  }
+}

@@ -1,9 +1,19 @@
-import {Loader} from 'icons'
+import React from 'react'
+import cx from 'classnames'
+
+import style from './SensorDisplay.module.css'
 
 export default function SensorDisplayFallback() {
   return (
-    <div className="flex flex-col border border-gray-200 dark:border-gray-600 border-b-0">
-      <Loader className="w-16 h-16 fill-current" />
+    <div className={cx(style.root, 'animate-pulse')}>
+      <div className={style.conditionsContainer}>
+        <p className={style.conditionsItem}>
+          <div className="h-4 bg-gray-900 opacity-30 rounded w-32" />
+        </p>
+      </div>
+      <p className={style.time}>
+        <div className="h-4 bg-gray-900 opacity-30 rounded w-12" />
+      </p>
     </div>
   )
 }
