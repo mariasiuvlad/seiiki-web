@@ -13,13 +13,6 @@ const Template: Story<ReadingChartProps> = (args) => <ReadingChart {...args} />
 
 const args = {data: mocks}
 
-export const Combined = Template.bind({})
-Combined.args = {
-  ...args,
-  humi: true,
-  temp: true
-}
-
 export const Temperature = Template.bind({})
 Temperature.args = {
   ...args,
@@ -30,4 +23,11 @@ export const Humidity = Template.bind({})
 Humidity.args = {
   ...args,
   humi: true
+}
+
+export const Combined = Template.bind({})
+Combined.args = {
+  ...args,
+  humi: true,
+  temp: true
 }

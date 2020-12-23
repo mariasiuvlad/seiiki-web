@@ -21,7 +21,7 @@ export default function ConditionsCard() {
   const [selected, SelectControl] = useOptions(options)
 
   return (
-    <div className={cx(style.card, 'flex flex-col')}>
+    <div className={cx(style.root)}>
       <div>
         <div className="flex flex-row items-center px-2 pt-1 text-sm">
           <SelectControl className={style.intervalSelector} />

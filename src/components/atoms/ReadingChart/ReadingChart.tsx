@@ -20,9 +20,18 @@ export interface ReadingChartProps {
    * Custom className
    */
   className?: string
+  /**
+   * Show humiditiy chart
+   */
   humi: boolean
+  /**
+   * Show temperature chart
+   */
   temp: boolean
-  data: Reading[]
+  /**
+   * Chart data
+   */
+  data: Array<Reading>
 }
 
 export default function ReadingChart({className = '', data, humi = false, temp = false}) {
