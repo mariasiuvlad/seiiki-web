@@ -4,6 +4,8 @@
 
 -- Extend the database with TimescaleDB
 CREATE EXTENSION IF NOT EXISTS timescaledb;
+-- Provides uuid_generate_v4()
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE public.reading
 (
@@ -23,3 +25,22 @@ ALTER TABLE public.reading
 
 -- Create hypertable
 SELECT create_hypertable('reading', 'time');
+
+-- Table: public.schedule
+
+-- DROP TABLE public.schedule;
+
+CREATE TABLE public.schedule
+(
+    uuid uuid NOT NULL DEFAULT uuid_generate_v4(),
+    cron text COLLATE pg_catalog."default" NOT NULL,
+    command text COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT schedule_pkey PRIMARY KEY (uuid)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.schedule
+    OWNER to postgres;

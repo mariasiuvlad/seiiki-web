@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+
+  button {
+    @apply focus:outline-none;
+  }
+
   @font-face {
     font-family: 'SFProDisplay';
     src: url('/fonts/SFProDisplay/SFProDisplay-Medium.otf');

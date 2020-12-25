@@ -1,11 +1,10 @@
 .root {
   @apply relative flex flex-col rounded-md overflow-hidden;
-  @apply bg-gray-50 dark:bg-gray-900;
-  @apply border border-black dark:border-white border-opacity-30;
+  @apply bg-gray-50 dark:bg-gray-800 shadow-md;
 }
 
 .collapseButton {
-  @apply absolute right-0 top-0 p-2 text-black fill-current z-10 focus:outline-none;
+  @apply absolute right-0 top-0 p-2 text-black dark:text-white fill-current z-10 focus:outline-none;
 }
 
 .intervalSelector {

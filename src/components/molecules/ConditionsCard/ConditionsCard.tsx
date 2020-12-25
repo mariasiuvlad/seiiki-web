@@ -9,6 +9,7 @@ import useCollapsible from './useCollapsible'
 import useOptions from './useOptions'
 
 import style from './ConditionsCard.module.css'
+import Card from 'components/atoms/Card'
 
 const options = [
   {value: 12, label: 'last 12 hours'},
@@ -16,14 +17,14 @@ const options = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function ConditionsCard() {
+export default function ConditionsCard({className = ''}) {
   const [isCollapsed, CollapseButton] = useCollapsible(true)
   const [selected, SelectControl] = useOptions(options)
 
   return (
-    <div className={cx(style.root)}>
+    <Card className={cx(className)}>
       <div>
-        <div className="flex flex-row items-center px-2 pt-1 text-sm">
+        <div className="flex items-center px-2 pt-1 text-sm">
           <SelectControl className={style.intervalSelector} />
         </div>
         <CollapseButton className={style.collapseButton} />
@@ -36,10 +37,11 @@ export default function ConditionsCard() {
           </>
         )}
       </div>
-      <div className="flex flex-row">
-        <SensorDisplay className="border-r border-black dark:border-white border-opacity-30" />
+      <div className="flex">
+        <SensorDisplay className="p-2" />
+        <div className="bg-gray-300 dark:bg-gray-900 w-px my-4" />
         <HeatingAgentDisplay className="flex-grow" />
       </div>
-    </div>
+    </Card>
   )
 }

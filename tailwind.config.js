@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: ['./src/**/*.tsx'],
   darkMode: 'media', // or 'media' or 'class'
@@ -8,7 +10,11 @@ module.exports = {
     fontFamily: {
       sans: ['SFProRounded', 'sans-serif']
     },
-    extend: {}
+    extend: {
+      colors: {
+        gray: colors.trueGray,
+      }
+    }
   },
   variants: {
     extend: {}

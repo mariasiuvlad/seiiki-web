@@ -1,5 +1,5 @@
 .root {
-  @apply flex flex-grow items-center justify-center bg-white dark:bg-gray-900;
+  @apply flex flex-col flex-grow items-center justify-center bg-white dark:bg-gray-900;
 }
 
 .card {
