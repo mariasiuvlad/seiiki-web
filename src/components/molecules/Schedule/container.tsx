@@ -13,12 +13,12 @@ const ScheduleContainer = (props) => {
 
   const onDelete = useCallback(async (uuid) => {
     await deleteTask(uuid)
-    revalidate()
+    await revalidate()
   }, [])
 
   const onCreate = useCallback(async (data) => {
     await createTask(data)
-    revalidate()
+    await revalidate()
   }, [])
 
   return <Schedule data={data} onCreate={onCreate} onDelete={onDelete} {...props} />

@@ -7,7 +7,7 @@
 }
 
 .root td {
-  @apply h-6 p-2 text-center
+  @apply h-6 p-2 text-left
 }
 
 .root td:last-child button {

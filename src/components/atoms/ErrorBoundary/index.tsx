@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface IProps {
-  fallback?: React.FC
+  fallback?: React.ReactNode
 }
 interface IState {
   hasError: boolean

@@ -18,6 +18,10 @@ export interface SelectProps {
    */
   options: SelectOption[]
   /**
+   * form input name
+   */
+  name?: string
+  /**
    * current value
    */
   value?: any
@@ -27,16 +31,18 @@ export interface SelectProps {
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
 }
 
-const Select: React.FC<SelectProps> = ({options, className, ...props}) => {
-  return (
-    <select className={cx(className, style.control)} {...props}>
-      {options.map(({value, label}) => (
-        <option key={`${value}${label}`} value={value}>
-          {label}
-        </option>
-      ))}
-    </select>
-  )
-}
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+  ({options, className, ...props}, ref) => {
+    return (
+      <select ref={ref} className={cx(className, style.control)} {...props}>
+        {options.map(({value, label}) => (
+          <option key={`${value}${label}`} value={value}>
+            {label}
+          </option>
+        ))}
+      </select>
+    )
+  }
+)
 
 export default Select

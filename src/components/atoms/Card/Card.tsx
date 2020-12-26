@@ -3,7 +3,7 @@ import cx from 'classnames'
 
 import style from './Card.module.css'
 
-const Card = ({className, children}) => {
+const Card = ({className = '', children}) => {
   return <div className={cx(style.root, className)}>{children}</div>
 }
 

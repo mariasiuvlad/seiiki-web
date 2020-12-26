@@ -1,6 +1,6 @@
 .button {
   @apply py-2 px-4 rounded-md;
-  @apply flex flex-row text-center;
+  @apply flex flex-row justify-center;
   @apply focus:outline-none;
 }
 

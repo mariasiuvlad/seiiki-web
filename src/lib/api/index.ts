@@ -7,8 +7,8 @@ const Config: AxiosRequestConfig = {
 
 const delay = (v) => new Promise((resolve) => setTimeout(() => resolve(v), 2500))
 
-const httpClient = (url: string, extraConfig) =>
+const httpClient = (url: string, extraConfig: Partial<AxiosRequestConfig>) =>
   Axios({...Config, ...extraConfig, url}).then(({data}) => data)
-// .then(delay)
+    // .then(delay)
 
 export default httpClient
