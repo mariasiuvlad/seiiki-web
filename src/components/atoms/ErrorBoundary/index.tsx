@@ -27,7 +27,7 @@ export default class ErrorBoundary extends React.Component<IProps, IState, any> 
     if (this.state.hasError) {
       const {fallback: Fallback} = this.props
       // You can render any custom fallback UI
-      return <Fallback />
+      return Fallback
     }
 
     return this.props.children

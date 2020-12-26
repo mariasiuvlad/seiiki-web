@@ -9,7 +9,7 @@ const ErrorComponent = () => (
 
 export default function HeatingAgentDisplay(props) {
   return (
-    <ErrorBoundary fallback={ErrorComponent}>
+    <ErrorBoundary fallback={<ErrorComponent />}>
       <Suspense fallback={<HeatingAgentDisplayFallback {...props} />}>
         <HeatingAgentDisplayContainer {...props} />
       </Suspense>
