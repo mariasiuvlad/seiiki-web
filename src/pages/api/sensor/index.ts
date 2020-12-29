@@ -9,6 +9,11 @@ export default async function handler(req, res) {
 
   try {
     const {temp, humi, id} = req.body
+
+    if (temp === -999 || humi === -999) {
+      throw new Error('Invalid reading')
+    }
+
     await db.query(reading.Post, [id, new Date(), temp, humi])
 
     res.statusCode = 201
