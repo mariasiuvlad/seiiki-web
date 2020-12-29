@@ -1,11 +1,14 @@
 import React, {Suspense} from 'react'
+import ErrorBoundary from '../ErrorBoundary'
 import ReadingChartContainer from './container'
-import ReadingChartFallback from './Fallback'
+import ReadingChartFallback, {ReadingChartError} from './Fallback'
 
 export default function ReadingChart(props) {
   return (
-    <Suspense fallback={<ReadingChartFallback {...props} />}>
-      <ReadingChartContainer {...props} />
-    </Suspense>
+    <ErrorBoundary fallback={<ReadingChartError {...props} />}>
+      <Suspense fallback={<ReadingChartFallback {...props} />}>
+        <ReadingChartContainer {...props} />
+      </Suspense>
+    </ErrorBoundary>
   )
 }
