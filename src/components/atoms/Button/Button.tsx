@@ -3,7 +3,11 @@ import cx from 'classnames'
 
 import style from './Button.module.css'
 
-export interface ButtonProps {
+export interface ButtonProps
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
   /**
    * Is this the principal call to action on the page?
    */
@@ -12,10 +16,6 @@ export interface ButtonProps {
    * What background color to use
    */
   backgroundColor?: string
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large'
   /**
    * Button contents
    */
@@ -30,16 +30,15 @@ export interface ButtonProps {
  * Primary UI component for user interaction
  */
 const Button: React.FC<ButtonProps> = ({
+  className = '',
   primary = false,
-  size = 'medium',
   backgroundColor,
   label,
   ...props
 }) => {
   return (
     <button
-      type="button"
-      className={cx(style.button, style[size], {
+      className={cx(className, style.button, {
         [style.primary]: primary,
         [style.secondary]: !primary
       })}

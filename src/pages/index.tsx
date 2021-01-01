@@ -9,11 +9,9 @@ const HomePage = dynamic(() => import('components/organisms/Home'), {
 
 export default function Home() {
   const [isLoggedIn, setLoggedIn] = useState<boolean>(!!getStorage('isLoggedIn'))
-  const onSubmit = useCallback((password) => {
-    if (password === process.env.NEXT_PUBLIC_NAIVE_AUTH_PASSWORD) {
-      setStorage('isLoggedIn', true)
-      setLoggedIn(true)
-    }
+  const onSubmit = useCallback(() => {
+    setStorage('isLoggedIn', true)
+    setLoggedIn(true)
   }, [])
 
   if (!isLoggedIn) return <Auth onSubmit={onSubmit} />
