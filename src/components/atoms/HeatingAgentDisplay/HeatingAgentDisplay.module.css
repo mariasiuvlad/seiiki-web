@@ -1,9 +1,17 @@
 .root {
-  @apply flex flex-col items-center p-8 w-40 h-40;
+  @apply flex flex-col items-center;
 }
 
 .title {
-  @apply text-xl tracking-tight font-sans;
+  @apply uppercase text-sm font-sans;
+}
+
+.heatingOn {
+  @apply tracking-tight text-green-500
+}
+
+.heatingOff {
+  @apply tracking-tight text-red-500
 }
 
 .button {

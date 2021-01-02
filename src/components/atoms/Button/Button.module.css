@@ -1,25 +1,14 @@
 .button {
-  @apply py-2 px-4 rounded-md;
+  @apply text-xs uppercase tracking-tight;
+  @apply py-2 px-4 rounded;
   @apply flex flex-row justify-center;
   @apply focus:outline-none;
 }
 
 .primary {
-  @apply bg-blue-700 border-b-4 border-blue-800 text-gray-200;
+  @apply border bg-black text-white dark:bg-white dark:text-black;
 }
 
 .secondary {
-  @apply border border-b-4 
-}
-
-.small {
-  @apply py-1 px-2 text-xs
-}
-
-.medium {
-  @apply text-sm
-}
-
-.large {
-  @apply text-base
+  @apply border border-black dark:border-white
 }

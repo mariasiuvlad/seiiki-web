@@ -29,10 +29,10 @@ export default function ConditionsCard({className = ''}) {
         </div>
         <CollapseButton className={style.collapseButton} />
         {isCollapsed ? (
-          <ReadingChart interval={selected} humi temp />
+          <ReadingChart type="area" interval={selected} humi temp />
         ) : (
           <>
-            <ReadingChart interval={selected} humi />
+            <ReadingChart type="area" interval={selected} humi />
             <ReadingChart interval={selected} temp />
           </>
         )}
@@ -40,7 +40,9 @@ export default function ConditionsCard({className = ''}) {
       <div className="flex">
         <SensorDisplay className="p-2" />
         <div className="bg-gray-300 dark:bg-gray-900 w-px my-4" />
-        <HeatingAgentDisplay className="flex-grow" />
+        <div className="flex flex-grow justify-center items-center">
+          <HeatingAgentDisplay />
+        </div>
       </div>
     </Card>
   )

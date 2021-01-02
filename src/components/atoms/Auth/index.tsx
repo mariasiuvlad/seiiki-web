@@ -29,7 +29,12 @@ export default function Auth({onSubmit}) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button className="w-full" primary type="submit" label="Login" />
+          <Button
+            className="w-full text-xs uppercase tracking-wider"
+            primary
+            type="submit"
+            label="Login"
+          />
         </div>
       </form>
     </div>

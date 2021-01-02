@@ -1,5 +1,5 @@
-import React from 'react'
-import {XAxis, Tooltip, YAxis, AreaChart, Area} from 'recharts'
+import React, {useMemo} from 'react'
+import {XAxis, Tooltip, YAxis, LineChart, AreaChart, Area, Line} from 'recharts'
 import {DateTime} from 'luxon'
 import CustomTooltip from './Tooltip'
 import {dateToString} from 'lib/date'
@@ -7,6 +7,16 @@ import {dateToString} from 'lib/date'
 export const colorMap = {
   humi: 'text-blue-600 dark:text-blue-400',
   temp: 'text-red-600 dark:text-red-400'
+}
+
+export const chartContainerMap = {
+  line: LineChart,
+  area: AreaChart
+}
+
+const chartComponentMap = {
+  line: Line,
+  area: Area
 }
 
 interface Reading {
@@ -29,15 +39,33 @@ export interface ReadingChartProps {
    */
   temp: boolean
   /**
+   * Chart type
+   */
+  type: 'line' | 'area'
+  /**
    * Chart data
    */
   data: Array<Reading>
 }
 
-export default function ReadingChart({className = '', data, humi = false, temp = false}) {
+const useChart = (type) => {
+  const Container = useMemo(() => chartContainerMap[type], [type])
+  const Component = useMemo(() => chartComponentMap[type], [type])
+  return [Container, Component]
+}
+
+export default function ReadingChart({
+  className = '',
+  data,
+  humi = false,
+  temp = false,
+  type = 'line'
+}) {
+  const [ChartContainer, ChartElement] = useChart(type)
+
   return (
     <div className={className} style={{width: 400, height: 120, margin: -6}}>
-      <AreaChart
+      <ChartContainer
         width={400}
         height={120}
         data={data.map((item) => ({
@@ -51,15 +79,6 @@ export default function ReadingChart({className = '', data, humi = false, temp =
           axisLine={false}
           tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
         />
-        {temp && (
-          <YAxis
-            width={0}
-            yAxisId="temp"
-            tick={false}
-            axisLine={false}
-            domain={['dataMin - 0.1', 'dataMax + 0.1']}
-          />
-        )}
         {humi && (
           <YAxis
             width={0}
@@ -70,9 +89,18 @@ export default function ReadingChart({className = '', data, humi = false, temp =
             orientation="right"
           />
         )}
+        {temp && (
+          <YAxis
+            width={0}
+            yAxisId="temp"
+            tick={false}
+            axisLine={false}
+            domain={['dataMin - 0.1', 'dataMax + 0.1']}
+          />
+        )}
         <Tooltip content={<CustomTooltip />} />
         {temp && (
-          <Area
+          <ChartElement
             type="basis"
             dataKey="temp"
             strokeWidth={2}
@@ -83,7 +111,7 @@ export default function ReadingChart({className = '', data, humi = false, temp =
           />
         )}
         {humi && (
-          <Area
+          <ChartElement
             type="basis"
             dataKey="humi"
             className={colorMap['humi']}
@@ -93,7 +121,7 @@ export default function ReadingChart({className = '', data, humi = false, temp =
             yAxisId="humi"
           />
         )}
-      </AreaChart>
+      </ChartContainer>
     </div>
   )
 }

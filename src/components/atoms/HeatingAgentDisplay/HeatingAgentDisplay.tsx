@@ -27,9 +27,22 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
   return (
     <div className={cx(className, style.root)}>
       <div className="h-6 mb-2">
-        <h1 className={style.title}>Status: {isOn ? 'On' : 'Off'}</h1>
+        <h1 className={style.title}>
+          status &nbsp;
+          <span
+            className={cx('text-sm', {
+              [style.heatingOff]: !isOn,
+              [style.heatingOn]: isOn
+            })}>
+            {isOn ? 'on' : 'off'}
+          </span>
+        </h1>
       </div>
-      <Button primary label={isOn ? 'Turn Off' : 'Turn On'} onClick={onToggle} />
+      <Button
+        primary
+        label={isOn ? 'Turn Off' : 'Turn On'}
+        onClick={onToggle}
+      />
     </div>
   )
 }
