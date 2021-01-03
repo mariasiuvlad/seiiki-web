@@ -26,23 +26,17 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
 }) => {
   return (
     <div className={cx(className, style.root)}>
-      <div className="h-6 mb-2">
-        <h1 className={style.title}>
-          status &nbsp;
-          <span
-            className={cx('text-sm', {
-              [style.heatingOff]: !isOn,
-              [style.heatingOn]: isOn
-            })}>
-            {isOn ? 'on' : 'off'}
-          </span>
-        </h1>
+      <div className="flex flex-row self-stretch h-6 mx-2 mb-2 justify-between">
+        <p className={style.title}>status</p>
+        <span
+          className={cx(style.title, 'text-sm', {
+            [style.heatingOff]: !isOn,
+            [style.heatingOn]: isOn
+          })}>
+          {isOn ? 'on' : 'off'}
+        </span>
       </div>
-      <Button
-        primary
-        label={isOn ? 'Turn Off' : 'Turn On'}
-        onClick={onToggle}
-      />
+      <Button className="w-24" primary label={isOn ? 'Turn Off' : 'Turn On'} onClick={onToggle} />
     </div>
   )
 }

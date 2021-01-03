@@ -27,8 +27,8 @@ export interface SensorDisplayProps {
 const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi, time}) => (
   <div className={cx(className, style.root)}>
     <div className={style.conditionsContainer}>
-      <p className={style.conditionsItem}>{temp}° C</p>
-      <p className={style.conditionsItem}>{humi}%</p>
+      <p>{temp}° C</p>
+      <p>{humi}%</p>
     </div>
     <p className={style.time}>{dateToString(time, DateTime.TIME_24_SIMPLE)}</p>
   </div>
