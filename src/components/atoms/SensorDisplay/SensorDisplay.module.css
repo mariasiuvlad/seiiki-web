@@ -1,5 +1,5 @@
 .root {
-  @apply flex flex-col w-40 h-40;
+  @apply flex flex-col;
 }
 
 .conditionsContainer {
@@ -7,9 +7,9 @@
 }
 
 .conditionsItem {
-  @apply p-2;
+  /* @apply p-2; */
 }
 
 .time {
-  @apply p-2 text-left text-sm opacity-60;
+  @apply text-left text-sm opacity-60;
 }

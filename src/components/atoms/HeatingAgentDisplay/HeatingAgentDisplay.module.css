@@ -7,11 +7,11 @@
 }
 
 .heatingOn {
-  @apply tracking-tight text-green-500
+  @apply tracking-tight text-green-500 dark:text-green-300
 }
 
 .heatingOff {
-  @apply tracking-tight text-red-500
+  @apply tracking-tight text-red-500 dark:text-red-300
 }
 
 .button {
