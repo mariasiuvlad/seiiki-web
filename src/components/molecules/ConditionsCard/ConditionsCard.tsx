@@ -30,7 +30,7 @@ export default function ConditionsCard({className = ''}) {
         text="History"
       />
       <div>
-        <div className="flex items-center px-2 pt-1 text-sm">
+        <div className="flex items-center px-4 pt-1 text-sm">
           <SelectControl className={style.intervalSelector} />
         </div>
         <CollapseButton className={style.collapseButton} />

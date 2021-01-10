@@ -3,7 +3,7 @@
 }
 
 .conditionsContainer {
-  @apply flex flex-row flex-grow justify-between;
+  @apply flex flex-row justify-between;
 }
 
 .time {
