@@ -3,6 +3,7 @@ import cx from 'classnames'
 
 import style from './HeatingAgentDisplay.module.css'
 import Button from '../Button'
+import Typography from '../Typography'
 
 export interface HeatingAgentDisplayProps {
   /**
@@ -26,17 +27,27 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
 }) => {
   return (
     <div className={cx(className, style.root)}>
-      <div className="flex flex-row self-stretch h-6 mx-2 mb-2 justify-between">
-        <p className={style.title}>status</p>
-        <span
-          className={cx(style.title, 'text-sm', {
+      <Typography
+        as="h3"
+        className="font-extralight text-4xl text-left text-shadow w-full"
+        text="Heating"
+      />
+      <div className="flex flex-row self-stretch h-6 mb-2 justify-between">
+        <Typography className={cx(style.left, 'mr-4')} text="status" />
+        <Typography
+          className={cx(style.right, {
             [style.heatingOff]: !isOn,
             [style.heatingOn]: isOn
-          })}>
-          {isOn ? 'on' : 'off'}
-        </span>
+          })}
+          text={isOn ? 'on' : 'off'}
+        />
       </div>
-      <Button className="w-24" primary label={isOn ? 'Turn Off' : 'Turn On'} onClick={onToggle} />
+      <Button
+        className="w-full"
+        primary={!isOn}
+        label={isOn ? 'Turn Off' : 'Turn On'}
+        onClick={onToggle}
+      />
     </div>
   )
 }

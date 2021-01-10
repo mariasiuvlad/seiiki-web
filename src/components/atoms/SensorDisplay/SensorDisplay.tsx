@@ -4,6 +4,7 @@ import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
 import {dateToString} from 'lib/date'
+import Typography from '../Typography'
 
 export interface SensorDisplayProps {
   /**
@@ -26,11 +27,16 @@ export interface SensorDisplayProps {
 
 const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi, time}) => (
   <div className={cx(className, style.root)}>
+    <Typography
+      as="h3"
+      className="font-extralight text-4xl text-left text-shadow w-full"
+      text="Bedroom"
+    />
     <div className={style.conditionsContainer}>
-      <p>{temp}° C</p>
-      <p>{humi}%</p>
+      <Typography text={`${temp}° C`} />
+      <Typography text={`${humi}%`} />
     </div>
-    <p className={style.time}>{dateToString(time, DateTime.TIME_24_SIMPLE)}</p>
+    <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
   </div>
 )
 

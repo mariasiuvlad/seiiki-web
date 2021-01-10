@@ -1,17 +1,29 @@
 .root {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center justify-between;
+}
+
+.info {
+  @apply uppercase font-semibold font-sans text-xs;
 }
 
 .title {
-  @apply uppercase text-sm font-sans;
+  @apply font-extralight text-4xl
+}
+
+.left {
+  @apply font-sans capitalize text-base;
+}
+
+.right {
+  @apply font-sans uppercase font-semibold text-base;
 }
 
 .heatingOn {
-  @apply tracking-tight text-green-700 dark:text-green-300
+  @apply tracking-wider text-green-700 dark:text-green-300;
 }
 
 .heatingOff {
-  @apply tracking-tight text-red-700 dark:text-red-300
+  @apply tracking-wider text-red-700 dark:text-red-300;
 }
 
 .button {

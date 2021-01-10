@@ -5,6 +5,7 @@ import cx from 'classnames'
 import ConditionsCard from 'components/molecules/ConditionsCard'
 
 import style from './Home.module.css'
+import Typography from 'components/atoms/Typography'
 
 export default function Home() {
   return (
@@ -15,9 +16,6 @@ export default function Home() {
       </Head>
       <div className={cx(style.root, 'fullscreen')}>
         <ConditionsCard />
-        {/* <Card className="m-8 p-8 rounded-md">
-          <Schedule />
-        </Card> */}
       </div>
     </>
   )
