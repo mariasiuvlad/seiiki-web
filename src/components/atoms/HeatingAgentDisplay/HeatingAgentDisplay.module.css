@@ -11,11 +11,11 @@
 }
 
 .left {
-  @apply font-sans capitalize text-base;
+  @apply capitalize font-sans text-2xl font-thin mr-4;
 }
 
 .right {
-  @apply font-sans uppercase font-semibold text-base;
+  @apply font-sans text-2xl font-thin uppercase;
 }
 
 .heatingOn {

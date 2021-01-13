@@ -35,7 +35,7 @@ export default function ConditionsCard({className = ''}) {
         </div>
         <CollapseButton className={style.collapseButton} />
         {isCollapsed ? (
-          <ReadingChart interval={selected} humi temp />
+          <ReadingChart type="area" interval={selected} humi temp />
         ) : (
           <>
             <ReadingChart type="area" interval={selected} humi />

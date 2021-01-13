@@ -32,7 +32,7 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
         className="font-extralight text-4xl text-left text-shadow w-full"
         text="Heating"
       />
-      <div className="flex flex-row self-stretch h-6 mb-2 justify-between">
+      <div className="flex flex-row self-stretch h-6 justify-self-center justify-between items-center">
         <Typography className={cx(style.left, 'mr-4')} text="status" />
         <Typography
           className={cx(style.right, {
@@ -43,7 +43,7 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
         />
       </div>
       <Button
-        className="w-full"
+        className="w-full h-8"
         primary={!isOn}
         label={isOn ? 'Turn Off' : 'Turn On'}
         onClick={onToggle}
