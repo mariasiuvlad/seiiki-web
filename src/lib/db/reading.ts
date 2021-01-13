@@ -13,10 +13,10 @@ export const Latest = `
 export const Chart = `
   SELECT time_bucket(INTERVAL '1 hour' * $1, time) AS timestamp,
     sensor_id, COUNT(*),
-    ROUND(AVG(temp)::numeric,2) AS temp,
-    ROUND(AVG(humi)::numeric,2) AS humi
+    ROUND(AVG(temp)::numeric, 2) AS temp,
+    ROUND(AVG(humi)::numeric, 2) AS humi
   FROM reading
-  WHERE time > NOW() - INTERVAL '1 hours' * $2
+  WHERE time > NOW() - INTERVAL '1 hour' * $2
   GROUP BY timestamp, sensor_id
   ORDER BY timestamp ASC, temp DESC;
 `
