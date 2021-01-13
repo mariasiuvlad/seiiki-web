@@ -26,7 +26,7 @@ export interface SensorDisplayProps {
   /**
    * Displayed as title
    */
-  sensorId?: string
+  sensor_id?: string
 }
 
 const SensorDisplay: React.FC<SensorDisplayProps> = ({
@@ -34,13 +34,13 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({
   temp,
   humi,
   time,
-  sensorId = 'bedroom'
+  sensor_id
 }) => (
   <div className={cx(className, style.root)}>
     <Typography
       as="h3"
       className="capitalize font-extralight text-4xl text-left text-shadow w-full"
-      text={sensorId}
+      text={sensor_id}
     />
     <div className={style.conditionsContainer}>
       <Typography
