@@ -79,6 +79,7 @@ export default function ReadingChart({
           axisLine={false}
           tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
         />
+        <Tooltip content={<CustomTooltip />} />
         {humi && (
           <YAxis
             width={0}
@@ -87,27 +88,6 @@ export default function ReadingChart({
             yAxisId="humi"
             domain={['dataMin - 2', 'dataMax + 2']}
             orientation="right"
-          />
-        )}
-        {temp && (
-          <YAxis
-            width={0}
-            yAxisId="temp"
-            tick={false}
-            axisLine={false}
-            domain={['dataMin - 0.1', 'dataMax + 0.1']}
-          />
-        )}
-        <Tooltip content={<CustomTooltip />} />
-        {temp && (
-          <ChartElement
-            type="basis"
-            dataKey="temp"
-            strokeWidth={2}
-            className={colorMap['temp']}
-            stroke="currentColor"
-            fill="currentColor"
-            yAxisId="temp"
           />
         )}
         {humi && (
@@ -119,6 +99,26 @@ export default function ReadingChart({
             stroke="currentColor"
             fill="currentColor"
             yAxisId="humi"
+          />
+        )}
+        {temp && (
+          <YAxis
+            width={0}
+            yAxisId="temp"
+            tick={false}
+            axisLine={false}
+            domain={['dataMin - 0.1', 'dataMax + 0.1']}
+          />
+        )}
+        {temp && (
+          <ChartElement
+            type="basis"
+            dataKey="temp"
+            strokeWidth={2}
+            className={colorMap['temp']}
+            stroke="currentColor"
+            fill="currentColor"
+            yAxisId="temp"
           />
         )}
       </ChartContainer>
