@@ -10,6 +10,8 @@ import useOptions from './useOptions'
 import style from './ConditionsCard.module.css'
 import Card from 'components/atoms/Card'
 import Typography from 'components/atoms/Typography'
+import Separator from 'components/atoms/Separator'
+import {Column, Row} from 'components/atoms/Flex'
 
 const options = [
   {value: 12, label: 'last 12 hours'},
@@ -22,22 +24,22 @@ export default function ConditionsCard({className = ''}) {
 
   return (
     <Card className={cx(className, style.root)}>
-      <div className="flex flex-1 flex-col">
-        <div className="flex flex-row items-center pr-4">
+      <Column className="flex-1">
+        <Row className="items-center pr-4">
           <Typography
             as="h3"
             className="font-extralight text-4xl text-left text-shadow w-full m-4"
             text="History"
           />
           <SelectControl className={style.intervalSelector} />
-        </div>
+        </Row>
         <ReadingChart className="flex-grow w-full" type="area" interval={selected} humi temp />
-      </div>
-      <div className="flex flex-1 h-48">
+      </Column>
+      <Row className="flex-1">
         <SensorDisplay className="flex flex-1 m-4" />
-        <div className="bg-gray-300 dark:bg-gray-900 w-px my-4" />
+        <Separator vertical className="my-4" />
         <HeatingAgentDisplay className="flex flex-1 m-4" />
-      </div>
+      </Row>
     </Card>
   )
 }

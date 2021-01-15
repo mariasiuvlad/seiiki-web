@@ -2,6 +2,7 @@ import React, {ChangeEvent} from 'react'
 import cx from 'classnames'
 
 import style from './Select.module.css'
+import {CaretDown} from 'icons'
 
 interface SelectOption {
   value: any
@@ -34,13 +35,16 @@ export interface SelectProps {
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   ({options, className, ...props}, ref) => {
     return (
-      <select ref={ref} className={cx(className, style.control)} {...props}>
-        {options.map(({value, label}) => (
-          <option key={`${value}${label}`} value={value}>
-            {label}
-          </option>
-        ))}
-      </select>
+      <>
+        <select ref={ref} className={cx(className, style.control)} {...props}>
+          {options.map(({value, label}) => (
+            <option key={`${value}${label}`} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+        <CaretDown className="fill-current w-3 h-3 -ml-4" />
+      </>
     )
   }
 )
