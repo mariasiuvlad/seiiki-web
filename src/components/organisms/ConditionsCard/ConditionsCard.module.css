@@ -1,6 +1,5 @@
 .root {
-  @apply relative flex flex-col rounded-md overflow-hidden;
-  @apply bg-gray-50 dark:bg-gray-800 shadow-md;
+  min-height: 360px;
 }
 
 .collapseButton {
@@ -8,5 +7,5 @@
 }
 
 .intervalSelector {
-  @apply appearance-none bg-transparent cursor-pointer focus:outline-none self-start pr-5 z-10;
+  @apply appearance-none bg-transparent cursor-pointer focus:outline-none pr-4 z-10;
 }

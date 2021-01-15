@@ -1,5 +1,14 @@
 import React, {useMemo} from 'react'
-import {XAxis, Tooltip, YAxis, LineChart, AreaChart, Area, Line} from 'recharts'
+import {
+  XAxis,
+  Tooltip,
+  YAxis,
+  LineChart,
+  AreaChart,
+  Area,
+  Line,
+  ResponsiveContainer
+} from 'recharts'
 import {DateTime} from 'luxon'
 import CustomTooltip from './Tooltip'
 import {dateToString} from 'lib/date'
@@ -64,64 +73,66 @@ export default function ReadingChart({
   const [ChartContainer, ChartElement] = useChart(type)
 
   return (
-    <div className={className} style={{width: 400, height: 120, margin: -6}}>
-      <ChartContainer
-        width={400}
-        height={120}
-        data={data.map((item) => ({
-          ...item,
-          timestamp: dateToString(item.timestamp, DateTime.TIME_24_SIMPLE)
-        }))}>
-        <XAxis
-          height={0}
-          dataKey="timestamp"
-          tick={false}
-          axisLine={false}
-          tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
-        />
-        <Tooltip content={<CustomTooltip />} />
-        {humi && (
-          <YAxis
-            width={0}
+    <div className={className}>
+      <ResponsiveContainer height="100%">
+        <ChartContainer
+          margin={{top: 0, bottom: 0, left: 0, right: 0}}
+          data={data.map((item) => ({
+            ...item,
+            timestamp: dateToString(item.timestamp, DateTime.TIME_24_SIMPLE)
+          }))}>
+          <XAxis
+            hide
+            dataKey="timestamp"
             tick={false}
             axisLine={false}
-            yAxisId="humi"
-            domain={['dataMin - 2', 'dataMax + 2']}
-            orientation="right"
+            tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
           />
-        )}
-        {humi && (
-          <ChartElement
-            type="basis"
-            dataKey="humi"
-            className={colorMap['humi']}
-            strokeWidth={2}
-            stroke="currentColor"
-            fill="currentColor"
-            yAxisId="humi"
-          />
-        )}
-        {temp && (
-          <YAxis
-            width={0}
-            yAxisId="temp"
-            tick={false}
-            axisLine={false}
-            domain={['dataMin - 0.1', 'dataMax + 0.1']}
-          />
-        )}
-        {temp && (
-          <ChartElement
-            type="basis"
-            dataKey="temp"
-            strokeWidth={2}
-            className={colorMap['temp']}
-            stroke="currentColor"
-            fill="currentColor"
-            yAxisId="temp"
-          />
-        )}
-      </ChartContainer>
+          <Tooltip content={<CustomTooltip />} />
+          {humi && (
+            <YAxis
+              hide
+              tick={false}
+              axisLine={false}
+              yAxisId="humi"
+              domain={['dataMin - 2', 'dataMax + 2']}
+              orientation="right"
+            />
+          )}
+          {humi && (
+            <ChartElement
+              type="basis"
+              dataKey="humi"
+              className={colorMap['humi']}
+              strokeWidth={2}
+              stroke="currentColor"
+              fill="currentColor"
+              yAxisId="humi"
+            />
+          )}
+          {temp && (
+            <YAxis
+              hide
+              width={0}
+              yAxisId="temp"
+              tick={false}
+              axisLine={false}
+              domain={['dataMin - 0.1', 'dataMax + 0.1']}
+            />
+          )}
+          {temp && (
+            <ChartElement
+              type="basis"
+              dataKey="temp"
+              strokeWidth={2}
+              className={colorMap['temp']}
+              stroke="currentColor"
+              fill="currentColor"
+              yAxisId="temp"
+            />
+          )}
+        </ChartContainer>
+      </ResponsiveContainer>
     </div>
   )
 }

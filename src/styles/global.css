@@ -110,7 +110,7 @@
     font-weight: 400;
     font-display: swap;
   }
-  
+
   @font-face {
     font-family: 'SFProRounded';
     src: url('/fonts/SFProRounded/SFProRounded-Medium.otf');
@@ -168,7 +168,9 @@
   .rounded {
     font-family: 'SFProRounded';
   }
+}
 
+@layer utilities {
   .text-shadow {
     text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
   }

@@ -1,10 +1,10 @@
 import React from 'react'
 import cx from 'classnames'
 
-import style from './HeatingAgentDisplay.module.css'
 import Button from '../../atoms/Button'
 import Typography from '../../atoms/Typography'
 
+import style from './HeatingAgentDisplay.module.css'
 export interface HeatingAgentDisplayProps {
   /**
    * Heating agent status
@@ -27,12 +27,8 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
 }) => {
   return (
     <div className={cx(className, style.root)}>
-      <Typography
-        as="h3"
-        className="font-extralight text-4xl text-left text-shadow w-full"
-        text="Heating"
-      />
-      <div className="flex flex-row self-stretch h-6 justify-self-center justify-between items-center">
+      <Typography as="h3" text="Heating" className={cx(style.title, 'text-shadow')} />
+      <div className={style.info}>
         <Typography className={cx(style.left, 'mr-4')} text="status" />
         <Typography
           className={cx(style.right, {

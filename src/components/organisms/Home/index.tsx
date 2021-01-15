@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={cx(style.root, 'fullscreen')}>
-        <ConditionsCard />
+        <ConditionsCard className="w-96 h-96" />
       </div>
     </>
   )

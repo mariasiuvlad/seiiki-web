@@ -5,7 +5,6 @@ import ReadingChart from 'components/molecules/ReadingChart/Suspense'
 import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
-import useCollapsible from './useCollapsible'
 import useOptions from './useOptions'
 
 import style from './ConditionsCard.module.css'
@@ -19,32 +18,22 @@ const options = [
 ]
 
 export default function ConditionsCard({className = ''}) {
-  const [isCollapsed, CollapseButton] = useCollapsible(true)
   const [selected, SelectControl] = useOptions(options)
 
   return (
-    <Card className={cx(className)}>
-      <Typography
-        as="h3"
-        className="font-extralight text-4xl text-left text-shadow w-full m-4"
-        text="History"
-      />
-      <div>
-        <div className="flex items-center px-4 pt-1 text-sm">
+    <Card className={cx(className, style.root)}>
+      <div className="flex flex-1 flex-col">
+        <div className="flex flex-row items-center pr-4">
+          <Typography
+            as="h3"
+            className="font-extralight text-4xl text-left text-shadow w-full m-4"
+            text="History"
+          />
           <SelectControl className={style.intervalSelector} />
         </div>
-        <CollapseButton className={style.collapseButton} />
-        {isCollapsed ? (
-          <ReadingChart type="area" interval={selected} humi temp />
-        ) : (
-          <>
-            <ReadingChart type="area" interval={selected} humi />
-            <ReadingChart type="area" interval={selected} temp />
-          </>
-        )}
+        <ReadingChart className="flex-grow w-full" type="area" interval={selected} humi temp />
       </div>
-      <div className="bg-gray-300 dark:bg-gray-900 h-px mx-4" />
-      <div className="flex h-48">
+      <div className="flex flex-1 h-48">
         <SensorDisplay className="flex flex-1 m-4" />
         <div className="bg-gray-300 dark:bg-gray-900 w-px my-4" />
         <HeatingAgentDisplay className="flex flex-1 m-4" />

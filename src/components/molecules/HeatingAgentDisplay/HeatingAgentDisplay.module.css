@@ -3,11 +3,11 @@
 }
 
 .info {
-  @apply uppercase font-semibold font-sans text-xs;
+  @apply flex flex-row self-stretch h-6 justify-self-center justify-between items-center;
 }
 
 .title {
-  @apply font-extralight text-4xl
+  @apply font-extralight text-4xl text-left w-full;
 }
 
 .left {
@@ -15,15 +15,15 @@
 }
 
 .right {
-  @apply font-sans text-2xl font-thin uppercase;
+  @apply font-sans text-2xl font-thin uppercase tracking-wider;
 }
 
 .heatingOn {
-  @apply tracking-wider text-green-700 dark:text-green-300;
+  @apply  text-green-700 dark:text-green-300;
 }
 
 .heatingOff {
-  @apply tracking-wider text-red-700 dark:text-red-300;
+  @apply text-red-700 dark:text-red-300;
 }
 
 .button {
