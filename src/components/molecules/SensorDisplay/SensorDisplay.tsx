@@ -4,7 +4,7 @@ import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
 import {dateToString} from 'lib/date'
-import Typography from '../Typography'
+import Typography from '../../atoms/Typography'
 
 export interface SensorDisplayProps {
   /**

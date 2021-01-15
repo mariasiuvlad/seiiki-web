@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react'
-import ErrorBoundary from '../ErrorBoundary'
+import ErrorBoundary from '../../atoms/ErrorBoundary'
 import ReadingChartContainer from './container'
 import ReadingChartFallback, {ReadingChartError} from './Fallback'
 

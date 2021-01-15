@@ -1,6 +1,6 @@
 import React from 'react'
 import {TooltipProps} from 'recharts'
-import Typography from '../Typography'
+import Typography from '../../atoms/Typography'
 import {colorMap} from './ReadingChart'
 
 const CustomTooltip = ({active, payload, label}: TooltipProps) => {

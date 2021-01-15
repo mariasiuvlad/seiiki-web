@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 
 import style from './HeatingAgentDisplay.module.css'
-import Button from '../Button'
+import Button from '../../atoms/Button'
 
 export default function HeatingAgentDisplay({className}) {
   return (

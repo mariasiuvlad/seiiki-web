@@ -2,8 +2,8 @@ import React from 'react'
 import cx from 'classnames'
 
 import style from './HeatingAgentDisplay.module.css'
-import Button from '../Button'
-import Typography from '../Typography'
+import Button from '../../atoms/Button'
+import Typography from '../../atoms/Typography'
 
 export interface HeatingAgentDisplayProps {
   /**

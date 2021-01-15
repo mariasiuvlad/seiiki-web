@@ -2,10 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import cx from 'classnames'
 
-import ConditionsCard from 'components/molecules/ConditionsCard'
+import ConditionsCard from 'components/organisms/ConditionsCard'
 
 import style from './Home.module.css'
-import Typography from 'components/atoms/Typography'
 
 export default function Home() {
   return (

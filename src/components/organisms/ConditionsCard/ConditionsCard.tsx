@@ -1,9 +1,9 @@
 import React from 'react'
 import cx from 'classnames'
 
-import ReadingChart from 'components/atoms/ReadingChart/Suspense'
-import HeatingAgentDisplay from 'components/atoms/HeatingAgentDisplay/Suspense'
-import SensorDisplay from 'components/atoms/SensorDisplay/Suspense'
+import ReadingChart from 'components/molecules/ReadingChart/Suspense'
+import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
+import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
 import useCollapsible from './useCollapsible'
 import useOptions from './useOptions'
