@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react'
+import cx from 'classnames'
 import {
   XAxis,
   Tooltip,
@@ -13,11 +14,7 @@ import {DateTime} from 'luxon'
 import CustomTooltip from './Tooltip'
 import {dateToString} from 'lib/date'
 
-export const colorMap = {
-  humi: 'text-blue-600 dark:text-blue-400',
-  temp: 'text-red-600 dark:text-red-400',
-  status: 'text-green-600 dark:text-green-400'
-}
+import style from './ReadingChart.module.css'
 
 export const chartContainerMap = {
   line: LineChart,
@@ -84,7 +81,7 @@ export default function ReadingChart({
   )
 
   return (
-    <div className={className}>
+    <div className={cx(className, style.root)}>
       <ResponsiveContainer height="100%">
         <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
           <XAxis
@@ -108,7 +105,7 @@ export default function ReadingChart({
             <ChartElement
               type="basis"
               dataKey="humi"
-              className={colorMap['humi']}
+              className={style.humi}
               strokeWidth={2}
               stroke="currentColor"
               fill="currentColor"
@@ -129,7 +126,7 @@ export default function ReadingChart({
               type="basis"
               dataKey="temp"
               strokeWidth={2}
-              className={colorMap['temp']}
+              className={style.temp}
               stroke="currentColor"
               fill="currentColor"
               yAxisId="temp"

@@ -1,7 +1,9 @@
 import React from 'react'
+import cx from 'classnames'
 import {TooltipProps} from 'recharts'
 import Typography from '../../atoms/Typography'
-import {colorMap} from './ReadingChart'
+
+import style from './ReadingChart.module.css'
 
 const CustomTooltip = ({active, payload, label}: TooltipProps) => {
   if (!active || !payload) return null
@@ -12,7 +14,7 @@ const CustomTooltip = ({active, payload, label}: TooltipProps) => {
         <div className="flex flex-row items-center" key={dataKey as string}>
           <Typography
             key={dataKey as string}
-            className={`tracking-wider uppercase ${colorMap[dataKey as string]} text-xs mr-4`}
+            className={cx(style[dataKey as string], 'tracking-wider uppercase text-xs mr-4')}
             text={dataKey as string}
           />
           <Typography className="text-sm" text={value as string} />

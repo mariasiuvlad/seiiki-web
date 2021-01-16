@@ -1,0 +1,15 @@
+.root {
+  height: 1px; /** recharts fix **/
+}
+
+.humi {
+  @apply text-blue-600 dark:text-blue-400;
+}
+
+.temp {
+  @apply text-red-600 dark:text-red-400;
+}
+
+.status {
+  @apply text-green-600 dark:text-green-400;
+}
