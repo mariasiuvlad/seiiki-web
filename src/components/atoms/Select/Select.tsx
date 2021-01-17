@@ -3,6 +3,7 @@ import cx from 'classnames'
 
 import style from './Select.module.css'
 import {CaretDown} from 'icons'
+import {Row} from '../Flex'
 
 interface SelectOption {
   value: any
@@ -13,7 +14,11 @@ export interface SelectProps {
   /**
    * custom className
    */
-  className?: string
+  containerClassName?: string
+  /**
+   * custom className
+   */
+  controlClassName?: string
   /**
    * select options
    */
@@ -33,18 +38,18 @@ export interface SelectProps {
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({options, className, ...props}, ref) => {
+  ({options, controlClassName, containerClassName, ...props}, ref) => {
     return (
-      <>
-        <select ref={ref} className={cx(className, style.control)} {...props}>
+      <Row className={cx(containerClassName, 'items-center justify-between')}>
+        <select ref={ref} className={cx(controlClassName, style.control)} {...props}>
           {options.map(({value, label}) => (
             <option key={`${value}${label}`} value={value}>
               {label}
             </option>
           ))}
         </select>
-        <CaretDown className="fill-current w-3 h-3 -ml-4" />
-      </>
+        {/* <CaretDown className="fill-current w-3 h-3" /> */}
+      </Row>
     )
   }
 )

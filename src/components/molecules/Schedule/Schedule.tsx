@@ -80,12 +80,7 @@ const Schedule = ({className = '', data, onDelete, onCreate}) => {
             </td>
             <td>
               {!pending ? (
-                <Select
-                  className="uppercase text-xs"
-                  name="command"
-                  options={Commands}
-                  ref={register({required: true})}
-                />
+                <Select name="command" options={Commands} ref={register({required: true})} />
               ) : (
                 <div className="animate-pulse h-4 bg-gray-900 opacity-30 rounded w-18" />
               )}

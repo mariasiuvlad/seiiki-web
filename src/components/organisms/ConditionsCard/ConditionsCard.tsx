@@ -19,26 +19,43 @@ const options = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function ConditionsCard({className = ''}) {
-  const [selected, SelectControl] = useOptions(options)
+export default function ConditionsCard({sensors, className = ''}) {
+  const [selected, SelectControl] = useOptions(options, 12)
+  const [sensor, SensorSelect] = useOptions(sensors, sensors[0].value)
 
   return (
     <Card className={cx(className, style.root)}>
+      <Column className="relative">
+        <Typography
+          as="h1"
+          className="capitalize font-extralight text-4xl text-left text-shadow w-full p-4"
+          text={sensor}
+        />
+        <SensorSelect
+          controlClassName="h-full opacity-0"
+          containerClassName="w-full h-full absolute"
+        />
+      </Column>
       <Column className="flex-1">
         <Row className="items-center pr-4">
           <Typography
-            as="h3"
-            className="font-extralight text-4xl text-left text-shadow w-full m-4"
+            as="h2"
+            className="font-extralight text-2xl text-left w-full m-4"
             text="History"
           />
-          <SelectControl className={style.intervalSelector} />
+          <SelectControl />
         </Row>
-        <ReadingChart className="flex-grow w-full" type="area" interval={selected} humi temp />
+        <ReadingChart
+          className="flex-grow w-full"
+          sensor={sensor}
+          interval={selected}
+          type="area"
+          humi
+          temp
+        />
       </Column>
       <Row className="flex-1">
-        <SensorDisplay className="flex flex-1 m-4" />
-        <Separator vertical className="my-4" />
-        <HeatingAgentDisplay className="flex flex-1 m-4" />
+        <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
       </Row>
     </Card>
   )

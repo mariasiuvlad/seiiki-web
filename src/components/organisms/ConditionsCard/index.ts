@@ -1,1 +1,1 @@
-export {default} from './ConditionsCard'
+export {default} from './container'

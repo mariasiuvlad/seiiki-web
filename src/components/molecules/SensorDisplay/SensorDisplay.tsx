@@ -5,6 +5,7 @@ import {DateTime} from 'luxon'
 import style from './SensorDisplay.module.css'
 import {dateToString} from 'lib/date'
 import Typography from '../../atoms/Typography'
+import {Row} from 'components/atoms/Flex'
 
 export interface SensorDisplayProps {
   /**
@@ -29,20 +30,17 @@ export interface SensorDisplayProps {
   sensor_id?: string
 }
 
-const SensorDisplay: React.FC<SensorDisplayProps> = ({
-  className = '',
-  temp,
-  humi,
-  time,
-  sensor_id
-}) => (
+const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi, time}) => (
   <div className={cx(className, style.root)}>
-    <Typography
-      as="h3"
-      className="capitalize font-extralight text-4xl text-left text-shadow w-full"
-      text={sensor_id}
-    />
-    <div className={style.conditionsContainer}>
+    <Row className="items-center">
+      <Typography
+        as="h3"
+        className="capitalize font-extralight text-2xl text-left flex-grow"
+        text="Latest reading"
+      />
+      <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
+    </Row>
+    <Row className={style.conditionsContainer}>
       <Typography
         className="text-red-700 dark:text-red-300 text-2xl font-thin"
         text={`${temp}° C`}
@@ -51,8 +49,7 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({
         className="text-blue-700 dark:text-blue-300 text-2xl font-thin"
         text={`${humi}%`}
       />
-    </div>
-    <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
+    </Row>
   </div>
 )
 

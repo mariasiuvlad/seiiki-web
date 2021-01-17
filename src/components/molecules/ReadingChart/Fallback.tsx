@@ -11,7 +11,7 @@ export const ReadingChartError = ({className}) => {
   )
 }
 
-export default function ReadingChartFallback({className}) {
+export default function ConditionsCardFallback({className}) {
   return (
     <div className={cx(className)}>
       <div className="h-full w-full flex items-center justify-center">
