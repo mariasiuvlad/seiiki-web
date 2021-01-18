@@ -2,7 +2,6 @@ import React from 'react'
 import cx from 'classnames'
 
 import ReadingChart from 'components/molecules/ReadingChart/Suspense'
-import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
 import useOptions from './useOptions'
@@ -10,8 +9,9 @@ import useOptions from './useOptions'
 import style from './ConditionsCard.module.css'
 import Card from 'components/atoms/Card'
 import Typography from 'components/atoms/Typography'
-import Separator from 'components/atoms/Separator'
 import {Column, Row} from 'components/atoms/Flex'
+import {useSelect} from 'downshift'
+import SensorSelector from './SensorSelector'
 
 const options = [
   {value: 12, label: 'last 12 hours'},
@@ -21,21 +21,12 @@ const options = [
 
 export default function ConditionsCard({sensors, className = ''}) {
   const [selected, SelectControl] = useOptions(options, 12)
-  const [sensor, SensorSelect] = useOptions(sensors, sensors[0].value)
+  const selector = useSelect({items: sensors, defaultSelectedItem: sensors[0]})
+  const {selectedItem} = selector
 
   return (
-    <Card className={cx(className, style.root)}>
-      <Column className="relative">
-        <Typography
-          as="h1"
-          className="capitalize font-extralight text-4xl text-left text-shadow w-full p-4"
-          text={sensor}
-        />
-        <SensorSelect
-          controlClassName="h-full opacity-0"
-          containerClassName="w-full h-full absolute"
-        />
-      </Column>
+    <Card className={cx(className, style.root, 'overflow-visible')}>
+      <SensorSelector sensors={sensors} {...selector} />
       <Column className="flex-1">
         <Row className="items-center pr-4">
           <Typography
@@ -47,7 +38,7 @@ export default function ConditionsCard({sensors, className = ''}) {
         </Row>
         <ReadingChart
           className="flex-grow w-full"
-          sensor={sensor}
+          sensor={selectedItem}
           interval={selected}
           type="area"
           humi
@@ -55,7 +46,7 @@ export default function ConditionsCard({sensors, className = ''}) {
         />
       </Column>
       <Row className="flex-1">
-        <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
+        <SensorDisplay sensor={selectedItem} className="flex flex-1 m-4" />
       </Row>
     </Card>
   )

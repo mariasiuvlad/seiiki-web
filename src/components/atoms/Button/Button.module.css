@@ -6,9 +6,9 @@
 }
 
 .primary {
-  @apply border bg-black text-white dark:bg-white dark:text-black;
+  @apply border bg-gray-800 text-white dark:bg-white dark:text-black;
 }
 
 .secondary {
-  @apply border border-black dark:border-white
+  @apply border border-gray-800 dark:border-white
 }
