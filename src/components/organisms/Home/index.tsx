@@ -21,11 +21,11 @@ export default function Home() {
       </Head>
       <Div100vh className={cx(style.root)}>
         <Column className="w-full items-center">
-          <Card className="h-48 p-4 mb-4 w-full sm:w-96">
-            <HeatingAgentDisplay className="flex flex-1" />
+          <Card className="h-48 p-4 mb-4 w-full xs:w-96">
+            <HeatingAgentDisplay className="flex-1" />
           </Card>
-          <Card className="h-96 w-full sm:w-96">
-            <Conditions className="h-full w-full sm:w-96" />
+          <Card className="h-96 w-full xs:w-96">
+            <Conditions className="flex-1" />
           </Card>
         </Column>
       </Div100vh>

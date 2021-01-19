@@ -13,6 +13,9 @@ module.exports = {
     extend: {
       colors: {
         gray: colors.trueGray
+      },
+      screens: {
+        xs: '375px'
       }
     }
   },
