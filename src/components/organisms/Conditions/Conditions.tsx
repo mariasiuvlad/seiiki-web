@@ -1,7 +1,5 @@
 import React, {useCallback, useState} from 'react'
-import cx from 'classnames'
 
-import Card from 'components/atoms/Card'
 import Typography from 'components/atoms/Typography'
 import {Column, Row} from 'components/atoms/Flex'
 
@@ -11,7 +9,7 @@ import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 import SensorSelector, {SensorSelectorStateChange} from './SensorSelector'
 import PeriodSelector, {PeriodSelectorStateChange} from './PeriodSelector'
 
-import style from './ConditionsCard.module.css'
+import style from './Conditions.module.css'
 
 const periods = [
   {value: 12, label: 'last 12 hours'},
@@ -19,7 +17,7 @@ const periods = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function ConditionsCard({sensors, className = ''}) {
+export default function Conditions({sensors, className = ''}) {
   const [period, setPeriod] = useState(periods[0])
   const [sensor, setSensor] = useState(sensors[0])
 
@@ -34,7 +32,7 @@ export default function ConditionsCard({sensors, className = ''}) {
   )
 
   return (
-    <Card className={cx(className, style.root)}>
+    <>
       <SensorSelector
         items={sensors}
         defaultSelectedItem={sensor}
@@ -61,6 +59,6 @@ export default function ConditionsCard({sensors, className = ''}) {
       <Row className="flex-1">
         <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
       </Row>
-    </Card>
+    </>
   )
 }

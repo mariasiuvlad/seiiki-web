@@ -6,7 +6,7 @@ import ErrorBoundary from 'components/atoms/ErrorBoundary'
 import {DefaultError} from 'components/atoms/DefaultSuspense'
 import {Fallback} from './Fallback'
 
-export default function ConditionsCard(props) {
+export default function Conditions(props) {
   return (
     <ErrorBoundary key={props.interval} fallback={<DefaultError {...props} />}>
       <Suspense fallback={<Fallback {...props} />}>

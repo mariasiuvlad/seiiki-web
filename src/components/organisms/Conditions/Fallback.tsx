@@ -4,7 +4,7 @@ import cx from 'classnames'
 import Card from 'components/atoms/Card'
 import {Loader} from 'icons'
 
-import style from './ConditionsCard.module.css'
+import style from './Conditions.module.css'
 
 export const Fallback = ({className}) => {
   return (

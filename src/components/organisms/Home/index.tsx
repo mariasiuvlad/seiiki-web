@@ -1,13 +1,16 @@
 import React from 'react'
-import Head from 'next/head'
 import cx from 'classnames'
+import Head from 'next/head'
+import Div100vh from 'react-div-100vh'
 
-import ConditionsCard from 'components/organisms/ConditionsCard/Suspense'
-import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
-
-import style from './Home.module.css'
 import Card from 'components/atoms/Card'
 import {Column} from 'components/atoms/Flex'
+
+import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
+import Conditions from 'components/organisms/Conditions/Suspense'
+
+
+import style from './Home.module.css'
 
 export default function Home() {
   return (
@@ -16,14 +19,16 @@ export default function Home() {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={cx(style.root, 'fullscreen')}>
-        <Column>
-          <Card className="h-48 p-4 mb-4">
+      <Div100vh className={cx(style.root)}>
+        <Column className="w-full items-center">
+          <Card className="h-48 p-4 mb-4 w-full sm:w-96">
             <HeatingAgentDisplay className="flex flex-1" />
           </Card>
-          <ConditionsCard className="w-96 h-96" />
+          <Card className="h-96 w-full sm:w-96">
+            <Conditions className="h-full w-full sm:w-96" />
+          </Card>
         </Column>
-      </div>
+      </Div100vh>
     </>
   )
 }
