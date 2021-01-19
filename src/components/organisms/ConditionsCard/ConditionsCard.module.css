@@ -2,14 +2,6 @@
   min-height: 360px;
 }
 
-.collapseButton {
-  @apply absolute right-0 top-0 p-2 text-black dark:text-white fill-current z-10 focus:outline-none;
-}
-
-.intervalSelector {
-  @apply appearance-none bg-transparent cursor-pointer focus:outline-none pr-4 z-10;
-}
-
-.sensorSelector {
-  @apply absolute top-0 h-full w-full z-10 bg-gray-50 dark:bg-gray-800 overflow-y-auto;
+.subtitle {
+  @apply font-extralight text-2xl text-left flex-grow m-4;
 }

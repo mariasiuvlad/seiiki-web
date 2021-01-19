@@ -1,52 +1,65 @@
-import React from 'react'
+import React, {useCallback, useState} from 'react'
 import cx from 'classnames'
+
+import Card from 'components/atoms/Card'
+import Typography from 'components/atoms/Typography'
+import {Column, Row} from 'components/atoms/Flex'
 
 import ReadingChart from 'components/molecules/ReadingChart/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
-import useOptions from './useOptions'
+import SensorSelector, {SensorSelectorStateChange} from './SensorSelector'
+import PeriodSelector, {PeriodSelectorStateChange} from './PeriodSelector'
 
 import style from './ConditionsCard.module.css'
-import Card from 'components/atoms/Card'
-import Typography from 'components/atoms/Typography'
-import {Column, Row} from 'components/atoms/Flex'
-import {useSelect} from 'downshift'
-import SensorSelector from './SensorSelector'
 
-const options = [
+const periods = [
   {value: 12, label: 'last 12 hours'},
   {value: 24, label: 'last 24 hours'},
   {value: 48, label: 'last 48 hours'}
 ]
 
 export default function ConditionsCard({sensors, className = ''}) {
-  const [selected, SelectControl] = useOptions(options, 12)
-  const selector = useSelect({items: sensors, defaultSelectedItem: sensors[0]})
-  const {selectedItem} = selector
+  const [period, setPeriod] = useState(periods[0])
+  const [sensor, setSensor] = useState(sensors[0])
+
+  const onSensorChange: (changes: SensorSelectorStateChange) => void = useCallback(
+    ({selectedItem}) => setSensor(selectedItem),
+    []
+  )
+
+  const onPeriodChange: (changes: PeriodSelectorStateChange) => void = useCallback(
+    ({selectedItem}) => setPeriod(selectedItem),
+    []
+  )
 
   return (
-    <Card className={cx(className, style.root, 'overflow-visible')}>
-      <SensorSelector sensors={sensors} {...selector} />
+    <Card className={cx(className, style.root)}>
+      <SensorSelector
+        items={sensors}
+        defaultSelectedItem={sensor}
+        onSelectedItemChange={onSensorChange}
+      />
       <Column className="flex-1">
         <Row className="items-center pr-4">
-          <Typography
-            as="h2"
-            className="font-extralight text-2xl text-left w-full m-4"
-            text="History"
+          <Typography as="h2" className={style.subtitle} text="History" />
+          <PeriodSelector
+            items={periods}
+            defaultSelectedItem={period}
+            onSelectedItemChange={onPeriodChange}
           />
-          <SelectControl />
         </Row>
         <ReadingChart
           className="flex-grow w-full"
-          sensor={selectedItem}
-          interval={selected}
+          sensor={sensor}
+          interval={period.value}
           type="area"
           humi
           temp
         />
       </Column>
       <Row className="flex-1">
-        <SensorDisplay sensor={selectedItem} className="flex flex-1 m-4" />
+        <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
       </Row>
     </Card>
   )

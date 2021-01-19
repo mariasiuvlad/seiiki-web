@@ -1,0 +1,12 @@
+.sensorSelector {
+  @apply absolute top-16 w-full z-10 bg-gray-50 dark:bg-gray-800 overflow-y-auto;
+  height: calc(100% - theme('spacing.16'));
+}
+
+.item {
+  @apply capitalize font-extralight text-4xl text-left p-4;
+}
+
+.highlighted {
+  @apply bg-gray-800 text-white dark:bg-gray-700;
+}

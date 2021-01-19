@@ -1,11 +1,10 @@
 import React, {useCallback, useState} from 'react'
 import cx from 'classnames'
 
-import Select from 'components/atoms/Select'
-
-import style from './Schedule.module.css'
 import {AddCircle, CloseCircle} from 'icons'
 import {useForm} from 'react-hook-form'
+
+import style from './Schedule.module.css'
 
 const Commands = [
   {value: 'on', label: 'Heating On'},
@@ -78,13 +77,13 @@ const Schedule = ({className = '', data, onDelete, onCreate}) => {
                 <div className="animate-pulse h-4 bg-gray-900 opacity-30 rounded w-36" />
               )}
             </td>
-            <td>
+            {/* <td>
               {!pending ? (
                 <Select name="command" options={Commands} ref={register({required: true})} />
               ) : (
                 <div className="animate-pulse h-4 bg-gray-900 opacity-30 rounded w-18" />
               )}
-            </td>
+            </td> */}
             <td>
               {!pending ? (
                 <div className="flex flex-row">
