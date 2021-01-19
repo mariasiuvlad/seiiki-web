@@ -95,7 +95,7 @@ export default function ReadingChart({
           {/* render humidity chart */}
           {humi && [
             <YAxis
-              key="humi"
+              key="humiAxis"
               hide
               tick={false}
               axisLine={false}
@@ -104,6 +104,7 @@ export default function ReadingChart({
               orientation="right"
             />,
             <ChartElement
+              key="humiElement"
               type="basis"
               dataKey="humi"
               className={style.humi}
@@ -116,7 +117,7 @@ export default function ReadingChart({
           {/* render temperature chart */}
           {temp && [
             <YAxis
-              key="temp"
+              key="tempAxis"
               hide
               width={0}
               yAxisId="temp"
@@ -125,6 +126,7 @@ export default function ReadingChart({
               domain={['dataMin - 0.1', 'dataMax + 0.1']}
             />,
             <ChartElement
+              key="tempElement"
               type="basis"
               dataKey="temp"
               strokeWidth={2}
