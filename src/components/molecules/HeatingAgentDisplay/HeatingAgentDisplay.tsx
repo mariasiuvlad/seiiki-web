@@ -23,7 +23,7 @@ export interface HeatingAgentDisplayProps {
 const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
   className = '',
   isOn,
-  onToggle = () => {}
+  onToggle = () => null
 }) => {
   return (
     <div className={cx(className, style.root)}>

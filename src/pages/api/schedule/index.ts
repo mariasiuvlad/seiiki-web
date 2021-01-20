@@ -18,16 +18,14 @@ const commandMap = {
     } catch (error) {
       console.log('[Task::Heating On] Failed with error', error.message)
     }
-    
   },
   off: async () => {
     console.log('[Task::Heating Off] Executing...')
     try {
-      await HeatingAgent.turnOff()  
+      await HeatingAgent.turnOff()
     } catch (error) {
       console.log('[Task::Heating Off] Failed with error', error.message)
     }
-    
   }
 }
 

@@ -8,8 +8,8 @@ import Typography from 'components/atoms/Typography'
 
 import style from './SensorSelector.module.css'
 
-export interface SensorSelectorProps extends UseSelectProps<string> {}
-export interface SensorSelectorStateChange extends UseSelectStateChange<string> {}
+export type SensorSelectorProps = UseSelectProps<string>
+export type SensorSelectorStateChange = UseSelectStateChange<string>
 
 const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => {
   return (

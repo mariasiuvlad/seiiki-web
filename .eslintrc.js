@@ -7,7 +7,6 @@ module.exports = {
     }
   },
   extends: [
-    '@react-native-community',
     'prettier/@typescript-eslint',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended'
@@ -19,6 +18,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
     'no-shadow': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-shadow': ['error']
   }
 }

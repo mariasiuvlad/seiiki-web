@@ -17,7 +17,7 @@ const periods = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function Conditions({sensors, className = ''}) {
+export default function Conditions({sensors}) {
   const [period, setPeriod] = useState(periods[0])
   const [sensor, setSensor] = useState(sensors[0])
 

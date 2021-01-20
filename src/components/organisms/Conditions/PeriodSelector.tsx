@@ -12,8 +12,8 @@ export interface IntervalOption {
   label: string
 }
 
-export interface PeriodSelectorProps extends UseSelectProps<IntervalOption> {}
-export interface PeriodSelectorStateChange extends UseSelectStateChange<IntervalOption> {}
+export type PeriodSelectorProps = UseSelectProps<IntervalOption>
+export type PeriodSelectorStateChange = UseSelectStateChange<IntervalOption>
 
 const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => (
   <li

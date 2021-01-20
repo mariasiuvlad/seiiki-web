@@ -9,7 +9,6 @@ import {Column} from 'components/atoms/Flex'
 import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
 import Conditions from 'components/organisms/Conditions/Suspense'
 
-
 import style from './Home.module.css'
 
 export default function Home() {

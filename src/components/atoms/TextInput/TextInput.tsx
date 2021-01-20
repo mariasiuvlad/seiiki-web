@@ -1,8 +1,10 @@
 import React, {DetailedHTMLProps, InputHTMLAttributes} from 'react'
 import cx from 'classnames'
 
-export interface TextInputProps
-  extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {}
+export type TextInputProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
 
 const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(
   ({className, ...props}, ref) => {

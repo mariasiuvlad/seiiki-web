@@ -5,17 +5,18 @@ interface IProps {
 }
 interface IState {
   hasError: boolean
+  error: any
 }
 
 export default class ErrorBoundary extends React.Component<IProps, IState, any> {
   constructor(props) {
     super(props)
-    this.state = {hasError: false}
+    this.state = {hasError: false, error: null}
   }
 
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
-    return {hasError: true}
+    return {error, hasError: true}
   }
 
   componentDidCatch(error, errorInfo) {
