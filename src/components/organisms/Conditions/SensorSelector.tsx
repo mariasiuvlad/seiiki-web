@@ -11,12 +11,11 @@ import style from './SensorSelector.module.css'
 export interface SensorSelectorProps extends UseSelectProps<string> {}
 export interface SensorSelectorStateChange extends UseSelectStateChange<string> {}
 
-const Option = ({item, index, isSelected, isHighlighted, ...rest}) => {
+const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => {
   return (
     <li
       className={cx({[style.highlighted]: isHighlighted, hidden: isSelected}, 'cursor-pointer')}
-      key={`${item}${index}`}
-      {...rest}>
+      {...getItemProps({item, index})}>
       <Typography as="h1" className={cx(style.item, 'text-shadow')} text={item} />
     </li>
   )
@@ -56,11 +55,12 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
           {isOpen &&
             items.map((item, index) => (
               <Option
+                key={`${item}${index}`}
                 isHighlighted={index === highlightedIndex}
                 isSelected={item === selectedItem}
                 item={item}
                 index={index}
-                {...getItemProps({item, index})}
+                getItemProps={getItemProps}
               />
             ))}
         </ul>

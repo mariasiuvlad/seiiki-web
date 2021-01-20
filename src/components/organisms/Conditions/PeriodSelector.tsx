@@ -15,14 +15,13 @@ export interface IntervalOption {
 export interface PeriodSelectorProps extends UseSelectProps<IntervalOption> {}
 export interface PeriodSelectorStateChange extends UseSelectStateChange<IntervalOption> {}
 
-const Option = ({item, index, isSelected, isHighlighted, ...rest}) => (
+const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => (
   <li
     className={cx('cursor-pointer p-2', {
       hidden: isSelected,
       [style.highlighted]: isHighlighted
     })}
-    key={`${item}${index}`}
-    {...rest}>
+    {...getItemProps({item, index})}>
     {item.label}
   </li>
 )
@@ -56,11 +55,12 @@ const PeriodSelector: React.FC<PeriodSelectorProps> = ({
         {isOpen &&
           items.map((item, index) => (
             <Option
+              key={`${item}${index}`}
               item={item}
               index={index}
               isHighlighted={highlightedIndex === index}
               isSelected={selectedItem === item}
-              {...getItemProps({item, index})}
+              getItemProps={getItemProps}
             />
           ))}
       </ul>
