@@ -81,8 +81,8 @@ export default function ReadingChart({
   )
 
   return (
-    <div className={cx(className, style.root)}>
-      <ResponsiveContainer height="100%">
+    <div className={cx(className)}>
+      <ResponsiveContainer>
         <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
           <XAxis
             hide
@@ -112,6 +112,7 @@ export default function ReadingChart({
               stroke="currentColor"
               fill="currentColor"
               yAxisId="humi"
+              dot={false}
             />
           ]}
           {/* render temperature chart */}
@@ -134,6 +135,7 @@ export default function ReadingChart({
               stroke="currentColor"
               fill="currentColor"
               yAxisId="temp"
+              dot={false}
             />
           ]}
         </ChartContainer>

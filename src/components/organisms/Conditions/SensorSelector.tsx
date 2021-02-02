@@ -39,7 +39,7 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
     onSelectedItemChange
   })
 
-  if (items.length <= 1) {
+  if (items.length <= 0) {
     return <Typography as="h1" className={cx(style.item, 'text-shadow')} text={items[0]} />
   }
   return (
@@ -53,7 +53,7 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
       <div className={cx(style.sensorSelector, {hidden: !isOpen})}>
         <ul {...getMenuProps()} className={cx('outline-none')}>
           {isOpen &&
-            items.map((item, index) => (
+            [...items, 'asd', 'qwe', 'asf'].map((item, index) => (
               <Option
                 key={`${item}${index}`}
                 isHighlighted={index === highlightedIndex}

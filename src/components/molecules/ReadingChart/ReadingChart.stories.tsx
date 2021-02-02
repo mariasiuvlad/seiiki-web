@@ -3,13 +3,18 @@ import React from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 import ReadingChart, {ReadingChartProps} from './ReadingChart'
 import mocks from './mocks'
+import {Column} from 'components/atoms/Flex'
 
 export default {
   title: 'Example/ReadingChart',
   component: ReadingChart
 } as Meta
 
-const Template: Story<ReadingChartProps> = (args) => <ReadingChart {...args} />
+const Template: Story<ReadingChartProps> = (args) => (
+  <Column className="h-64">
+    <ReadingChart className="flex-grow w-full" {...args} />
+  </Column>
+)
 
 const args = {data: mocks}
 
