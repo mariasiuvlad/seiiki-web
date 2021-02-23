@@ -20,8 +20,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Div100vh className={cx(style.root)}>
-        <Row>
-          <Column className="w-full items-center">
+        <Row className="flex-wrap justify-center">
+          <Column className="items-center mb-4">
             <Card className="h-48 p-4 mb-4 w-full xs:w-96">
               <HeatingAgentDisplay className="flex-1" />
             </Card>
@@ -29,8 +29,8 @@ export default function Home() {
               <Conditions className="flex-1" />
             </Card>
           </Column>
-          <Column className="ml-8 w-full items-center">
-            <Card>
+          <Column className="items-center">
+            <Card className="md:ml-4 md:h-48 w-full xs:w-96">
               <Weather />
             </Card>
           </Column>

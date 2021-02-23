@@ -10,33 +10,54 @@ export interface WeatherProps {
   data: any
 }
 
+const Daily = ({data}) => {
+  return data.map((item, index) => {
+    return (
+      <Column key={item.time} className="mx-2 items-center">
+        <Typography
+          className="uppercase text-center font-extralight text-blue-700 dark:text-yellow-300"
+          text={index === 0 ? 'Today' : DateTime.fromSeconds(item.time).toFormat('ccc')}
+        />
+        <Row className="items-center">
+          <Typography
+            className="text-base font-light"
+            text={`${Math.round(item.temperatureLow)}`}
+          />
+          <Typography
+            className="font-extralight text-blue-700 dark:text-yellow-300 mx-1"
+            text="/"
+          />
+          <Typography
+            className="text-base font-light"
+            text={`${Math.round(item.temperatureHigh)}`}
+          />
+        </Row>
+      </Column>
+    )
+  })
+}
+
 const Weather: React.FC<WeatherProps> = ({className, data}) => {
-  const {currently} = data
+  const {currently, daily} = data
+  console.log(data, 'data')
   return (
     <Column className={cx(className, 'p-4')}>
       <Row className="justify-between mb-4">
-      <Typography
-          className="font-extralight text-4xl text-left text-shadow mr-8"
-          text="Currently"
-        />
+        <Row>
+          <Typography
+            className="font-extralight text-2xl text-shadow mr-4"
+            text={`${Math.round(currently.temperature)}°C`}
+          />
+          <Typography className="font-extralight text-2xl" text={currently.summary} />
+        </Row>
         <Typography
-          className="font-extralight text-4xl text-left text-shadow mr-8"
+          className="font-extralight text-2xl text-right text-shadow"
           text={DateTime.local().toLocaleString(DateTime.TIME_SIMPLE)}
         />
       </Row>
+      <Typography className="font-extralight text-xl mr-4 mb-4" text={daily.summary} />
       <Row>
-        <Typography
-          className="font-extralight text-xl text-shadow text-left mr-4"
-          text={`${Math.round(currently.temperature)}°C`}
-        />
-        <Typography
-          className="font-extralight text-xl text-shadow text-center mr-4"
-          text={`${currently.humidity}%`}
-        />
-        <Typography
-          className="font-extralight text-xl text-left"
-          text={currently.summary}
-        />
+        <Daily data={daily.data} />
       </Row>
     </Column>
   )
