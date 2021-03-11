@@ -5,7 +5,7 @@ import Typography from '../../atoms/Typography'
 
 import style from './ReadingChart.module.css'
 
-const CustomTooltip = ({active, payload, label}: TooltipProps) => {
+const CustomTooltip = ({active, payload, label}: TooltipProps<string, string>) => {
   if (!active || !payload) return null
   return (
     <div className="w-30 bg-white p-2 dark:bg-gray-900 border border-gray-200 rounded-md opacity-90">
@@ -17,7 +17,7 @@ const CustomTooltip = ({active, payload, label}: TooltipProps) => {
             className={cx(style[dataKey as string], 'tracking-wider uppercase text-xs mr-4')}
             text={dataKey as string}
           />
-          <Typography className="text-sm" text={value as string} />
+          <Typography className="text-sm" text={value} />
         </div>
       ))}
     </div>
