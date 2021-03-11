@@ -53,7 +53,7 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
       <div className={cx(style.sensorSelector, {hidden: !isOpen})}>
         <ul {...getMenuProps()} className={cx('outline-none')}>
           {isOpen &&
-            [...items, 'asd', 'qwe', 'asf'].map((item, index) => (
+            items.map((item, index) => (
               <Option
                 key={`${item}${index}`}
                 isHighlighted={index === highlightedIndex}
