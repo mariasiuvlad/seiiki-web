@@ -6,11 +6,8 @@ module.exports = {
       version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
     }
   },
-  extends: [
-    'prettier/@typescript-eslint',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended'
-  ],
+  ignorePatterns: ['tailwind.config.js'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
   plugins: ['@typescript-eslint'],
   rules: {
     semi: 0,

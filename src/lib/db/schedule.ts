@@ -1,5 +1,11 @@
-export const Post = `
+export const PostRecurring = `
   INSERT INTO schedule(cron, command)
+  VALUES($1, $2)
+  RETURNING *
+`
+
+export const PostSingle = `
+  INSERT INTO schedule(timestamp, command)
   VALUES($1, $2)
   RETURNING *
 `

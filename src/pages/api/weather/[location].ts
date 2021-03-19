@@ -5,7 +5,9 @@ export default async function handler(req, res) {
     const {query} = req
     const {location, ...options} = query
     const weather = await httpClient(
-      `https://api.darksky.net/forecast/${process.env.DARKSKY_API_KEY}/${location}?${new URLSearchParams(options).toString()}`
+      `https://api.darksky.net/forecast/${
+        process.env.DARKSKY_API_KEY
+      }/${location}?${new URLSearchParams(options).toString()}`
     )
 
     res.statusCode = 200

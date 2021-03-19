@@ -7,5 +7,5 @@
 }
 
 .time {
-  @apply text-base opacity-60 h-8 leading-8 text-left;
+  @apply text-2xl font-extralight h-8 leading-8 text-left;
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import cx from 'classnames'
 
-import Button from '../../atoms/Button'
-import Typography from '../../atoms/Typography'
+import Typography from 'components/atoms/Typography'
+import {Column, Row} from 'components/atoms/Flex'
 
 import style from './HeatingAgentDisplay.module.css'
 export interface HeatingAgentDisplayProps {
@@ -18,18 +18,19 @@ export interface HeatingAgentDisplayProps {
    * Optional click handler
    */
   onToggle?: () => void
+  twoHours?: () => void
 }
 
 const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
   className = '',
   isOn,
-  onToggle = () => null
+  onToggle = () => null,
+  twoHours = () => null
 }) => {
   return (
-    <div className={cx(className, style.root)}>
-      <Typography as="h3" text="Heating" className={cx(style.title, 'text-shadow')} />
-      <div className={style.info}>
-        <Typography className={cx(style.left, 'mr-4')} text="status" />
+    <Column className={cx(className, style.root)}>
+      <Row className="self-stretch items-center justify-between">
+        <Typography as="h3" text="Heating" className={cx(style.title, 'text-shadow')} />
         <Typography
           className={cx(style.right, {
             [style.heatingOff]: !isOn,
@@ -37,14 +38,30 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
           })}
           text={isOn ? 'on' : 'off'}
         />
-      </div>
-      <Button
-        className="w-full h-8"
-        primary={!isOn}
-        label={isOn ? 'Turn Off' : 'Turn On'}
-        onClick={onToggle}
-      />
-    </div>
+      </Row>
+      <Row className="self-stretch overflow-visible">
+        {!isOn ? (
+          <>
+            <button
+              className="flex-1 rounded-l-sm bg-white text-black uppercase text-xs py-2 px-4"
+              onClick={onToggle}>
+              Turn On
+            </button>
+            <button
+              className="flex-1 rounded-r-sm bg-gray-100 text-black uppercase text-xs py-2 px-4"
+              onClick={twoHours}>
+              Two hours
+            </button>
+          </>
+        ) : (
+          <button
+            className="flex-1 rounded-l-sm bg-white text-black uppercase text-xs py-2 px-4"
+            onClick={onToggle}>
+            Turn Off
+          </button>
+        )}
+      </Row>
+    </Column>
   )
 }
 

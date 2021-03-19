@@ -38,13 +38,13 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi
         className="capitalize font-extralight text-2xl text-left flex-grow"
         text="Latest reading"
       />
-      <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
-    </Row>
-    <Row className={style.conditionsContainer}>
       <Typography
         className="text-red-700 dark:text-red-300 text-2xl font-thin"
         text={`${temp}° C`}
       />
+    </Row>
+    <Row className={style.conditionsContainer}>
+      <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
       <Typography
         className="text-blue-700 dark:text-blue-300 text-2xl font-thin"
         text={`${humi}%`}

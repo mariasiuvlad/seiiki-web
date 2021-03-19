@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import dynamic from 'next/dynamic'
-import Auth from 'components/atoms/Auth'
 import useAuth from 'context/auth'
+import Router from 'next/router'
 
 const HomePage = dynamic(() => import('components/organisms/Home'), {
   ssr: false // disable ssr so we can use suspense
 })
 
 export default function Home() {
-  const {isLoggedIn, onSubmit} = useAuth()
+  const {isLoggedIn} = useAuth()
 
-  if (!isLoggedIn) return <Auth onSubmit={onSubmit} />
+  useEffect(() => {
+    if (!isLoggedIn) Router.push('/login')
+  }, [isLoggedIn])
 
   return <HomePage />
 }

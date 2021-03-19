@@ -12,7 +12,7 @@ const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLInputElement, T
       <input
         {...props}
         ref={ref}
-        className={cx(className, 'rounded-md border bg-transparent mb-4 p-2 focus:outline-none')}
+        className={cx('rounded-sm border bg-transparent px-2 py-1 focus:outline-none', className)}
       />
     )
   }

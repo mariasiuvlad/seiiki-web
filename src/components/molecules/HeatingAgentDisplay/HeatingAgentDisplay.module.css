@@ -1,9 +1,9 @@
 .root {
-  @apply flex flex-col items-center justify-between;
+  @apply items-center justify-between;
 }
 
 .info {
-  @apply flex flex-row self-stretch h-6 justify-self-center justify-between items-center;
+  @apply self-stretch h-6 justify-self-center justify-between items-center;
 }
 
 .title {
@@ -19,7 +19,7 @@
 }
 
 .heatingOn {
-  @apply  text-green-700 dark:text-green-300;
+  @apply text-green-700 dark:text-green-300;
 }
 
 .heatingOff {

@@ -7,8 +7,14 @@
     @apply focus:outline-none;
   }
 
-  html, body, #__next {
+  html,
+  body,
+  #__next {
     height: 100%;
+  }
+
+  html {
+    @apply bg-white dark:bg-gray-900;
   }
 
   @font-face {

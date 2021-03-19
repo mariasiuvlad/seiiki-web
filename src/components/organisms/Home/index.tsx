@@ -19,17 +19,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={cx(style.root)}>
-        <Column>
-          <Row className="px-4 my-4">
-            <Card className="p-4 h-64 w-64 mr-4">
+        <Column className="md:self-center max-w-3xl bg-white dark:bg-gray-900">
+          <Row className="mt-4 px-4">
+            <Card className="p-4 h-32 flex-grow">
               <HeatingAgentDisplay className="flex-1" />
             </Card>
-            <Card className="flex-grow h-64">
-              <Weather />
+          </Row>
+          <Row className="my-4 px-4">
+            <Card className="p-4 flex-grow">
+              <Weather className="flex-1" />
             </Card>
           </Row>
-          <Row className="mx-4">
-            <Card className="h-96 w-full">
+          <Row className="mb-4 px-4">
+            <Card className="h-64 w-full">
               <Conditions className="flex-1" />
             </Card>
           </Row>

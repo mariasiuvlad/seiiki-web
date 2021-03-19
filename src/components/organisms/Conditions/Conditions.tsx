@@ -1,15 +1,12 @@
 import React, {useCallback, useState} from 'react'
 
-import Typography from 'components/atoms/Typography'
-import {Column, Row} from 'components/atoms/Flex'
+import {Row} from 'components/atoms/Flex'
 
 import ReadingChart from 'components/molecules/ReadingChart/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
 import SensorSelector, {SensorSelectorStateChange} from './SensorSelector'
 import PeriodSelector, {PeriodSelectorStateChange} from './PeriodSelector'
-
-import style from './Conditions.module.css'
 
 const periods = [
   {value: 12, label: 'last 12 hours'},
@@ -33,32 +30,27 @@ export default function Conditions({sensors}) {
 
   return (
     <>
-      <SensorSelector
-        items={sensors}
-        defaultSelectedItem={sensor}
-        onSelectedItemChange={onSensorChange}
-      />
-      <Column className="flex-1">
-        <Row className="items-center pr-4">
-          <Typography as="h2" className={style.subtitle} text="History" />
-          <PeriodSelector
-            items={periods}
-            defaultSelectedItem={period}
-            onSelectedItemChange={onPeriodChange}
-          />
-        </Row>
-        <ReadingChart
-          className="flex-grow w-full"
-          sensor={sensor}
-          interval={period.value}
-          type="area"
-          humi
-          temp
+      <Row className="justify-between items-center pr-4">
+        <SensorSelector
+          items={sensors}
+          defaultSelectedItem={sensor}
+          onSelectedItemChange={onSensorChange}
         />
-      </Column>
-      <Row className="flex-1">
-        <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
+        <PeriodSelector
+          items={periods}
+          defaultSelectedItem={period}
+          onSelectedItemChange={onPeriodChange}
+        />
       </Row>
+      <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
+      <ReadingChart
+        className="flex-grow w-full"
+        sensor={sensor}
+        interval={period.value}
+        type="area"
+        humi
+        temp
+      />
     </>
   )
 }
