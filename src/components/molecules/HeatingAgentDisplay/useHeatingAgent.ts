@@ -29,7 +29,7 @@ export default function useHeatingAgent(): UseHeatingAgent {
   )
 
   const twoHours = useCallback(async () => {
-    await httpClient(TurnOn)
+    onToggle()
     await httpClient('/api/schedule', {
       method: 'POST',
       data: {

@@ -1,0 +1,206 @@
+@layer base {
+  button {
+    @apply focus:outline-none;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply h-full;
+  }
+
+  html {
+    @apply bg-gray-100 dark:bg-gray-900;
+    @apply text-gray-800 dark:text-white;
+    font-family: 'SFProDisplay';
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Thin.otf');
+    font-style: medium;
+    font-weight: 100;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Ultralight.otf');
+    font-style: medium;
+    font-weight: 200;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Light.otf');
+    font-style: medium;
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Regular.otf');
+    font-style: medium;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Medium.otf');
+    font-style: medium;
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  /* @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Semibold.otf');
+    font-style: medium;
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Bold.otf');
+    font-style: medium;
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Heavy.otf');
+    font-style: medium;
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProDisplay';
+    src: url('/fonts/SFProDisplay/SFProDisplay-Black.otf');
+    font-style: medium;
+    font-weight: 900;
+    font-display: swap;
+  } */
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Thin.otf');
+    font-style: medium;
+    font-weight: 100;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Ultralight.otf');
+    font-style: medium;
+    font-weight: 200;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Light.otf');
+    font-style: medium;
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
+    font-style: medium;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Medium.otf');
+    font-style: medium;
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  /* @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Semibold.otf');
+    font-style: medium;
+    font-weight: 600;
+    font-display: swap;
+  } */
+
+  /* @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
+    font-style: medium;
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
+    font-style: medium;
+    font-weight: 800;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
+    font-style: medium;
+    font-weight: 900;
+    font-display: swap;
+  } */
+}
+
+@layer components {
+  .btn {
+    @apply text-xs uppercase tracking-tight;
+    @apply py-2 px-4 rounded-sm;
+    @apply flex flex-row justify-center;
+    @apply focus:outline-none;
+    @apply transition-colors;
+
+    &.primary {
+      @apply bg-gray-800 text-white dark:bg-white dark:text-black;
+      @apply hover:bg-gray-700 dark:hover:bg-gray-200;
+    }
+
+    &.secondary {
+      @apply border border-gray-800 dark:border-white;
+    }
+  }
+  .card {
+    @apply relative flex flex-col rounded-sm overflow-hidden;
+    @apply bg-gray-50 dark:bg-gray-800 shadow-sm;
+  }
+
+  .fullscreen {
+    @apply flex h-screen w-screen dark:text-gray-200 dark:bg-gray-800;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.11), 0 5px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .text-shadow-none {
+    text-shadow: none;
+  }
+}

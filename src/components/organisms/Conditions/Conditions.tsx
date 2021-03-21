@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react'
 
-import {Row} from 'components/atoms/Flex'
+import {Column, Row} from 'components/atoms/Flex'
 
 import ReadingChart from 'components/molecules/ReadingChart/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
@@ -14,7 +14,7 @@ const periods = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function Conditions({sensors}) {
+export default function Conditions({className, sensors}) {
   const [period, setPeriod] = useState(periods[0])
   const [sensor, setSensor] = useState(sensors[0])
 
@@ -29,7 +29,7 @@ export default function Conditions({sensors}) {
   )
 
   return (
-    <>
+    <Column className={className}>
       <Row className="justify-between items-center pr-4">
         <SensorSelector
           items={sensors}
@@ -51,6 +51,6 @@ export default function Conditions({sensors}) {
         humi
         temp
       />
-    </>
+    </Column>
   )
 }

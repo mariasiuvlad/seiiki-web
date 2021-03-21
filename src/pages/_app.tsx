@@ -1,4 +1,5 @@
 import '../styles/global.css'
+import '../styles/custom.css'
 import '../styles/weather-icons.css'
 
 function MyApp({Component, pageProps}) {

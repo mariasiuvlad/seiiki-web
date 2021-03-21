@@ -22,5 +22,6 @@ module.exports = {
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [],
+  important: '#__next'
 }

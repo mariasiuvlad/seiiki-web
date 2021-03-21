@@ -39,24 +39,18 @@ const HeatingAgentDisplay: React.FC<HeatingAgentDisplayProps> = ({
           text={isOn ? 'on' : 'off'}
         />
       </Row>
-      <Row className="self-stretch overflow-visible">
+      <Row className="self-stretch justify-center">
         {!isOn ? (
           <>
-            <button
-              className="flex-1 rounded-l-sm bg-white text-black uppercase text-xs py-2 px-4"
-              onClick={onToggle}>
+            <button className="btn primary rounded-r-none w-1/2 md:w-1/4" onClick={onToggle}>
               Turn On
             </button>
-            <button
-              className="flex-1 rounded-r-sm bg-gray-100 text-black uppercase text-xs py-2 px-4"
-              onClick={twoHours}>
+            <button className="btn secondary rounded-l-none w-1/2 md:w-1/4" onClick={twoHours}>
               Two hours
             </button>
           </>
         ) : (
-          <button
-            className="flex-1 rounded-l-sm bg-white text-black uppercase text-xs py-2 px-4"
-            onClick={onToggle}>
+          <button className="btn secondary flex-1" onClick={onToggle}>
             Turn Off
           </button>
         )}

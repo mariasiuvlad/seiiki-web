@@ -2,7 +2,6 @@ import React from 'react'
 import cx from 'classnames'
 import {useForm} from 'react-hook-form'
 
-import Button from 'components/atoms/Button'
 import TextInput from 'components/atoms/TextInput'
 import {Column} from '../Flex'
 
@@ -20,12 +19,9 @@ export default function Auth({onSubmit}) {
             type="password"
             ref={register({validate: (v) => v === process.env.NEXT_PUBLIC_NAIVE_AUTH_PASSWORD})}
           />
-          <Button
-            className="w-full text-xs uppercase tracking-wider"
-            primary
-            type="submit"
-            label="Login"
-          />
+          <button className="btn primary" type="submit">
+            Login
+          </button>
         </Column>
       </form>
     </Column>

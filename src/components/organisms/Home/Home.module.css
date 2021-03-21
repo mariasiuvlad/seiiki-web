@@ -1,15 +1,7 @@
 .root {
-  @apply flex flex-col h-full w-full bg-white dark:bg-gray-900 dark:text-gray-200;
+  @apply h-full w-full;
 }
 
-.card {
-  @apply relative flex flex-col rounded-md border bg-gray-50 dark:bg-gray-800 dark:border-gray-500;
-}
-
-.collapseButton {
-  @apply absolute -right-4 -top-4 p-2 shadow-lg bg-gray-700 hover:bg-gray-900 text-white fill-current z-10 rounded-full focus:outline-none;
-}
-
-.intervalSelector {
-  @apply appearance-none bg-transparent cursor-pointer focus:outline-none self-start pr-5 z-10;
+.content {
+  @apply md:self-center max-w-3xl;
 }

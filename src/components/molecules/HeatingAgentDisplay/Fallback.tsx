@@ -1,15 +1,15 @@
 import React from 'react'
 import cx from 'classnames'
 
-import style from './HeatingAgentDisplay.module.css'
-import Button from '../../atoms/Button'
+import {Column} from 'components/atoms/Flex'
 
-export default function HeatingAgentDisplay({className}) {
+import style from './HeatingAgentDisplay.module.css'
+
+export default function HeatingAgentDisplayFallback({className}) {
   return (
-    <div className={cx(className, style.root, 'animate-pulse')}>
+    <Column className={cx(className, style.root, 'animate-pulse')}>
       <div className="h-9 bg-gray-900 dark:bg-white opacity-30 rounded w-full" />
-      <div className="h-8 bg-gray-900 dark:bg-white opacity-30 rounded w-full" />
-      <Button className="w-full h-8" primary label="&nbsp;" disabled />
-    </div>
+      <button className="btn primary w-full h-8">&nbsp;</button>
+    </Column>
   )
 }
