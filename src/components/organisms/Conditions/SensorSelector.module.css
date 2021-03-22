@@ -4,7 +4,7 @@
 }
 
 .item {
-  @apply capitalize font-extralight text-4xl text-left p-4;
+  @apply capitalize font-extralight text-2xl text-left;
 }
 
 .highlighted {

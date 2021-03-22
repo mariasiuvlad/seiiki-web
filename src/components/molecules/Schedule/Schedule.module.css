@@ -1,0 +1,14 @@
+.title {
+  @apply text-2xl font-light pb-2 mb-2 border-b dark:border-gray-900;
+}
+
+.label {
+  @apply text-xs uppercase px-2 text-white rounded-sm;
+
+  &.isRecurring {
+    @apply bg-purple-600;
+  }
+  &.isOneTime {
+    @apply bg-green-600;
+  }
+}

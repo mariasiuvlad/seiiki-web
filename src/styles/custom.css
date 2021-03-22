@@ -12,101 +12,13 @@
   html {
     @apply bg-gray-100 dark:bg-gray-900;
     @apply text-gray-800 dark:text-white;
-    font-family: 'SFProDisplay';
+    font-size: 2.4vh;
   }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Thin.otf');
-    font-style: medium;
-    font-weight: 100;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Ultralight.otf');
-    font-style: medium;
-    font-weight: 200;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Light.otf');
-    font-style: medium;
-    font-weight: 300;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Regular.otf');
-    font-style: medium;
-    font-weight: 400;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Medium.otf');
-    font-style: medium;
-    font-weight: 500;
-    font-display: swap;
-  }
-
-  /* @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Semibold.otf');
-    font-style: medium;
-    font-weight: 600;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Bold.otf');
-    font-style: medium;
-    font-weight: 700;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Heavy.otf');
-    font-style: medium;
-    font-weight: 800;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProDisplay';
-    src: url('/fonts/SFProDisplay/SFProDisplay-Black.otf');
-    font-style: medium;
-    font-weight: 900;
-    font-display: swap;
-  } */
 
   @font-face {
     font-family: 'SFProRounded';
     src: url('/fonts/SFProRounded/SFProRounded-Thin.otf');
     font-style: medium;
-    font-weight: 100;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Ultralight.otf');
-    font-style: medium;
-    font-weight: 200;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Light.otf');
-    font-style: medium;
     font-weight: 300;
     font-display: swap;
   }
@@ -118,46 +30,6 @@
     font-weight: 400;
     font-display: swap;
   }
-
-  @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Medium.otf');
-    font-style: medium;
-    font-weight: 500;
-    font-display: swap;
-  }
-
-  /* @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Semibold.otf');
-    font-style: medium;
-    font-weight: 600;
-    font-display: swap;
-  } */
-
-  /* @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
-    font-style: medium;
-    font-weight: 700;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
-    font-style: medium;
-    font-weight: 800;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'SFProRounded';
-    src: url('/fonts/SFProRounded/SFProRounded-Regular.otf');
-    font-style: medium;
-    font-weight: 900;
-    font-display: swap;
-  } */
 }
 
 @layer components {
@@ -178,8 +50,8 @@
     }
   }
   .card {
-    @apply relative flex flex-col rounded-sm overflow-hidden;
-    @apply bg-gray-50 dark:bg-gray-800 shadow-sm;
+    @apply relative flex flex-col rounded-md overflow-hidden;
+    @apply bg-gray-50 dark:bg-gray-800 shadow-md;
   }
 
   .fullscreen {

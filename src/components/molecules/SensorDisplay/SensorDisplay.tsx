@@ -32,11 +32,10 @@ export interface SensorDisplayProps {
 
 const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi, time}) => (
   <div className={cx(className, style.root)}>
-    <Row className="items-center">
+    <Row className="items-center justify-between">
       <Typography
-        as="h3"
-        className="capitalize font-extralight text-2xl text-left flex-grow"
-        text="Latest reading"
+        className="text-blue-700 dark:text-blue-300 text-2xl font-thin"
+        text={`${humi}%`}
       />
       <Typography
         className="text-red-700 dark:text-red-300 text-2xl font-thin"
@@ -44,10 +43,9 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({className = '', temp, humi
       />
     </Row>
     <Row className={style.conditionsContainer}>
-      <Typography className={style.time} text={dateToString(time, DateTime.TIME_24_SIMPLE)} />
       <Typography
-        className="text-blue-700 dark:text-blue-300 text-2xl font-thin"
-        text={`${humi}%`}
+        className={style.time}
+        text={`last update · ${dateToString(time, DateTime.TIME_24_SIMPLE)}`}
       />
     </Row>
   </div>

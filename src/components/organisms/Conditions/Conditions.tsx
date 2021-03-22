@@ -30,8 +30,9 @@ export default function Conditions({className, sensors}) {
 
   return (
     <Column className={className}>
-      <Row className="justify-between items-center pr-4">
+      <Row className="justify-between items-baseline mx-4 border-b dark:border-gray-900">
         <SensorSelector
+          className="py-2"
           items={sensors}
           defaultSelectedItem={sensor}
           onSelectedItemChange={onSensorChange}

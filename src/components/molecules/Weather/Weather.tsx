@@ -14,21 +14,21 @@ export interface WeatherProps {
 const Weather: React.FC<WeatherProps> = ({className, data}) => {
   const {currently, daily, hourly} = data
   return (
-    <Column className={cx(className, 'flex-grow p-4 overflow-auto')}>
-      <Row className="flex-wrap justify-between mb-4 gap-4">
+    <Column className={cx(className, 'p-4 overflow-auto')}>
+      <Column className="justify-start mb-4 border-b dark:border-gray-900">
         <Row>
           <Typography
-            className="font-extralight text-2xl text-shadow mr-4"
+            className="font-extralight text-2xl mr-4"
             text={`${Math.round(currently.temperature)}°C`}
           />
           <Typography className="font-extralight text-2xl" text={currently.summary} />
         </Row>
-        <Typography className="font-extralight text-2xl mr-4 mb-4" text={daily.summary} />
-      </Row>
-      <Row className="flex-grow overflow-x-auto mb-4">
+        <Typography className="uppercase text-xs text-gray-400 mr-4 mb-4" text={daily.summary} />
+      </Column>
+      <Row className="overflow-x-auto mb-4 border-b dark:border-gray-900">
         <Hourly data={hourly.data} />
       </Row>
-      <Row className="flex-grow overflow-x-auto">
+      <Row className="overflow-x-auto">
         <Daily data={daily.data} />
       </Row>
     </Column>

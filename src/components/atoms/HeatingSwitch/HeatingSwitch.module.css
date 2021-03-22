@@ -1,0 +1,49 @@
+.root {
+  @apply flex flex-row items-center h-16 justify-between rounded-md p-2 px-4 font-sans transition-colors font-light;
+
+  &.isOn {
+    @apply bg-green-600 text-white;
+  }
+
+  &.isOff {
+    @apply bg-gray-50 dark:bg-gray-800 shadow-md;
+  }
+}
+
+.title {
+  @apply text-2xl font-sans;
+}
+
+.status {
+  @apply text-xs text-opacity-50 font-sans font-normal uppercase;
+
+  &.isOn {
+    @apply text-white;
+  }
+  &.isOff {
+    @apply text-gray-500;
+  }
+}
+
+.toggle {
+  @apply flex flex-row w-16 h-10 p-2 rounded-full items-center transition-colors shadow-inner;
+
+  &.isOn {
+    @apply bg-green-700;
+  }
+
+  &.isOff {
+    @apply bg-gray-200 dark:bg-gray-700;
+  }
+}
+
+.knob {
+  @apply transform w-6 h-6 rounded-full bg-white transition-transform  shadow-md;
+
+  &.isOn {
+    @apply translate-x-full dark:bg-white;
+  }
+  &.isOff {
+    @apply translate-x-0 dark:bg-gray-800;
+  }
+}

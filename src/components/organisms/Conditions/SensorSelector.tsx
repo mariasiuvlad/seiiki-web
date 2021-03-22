@@ -8,7 +8,9 @@ import Typography from 'components/atoms/Typography'
 
 import style from './SensorSelector.module.css'
 
-export type SensorSelectorProps = UseSelectProps<string>
+export interface SensorSelectorProps extends UseSelectProps<string> {
+  className?: string
+}
 export type SensorSelectorStateChange = UseSelectStateChange<string>
 
 const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => {
@@ -21,7 +23,8 @@ const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => {
   )
 }
 
-const SensorSelector: React.FC<SensorSelectorProps> = ({
+const Selector: React.FC<SensorSelectorProps> = ({
+  className,
   items,
   defaultSelectedItem,
   onSelectedItemChange
@@ -39,12 +42,9 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
     onSelectedItemChange
   })
 
-  if (items.length <= 0) {
-    return <Typography as="h1" className={cx(style.item, 'text-shadow')} text={items[0]} />
-  }
   return (
     <>
-      <button {...getToggleButtonProps()}>
+      <button className={className} {...getToggleButtonProps()}>
         <Row className="items-center">
           <Typography as="h1" className={cx(style.item, 'text-shadow')} text={selectedItem} />
           <CaretDown className="w-4 h-4 fill-current" />
@@ -67,6 +67,14 @@ const SensorSelector: React.FC<SensorSelectorProps> = ({
       </div>
     </>
   )
+}
+
+const SensorSelector: React.FC<SensorSelectorProps> = (props) => {
+  const {items, className} = props
+  if (items.length <= 1) {
+    return <Typography as="h1" className={cx(className, style.item)} text={items[0]} />
+  }
+  return <Selector {...props} />
 }
 
 export default SensorSelector

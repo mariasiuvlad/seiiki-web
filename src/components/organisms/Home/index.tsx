@@ -1,16 +1,15 @@
 import React, {Suspense} from 'react'
-import cx from 'classnames'
 import Head from 'next/head'
 
-import {Column} from 'components/atoms/Flex'
+import {Loader} from 'icons'
 
-import HeatingAgentDisplay from 'components/molecules/HeatingAgentDisplay/Suspense'
+import {Column} from 'components/atoms/Flex'
 import Conditions from 'components/organisms/Conditions/Suspense'
 import Weather from 'components/molecules/Weather/Suspense'
-
-import style from './Home.module.css'
-import {Loader} from 'icons'
 import ErrorBoundary from 'components/atoms/ErrorBoundary'
+import Schedule from 'components/molecules/Schedule'
+import Switch from 'components/atoms/HeatingSwitch'
+import TwoHours from 'components/atoms/TwoHours'
 
 const ErrorComponent = () => (
   <div className="h-full w-full flex items-center justify-center">
@@ -31,11 +30,13 @@ const Home: React.FC = () => {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Column className={cx(style.root)}>
-        <Column className={style.content}>
-          <HeatingAgentDisplay className="card p-4 h-36 w-full md:mt-4" />
-          <Weather className="card p-4 w-full my-4" />
-          <Conditions className="card h-64 w-full md:mb-4" />
+      <Column className="md:w-full md:items-center">
+        <Column className="mx-4 max-w-xl">
+          <Switch className="w-full my-4" />
+          <TwoHours className="mb-4" />
+          <Schedule className="card px-4 py-2" />
+          <Conditions className="card w-full h-64 mt-4 md:mb-4 rounded-md" />
+          <Weather className="card p-4 my-4" />
         </Column>
       </Column>
     </>

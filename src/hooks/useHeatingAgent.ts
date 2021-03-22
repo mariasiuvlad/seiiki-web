@@ -1,7 +1,7 @@
 import httpClient from 'lib/api'
 import {DateTime} from 'luxon'
 import {useCallback} from 'react'
-import useSWR from 'swr'
+import useSWR, {mutate} from 'swr'
 
 const TurnOff = '/api/heating/off'
 const TurnOn = '/api/heating/on'
@@ -17,14 +17,13 @@ export interface UseHeatingAgent {
 
 export default function useHeatingAgent(): UseHeatingAgent {
   const {
-    data: {state: isOn},
-    mutate
+    data: {state: isOn}
   } = useSWR<THeatingAgentResponse, any>('/api/heating', httpClient, {
     suspense: true
   })
 
   const onToggle = useCallback(
-    async () => mutate(await httpClient(isOn ? TurnOff : TurnOn), false),
+    async () => mutate('/api/heating', await httpClient(isOn ? TurnOff : TurnOn), false),
     [isOn]
   )
 
@@ -33,10 +32,11 @@ export default function useHeatingAgent(): UseHeatingAgent {
     await httpClient('/api/schedule', {
       method: 'POST',
       data: {
-        timestamp: DateTime.now().plus({minutes: 30}).toISO(),
+        timestamp: DateTime.now().plus({hours: 2}).toISO(),
         command: 'HEATING_OFF'
       }
     })
+    mutate('/api/schedule')
   }, [isOn])
 
   return {isOn, onToggle, twoHours}

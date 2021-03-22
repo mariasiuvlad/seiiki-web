@@ -11,7 +11,7 @@ export const PostSingle = `
 `
 
 export const List = `
-  SELECT * FROM schedule
+  SELECT * FROM schedule WHERE timestamp >= NOW() or timestamp IS NULL
 `
 
 export const Delete = `
