@@ -17,7 +17,7 @@ export type PeriodSelectorStateChange = UseSelectStateChange<IntervalOption>
 
 const Option = ({item, index, isSelected, isHighlighted, getItemProps}) => (
   <li
-    className={cx('cursor-pointer p-2', {
+    className={cx('cursor-pointer p-2 text-xs uppercase font-light', {
       hidden: isSelected,
       [style.highlighted]: isHighlighted
     })}
@@ -47,7 +47,7 @@ const PeriodSelector: React.FC<PeriodSelectorProps> = ({
     <div>
       <button type="button" {...getToggleButtonProps()}>
         <Row className="items-center p-2">
-          {selectedItem.label}
+          <p className="text-xs uppercase font-light">{selectedItem.label}</p>
           <CaretDown className="ml-2 w-3 h-3 fill-current" />
         </Row>
       </button>

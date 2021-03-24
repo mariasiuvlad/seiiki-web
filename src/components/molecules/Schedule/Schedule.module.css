@@ -1,5 +1,5 @@
-.title {
-  @apply text-2xl font-light pb-2 mb-2 border-b dark:border-gray-900;
+.header {
+  @apply justify-between text-2xl font-light pb-2 mb-2 border-b dark:border-gray-900;
 }
 
 .label {

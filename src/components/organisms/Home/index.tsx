@@ -8,7 +8,7 @@ import Conditions from 'components/organisms/Conditions/Suspense'
 import Weather from 'components/molecules/Weather/Suspense'
 import ErrorBoundary from 'components/atoms/ErrorBoundary'
 import Schedule from 'components/molecules/Schedule'
-import Switch from 'components/atoms/HeatingSwitch'
+import HeatingSwitch from 'components/atoms/HeatingSwitch'
 import TwoHours from 'components/atoms/TwoHours'
 
 const ErrorComponent = () => (
@@ -32,10 +32,10 @@ const Home: React.FC = () => {
       </Head>
       <Column className="md:w-full md:items-center">
         <Column className="mx-4 max-w-xl">
-          <Switch className="w-full my-4" />
+          <HeatingSwitch className="w-full my-4" />
           <TwoHours className="mb-4" />
           <Schedule className="card px-4 py-2" />
-          <Conditions className="card w-full h-64 mt-4 md:mb-4 rounded-md" />
+          <Conditions className="card w-full h-64 mt-4 rounded-md" />
           <Weather className="card p-4 my-4" />
         </Column>
       </Column>

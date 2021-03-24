@@ -5,14 +5,15 @@ import {Column, Row} from 'components/atoms/Flex'
 import Typography from 'components/atoms/Typography'
 import {Daily} from './Daily'
 import {Hourly} from './Hourly'
+import useWeather from 'hooks/useWeather'
 
 export interface WeatherProps {
   className?: string
-  data: any
+  useWeatherHook(): any
 }
 
-const Weather: React.FC<WeatherProps> = ({className, data}) => {
-  const {currently, daily, hourly} = data
+const Weather: React.FC<WeatherProps> = ({className, useWeatherHook = useWeather}) => {
+  const {currently, daily, hourly} = useWeatherHook()
   return (
     <Column className={cx(className, 'p-4 overflow-auto')}>
       <Column className="justify-start mb-4 border-b dark:border-gray-900">

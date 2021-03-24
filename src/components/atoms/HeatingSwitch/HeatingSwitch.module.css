@@ -26,7 +26,7 @@
 }
 
 .toggle {
-  @apply flex flex-row w-16 h-10 p-2 rounded-full items-center transition-colors shadow-inner;
+  @apply flex flex-row w-12 h-8 p-2 rounded-full items-center transition-colors shadow-inner;
 
   &.isOn {
     @apply bg-green-700;
@@ -38,7 +38,7 @@
 }
 
 .knob {
-  @apply transform w-6 h-6 rounded-full bg-white transition-transform  shadow-md;
+  @apply transform w-4 h-4 rounded-full bg-white transition-transform  shadow-md;
 
   &.isOn {
     @apply translate-x-full dark:bg-white;

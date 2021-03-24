@@ -1,12 +1,11 @@
-import React, {useCallback, useState} from 'react'
-
 import {Column, Row} from 'components/atoms/Flex'
-
 import ReadingChart from 'components/molecules/ReadingChart/Suspense'
 import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
 
-import SensorSelector, {SensorSelectorStateChange} from './SensorSelector'
-import PeriodSelector, {PeriodSelectorStateChange} from './PeriodSelector'
+import useConditions from 'hooks/useConditions'
+
+import SensorSelector from './SensorSelector'
+import PeriodSelector from './PeriodSelector'
 
 const periods = [
   {value: 12, label: 'last 12 hours'},
@@ -14,19 +13,8 @@ const periods = [
   {value: 48, label: 'last 48 hours'}
 ]
 
-export default function Conditions({className, sensors}) {
-  const [period, setPeriod] = useState(periods[0])
-  const [sensor, setSensor] = useState(sensors[0])
-
-  const onSensorChange: (changes: SensorSelectorStateChange) => void = useCallback(
-    ({selectedItem}) => setSensor(selectedItem),
-    []
-  )
-
-  const onPeriodChange: (changes: PeriodSelectorStateChange) => void = useCallback(
-    ({selectedItem}) => setPeriod(selectedItem),
-    []
-  )
+export default function Conditions({className, useConditionsHook = useConditions}) {
+  const {period, sensor, sensors, onSensorChange, onPeriodChange} = useConditionsHook()
 
   return (
     <Column className={className}>
