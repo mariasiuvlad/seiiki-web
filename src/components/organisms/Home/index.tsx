@@ -37,7 +37,7 @@ const Home: React.FC = () => {
           <TwoHours className="mb-4" />
           <Schedule className="card px-4 py-2" />
           <Conditions className="card h-64 mt-4" />
-          <Weather className="card h-64 my-4" />
+          <Weather className="card my-4" />
         </Column>
       </Column>
     </>
