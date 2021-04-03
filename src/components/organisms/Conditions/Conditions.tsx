@@ -32,14 +32,7 @@ export default function Conditions({className, useConditionsHook = useConditions
         />
       </Row>
       <SensorDisplay sensor={sensor} className="flex flex-1 m-4" />
-      <ReadingChart
-        className="flex-grow w-full"
-        sensor={sensor}
-        interval={period.value}
-        type="area"
-        humi
-        temp
-      />
+      <ReadingChart sensor={sensor} interval={period.value} type="area" humi temp />
     </Column>
   )
 }

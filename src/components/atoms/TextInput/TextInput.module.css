@@ -1,0 +1,6 @@
+.textInput {
+  @apply rounded-sm border bg-transparent px-2 py-1 focus:outline-none;
+  &::placeholder {
+    @apply font-light;
+  }
+}

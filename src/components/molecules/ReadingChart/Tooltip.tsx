@@ -5,7 +5,7 @@ import Typography from '../../atoms/Typography'
 
 import style from './ReadingChart.module.css'
 
-const CustomTooltip = ({active, payload, label}: TooltipProps<string, string>) => {
+const ConditionsTooltip = ({active, payload, label}: TooltipProps<string, string>) => {
   if (!active || !payload) return null
   return (
     <div className="w-30 bg-white p-2 dark:bg-gray-900 border border-gray-200 rounded-md opacity-90">
@@ -24,4 +24,4 @@ const CustomTooltip = ({active, payload, label}: TooltipProps<string, string>) =
   )
 }
 
-export default CustomTooltip
+export default ConditionsTooltip

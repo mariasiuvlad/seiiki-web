@@ -12,7 +12,9 @@ const HeatingSwitch = ({className = '', useHeatingHook = useHeatingAgent}) => {
     <div className={cx(className, style.root, variableStyle)}>
       <Column className="items-start">
         <p className={style.title}>Heating</p>
-        <p className={cx(style.status, variableStyle)}>{isOn ? 'On' : 'Off'}</p>
+        <p className={cx(style.status, variableStyle)}>
+          {isOn === undefined ? 'Connecting...' : isOn ? 'On' : 'Off'}
+        </p>
       </Column>
       <button className={cx(style.toggle, variableStyle)} onClick={onToggle}>
         <div className={cx(style.knob, variableStyle)} />

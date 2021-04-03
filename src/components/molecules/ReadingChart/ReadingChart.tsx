@@ -72,74 +72,71 @@ export default function ReadingChart({
 
   const chartData = useMemo(
     () =>
-      data.map((item, idx) => ({
+      data.map((item) => ({
         ...item,
-        status: Math.min(idx % 3, 1),
         timestamp: dateToString(item.timestamp, DateTime.TIME_24_SIMPLE)
       })),
     [data]
   )
 
   return (
-    <div className={cx(className)}>
-      <ResponsiveContainer>
-        <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
-          <XAxis
+    <ResponsiveContainer width="100%" height={150} className={cx(className)}>
+      <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
+        <XAxis
+          hide
+          dataKey="timestamp"
+          tick={false}
+          axisLine={false}
+          tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
+        />
+        <Tooltip content={<CustomTooltip />} />
+        {/* render humidity chart */}
+        {humi && [
+          <YAxis
+            key="humiAxis"
             hide
-            dataKey="timestamp"
             tick={false}
             axisLine={false}
-            tickFormatter={({timestamp}) => dateToString(timestamp, DateTime.TIME_24_SIMPLE)}
+            yAxisId="humi"
+            domain={['dataMin - 2', 'dataMax + 2']}
+            orientation="right"
+          />,
+          <ChartElement
+            key="humiElement"
+            type="basis"
+            dataKey="humi"
+            className={style.humi}
+            strokeWidth={2}
+            stroke="currentColor"
+            fill="currentColor"
+            yAxisId="humi"
+            dot={false}
           />
-          <Tooltip content={<CustomTooltip />} />
-          {/* render humidity chart */}
-          {humi && [
-            <YAxis
-              key="humiAxis"
-              hide
-              tick={false}
-              axisLine={false}
-              yAxisId="humi"
-              domain={['dataMin - 2', 'dataMax + 2']}
-              orientation="right"
-            />,
-            <ChartElement
-              key="humiElement"
-              type="basis"
-              dataKey="humi"
-              className={style.humi}
-              strokeWidth={2}
-              stroke="currentColor"
-              fill="currentColor"
-              yAxisId="humi"
-              dot={false}
-            />
-          ]}
-          {/* render temperature chart */}
-          {temp && [
-            <YAxis
-              key="tempAxis"
-              hide
-              width={0}
-              yAxisId="temp"
-              tick={false}
-              axisLine={false}
-              domain={['dataMin - 0.1', 'dataMax + 0.1']}
-            />,
-            <ChartElement
-              key="tempElement"
-              type="basis"
-              dataKey="temp"
-              strokeWidth={2}
-              className={style.temp}
-              stroke="currentColor"
-              fill="currentColor"
-              yAxisId="temp"
-              dot={false}
-            />
-          ]}
-        </ChartContainer>
-      </ResponsiveContainer>
-    </div>
+        ]}
+        {/* render temperature chart */}
+        {temp && [
+          <YAxis
+            key="tempAxis"
+            hide
+            width={0}
+            yAxisId="temp"
+            tick={false}
+            axisLine={false}
+            domain={['dataMin - 0.1', 'dataMax + 0.1']}
+          />,
+          <ChartElement
+            key="tempElement"
+            type="basis"
+            dataKey="temp"
+            strokeWidth={2}
+            className={style.temp}
+            stroke="currentColor"
+            fill="currentColor"
+            yAxisId="temp"
+            dot={false}
+          />
+        ]}
+      </ChartContainer>
+    </ResponsiveContainer>
   )
 }

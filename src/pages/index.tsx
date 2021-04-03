@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import dynamic from 'next/dynamic'
 import useAuth from 'context/auth'
 import Router from 'next/router'
+import Layout from 'components/atoms/Layout'
 
 const HomePage = dynamic(() => import('components/organisms/Home'), {
   ssr: false // disable ssr so we can use suspense
@@ -14,5 +15,9 @@ export default function Home() {
     if (!isLoggedIn) Router.push('/login')
   }, [isLoggedIn])
 
-  return <HomePage />
+  return (
+    <Layout>
+      <HomePage />
+    </Layout>
+  )
 }
