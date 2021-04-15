@@ -1,5 +1,5 @@
 import React, {Suspense} from 'react'
-import SensorDisplayContainer from './container'
+import Component from './SensorDisplay'
 import SensorDisplayFallback from './Fallback'
 import ErrorBoundary from '../../atoms/ErrorBoundary'
 
@@ -11,7 +11,7 @@ export default function SensorDisplay(props) {
   return (
     <ErrorBoundary fallback={<ErrorComponent />}>
       <Suspense fallback={<SensorDisplayFallback {...props} />}>
-        <SensorDisplayContainer {...props} />
+        <Component {...props} />
       </Suspense>
     </ErrorBoundary>
   )

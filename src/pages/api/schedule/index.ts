@@ -23,8 +23,6 @@ async function post(req, res) {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
 
-    console.log('@timestamp', timestamp)
-
     timestamp
       ? await db.query<Task>(PostSingle, [DateTime.fromISO(timestamp).toJSDate(), command])
       : await db.query<Task>(PostRecurring, [cron, command])

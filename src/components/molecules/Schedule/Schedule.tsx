@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import {PortalWithState} from 'react-portal'
 import {DateTime} from 'luxon'
 
 import useSchedule, {ScheduledEventProps} from 'hooks/useSchedule'
@@ -26,17 +27,33 @@ const Schedule = ({className}) => {
   const events = useSchedule()
 
   return (
-    <Column className={cx(className)}>
-      <Row className={cx(style.header)}>
-        <h2>Schedule</h2>
-        <button>
-          <AddCircle className="w-6 h-6 fill-current" />
-        </button>
-      </Row>
-      {events.map((job) => (
-        <ScheduledEvent key={job.uuid} {...job} />
-      ))}
-    </Column>
+    <PortalWithState closeOnEsc>
+      {({openPortal, closePortal, isOpen, portal}) => (
+        <>
+          <Column className={cx(className)}>
+            <Row className={cx(style.header)}>
+              <h2>Schedule</h2>
+              <button onClick={openPortal}>
+                <AddCircle className="w-6 h-6 fill-current" />
+              </button>
+            </Row>
+            {events.map((job) => (
+              <ScheduledEvent key={job.uuid} {...job} />
+            ))}
+          </Column>
+          {isOpen &&
+            portal(
+              <div
+                className="absolute top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-gray-500 bg-opacity-50"
+                onClick={closePortal}>
+                <div className="card p-4">
+                  <p>TODO - add schedule form</p>
+                </div>
+              </div>
+            )}
+        </>
+      )}
+    </PortalWithState>
   )
 }
 

@@ -16,15 +16,13 @@ export interface WeatherProps {
 
 const Weather: React.FC<WeatherProps> = ({className, useWeatherHook = useWeather}) => {
   const {currently, daily, hourly} = useWeatherHook()
+
   return (
     <Column className={cx(className, style.root)}>
       <Column className="justify-start dark:border-gray-900 p-4">
-        <Row className="text-white">
-          <Typography
-            className="font-extralight text-2xl mr-4"
-            text={`${Math.round(currently.temperature)}°C`}
-          />
-          <Typography className="font-extralight text-2xl" text={currently.summary} />
+        <Row className="text-white font-extralight text-2xl">
+          <Typography className="mr-4" text={`${Math.round(currently.temperature)}°`} />
+          <Typography text={currently.summary} />
         </Row>
         <Typography className="uppercase text-xs text-gray-200" text={daily.summary} />
       </Column>

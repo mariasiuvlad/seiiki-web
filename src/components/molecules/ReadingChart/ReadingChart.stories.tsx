@@ -3,36 +3,47 @@ import React from 'react'
 import {Story, Meta} from '@storybook/react/types-6-0'
 import ReadingChart, {ReadingChartProps} from './ReadingChart'
 import mocks from './mocks'
-import {Column} from 'components/atoms/Flex'
 
 export default {
   title: 'Example/ReadingChart',
-  component: ReadingChart
+  component: ReadingChart,
+  argTypes: {
+    sensor: {table: {disable: true}},
+    interval: {table: {disable: true}},
+    useData: {table: {disable: true}},
+    type: {control: {type: 'radio', options: ['line', 'area']}}
+  }
 } as Meta
 
-const Template: Story<ReadingChartProps> = (args) => (
-  <Column className="h-64">
-    <ReadingChart className="flex-grow w-full" {...args} />
-  </Column>
-)
+const useMockData = () => mocks
 
-const args = {data: mocks}
+const Template: Story<ReadingChartProps> = (args) => {
+  return (
+    <ReadingChart
+      useData={useMockData}
+      interval={null}
+      sensor={null}
+      className="flex-grow w-full"
+      {...args}
+    />
+  )
+}
 
 export const Temperature = Template.bind({})
 Temperature.args = {
-  ...args,
+  type: 'line',
   temp: true
 }
 
 export const Humidity = Template.bind({})
 Humidity.args = {
-  ...args,
+  type: 'line',
   humi: true
 }
 
 export const Combined = Template.bind({})
 Combined.args = {
-  ...args,
+  type: 'line',
   humi: true,
   temp: true
 }
