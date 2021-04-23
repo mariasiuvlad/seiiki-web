@@ -8,6 +8,7 @@ import useWeather from 'hooks/useWeather'
 import Chart from './Chart'
 
 import style from './Weather.module.css'
+import {Daily} from './Daily'
 
 export interface WeatherProps {
   className?: string
@@ -27,8 +28,9 @@ const Weather: React.FC<WeatherProps> = ({className, useWeatherHook = useWeather
         <Typography className="uppercase text-xs text-gray-200" text={daily.summary} />
       </Column>
       <Row className="overflow-x-auto flex-grow">
-        <Chart data={hourly.data} />
+        <Chart {...hourly} />
       </Row>
+      {/* <Daily {...daily} /> */}
     </Column>
   )
 }

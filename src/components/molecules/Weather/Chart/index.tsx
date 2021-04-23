@@ -3,6 +3,7 @@ import {DateTime} from 'luxon'
 import {AreaChart, Area, XAxis} from 'recharts'
 
 import TailwindConfig from 'config/tailwind'
+import {add, evolve, map} from 'ramda'
 
 const TimeTick = ({x, y, payload}) => {
   return (
@@ -48,7 +49,7 @@ const Chart = ({data}) => {
     <AreaChart
       height={200}
       width={3000}
-      data={data.map((v) => ({...v, temperature: v.temperature + 20}))}
+      data={map(evolve({temperature: add(20)}))(data)}
       margin={{left: -25, right: -25, bottom: -30}}>
       <Area
         className="text-blue-600 dark:text-gray-400"

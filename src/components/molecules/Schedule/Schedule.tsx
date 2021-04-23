@@ -1,59 +1,67 @@
+import React, {useCallback, useState} from 'react'
 import cx from 'classnames'
-import {PortalWithState} from 'react-portal'
 import {DateTime} from 'luxon'
 
-import useSchedule, {ScheduledEventProps} from 'hooks/useSchedule'
+import useSchedule, {isRecurring, nextInvocation, TSchedule} from 'hooks/useSchedule'
 import {Column, Row} from 'components/atoms/Flex'
 
 import style from './Schedule.module.css'
-import {AddCircle} from 'icons'
+import * as Icons from 'icons'
+import {map, prop} from 'ramda'
+import {mapProps, setKey} from 'lib/ramda'
+import {formatDate} from 'lib/date'
+import Modal from './Modal'
 
-const ScheduledEvent: React.FC<ScheduledEventProps> = ({uuid, next, command, isRecurring}) => (
-  <Row key={uuid} className="items-center justify-between">
-    <p className="font-light">
-      {DateTime.fromJSDate(next).toLocaleString(DateTime.TIME_24_SIMPLE)} · {command}
-    </p>
-    <p
-      className={cx(style.label, {
-        [style.isRecurring]: isRecurring,
-        [style.isOneTime]: !isRecurring
-      })}>
-      {isRecurring ? 'Repeating' : 'One time'}
-    </p>
+const Commands = {
+  HEATING_ON: 'Heating on',
+  HEATING_OFF: 'Heating off'
+}
+
+const commandDisplayName = (command) => Commands[command]
+
+const useModal = () => {
+  const [isOpen, setOpen] = useState(false)
+  const open = useCallback(() => setOpen(true), [])
+  const close = useCallback(() => setOpen(false), [])
+
+  return {isOpen, open, close}
+}
+
+const ScheduledEvent: React.FC<TSchedule> = (event) => (
+  <Row className="items-center justify-between">
+    <p className="mr-4 font-light">{formatDate(DateTime.TIME_24_SIMPLE)(nextInvocation(event))}</p>
+    <Row className="w-48 gap-2">
+      <p className={cx(style.label, style.command, 'flex-1 text-center')}>
+        {commandDisplayName(prop('command')(event))}
+      </p>
+      <p
+        className={cx(style.label, 'flex-1 text-center', {
+          [style.recurring]: isRecurring(event),
+          [style.oneTime]: !isRecurring(event)
+        })}>
+        {isRecurring(event) ? 'Repeating' : 'One time'}
+      </p>
+    </Row>
   </Row>
 )
 
 const Schedule = ({className}) => {
   const events = useSchedule()
+  const {isOpen, open, close} = useModal()
 
   return (
-    <PortalWithState closeOnEsc>
-      {({openPortal, closePortal, isOpen, portal}) => (
-        <>
-          <Column className={cx(className)}>
-            <Row className={cx(style.header)}>
-              <h2>Schedule</h2>
-              <button onClick={openPortal}>
-                <AddCircle className="w-6 h-6 fill-current" />
-              </button>
-            </Row>
-            {events.map((job) => (
-              <ScheduledEvent key={job.uuid} {...job} />
-            ))}
-          </Column>
-          {isOpen &&
-            portal(
-              <div
-                className="absolute top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-gray-500 bg-opacity-50"
-                onClick={closePortal}>
-                <div className="card p-4">
-                  <p>TODO - add schedule form</p>
-                </div>
-              </div>
-            )}
-        </>
-      )}
-    </PortalWithState>
+    <>
+      <Column className={cx(className)}>
+        <Row className={cx(style.header)}>
+          <h2>Schedule</h2>
+          <button onClick={open}>
+            <Icons.AddCircle className="w-6 h-6 fill-current" />
+          </button>
+        </Row>
+        {map(mapProps(setKey('uuid'))(ScheduledEvent), events)}
+      </Column>
+      {isOpen && <Modal onClose={close} />}
+    </>
   )
 }
 

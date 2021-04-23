@@ -3,11 +3,12 @@ import cx from 'classnames'
 import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
-import {dateToString} from 'lib/date'
+import {formatDate} from 'lib/date'
 import Typography from '../../atoms/Typography'
 import {Row} from 'components/atoms/Flex'
 import httpClient from 'lib/api'
 import useSWR from 'swr'
+import {compose} from 'ramda'
 
 export interface SensorInfo {
   temp: number
@@ -52,7 +53,10 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({
       <Row className={style.conditionsContainer}>
         <Typography
           className={style.time}
-          text={`last update · ${dateToString(time, DateTime.TIME_24_SIMPLE)}`}
+          text={`last update · ${compose(
+            formatDate(DateTime.TIME_24_SIMPLE),
+            DateTime.fromISO
+          )(time)}`}
         />
       </Row>
     </div>

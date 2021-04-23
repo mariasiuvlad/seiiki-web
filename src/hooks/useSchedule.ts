@@ -1,41 +1,24 @@
 import {parseExpression} from 'cron-parser'
-import {useMemo} from 'react'
+import {DateTime} from 'luxon'
+import {isNil, propSatisfies} from 'ramda'
 import useSWR from 'swr'
 
-export interface ScheduledEventProps {
-  uuid: string
-  cron: string
-  timestamp: string
+export type TSchedule = {
   command: string
-  next: Date
-  isRecurring: boolean
+  cron: string | null
+  timestamp: string | null
+  uuid: string
 }
 
-const Commands = {
-  HEATING_ON: 'Heating On',
-  HEATING_OFF: 'Heating Off'
-}
-
-const mapCommand = ({command, ...rest}) => ({
-  ...rest,
-  command: Commands[command]
-})
+export const isRecurring = propSatisfies(isNil, 'timestamp')
+export const nextInvocation = ({timestamp, cron}: {timestamp: string; cron: string}) =>
+  timestamp
+    ? DateTime.fromISO(timestamp)
+    : DateTime.fromJSDate(parseExpression(cron).next().toDate())
 
 const useSchedule = () => {
-  const {data} = useSWR('/api/schedule', {suspense: true})
-  const events = useMemo<ScheduledEventProps[]>(
-    () =>
-      data
-        .map(mapCommand)
-        .map(({cron, timestamp, ...rest}) => ({
-          ...rest,
-          next: timestamp ? new Date(timestamp) : parseExpression(cron).next().toDate(),
-          isRecurring: !timestamp
-        }))
-        .sort((a, b) => (a.next < b.next ? -1 : 1)),
-    [data]
-  )
-  return events
+  const {data} = useSWR<TSchedule[]>('/api/schedule', {suspense: true})
+  return data
 }
 
 export default useSchedule

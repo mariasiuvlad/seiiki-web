@@ -2,10 +2,12 @@ import React from 'react'
 import {DateTime} from 'luxon'
 import {Column, Row} from 'components/atoms/Flex'
 import Typography from 'components/atoms/Typography'
+import {addIndex, always, equals, ifElse, map, pipe} from 'ramda'
+import {mapProps, setKey} from 'lib/ramda'
 
-export const Day = ({text, time, temperatureLow, temperatureHigh}) => {
+export const Day = ({text, temperatureLow, temperatureHigh}) => {
   return (
-    <Column key={time} className="mx-2 items-center">
+    <Column className="mx-2 items-center">
       <Typography className="text-center text-sm uppercase text-gray-200" text={text} />
       <Row className="items-center text-white">
         <Typography className="text-base font-light" text={`${Math.round(temperatureLow)}`} />
@@ -16,15 +18,31 @@ export const Day = ({text, time, temperatureLow, temperatureHigh}) => {
   )
 }
 
-export const Daily = ({data}) => {
-  return (
-    <Column>
-      <Row className="pb-4">
-        {data.map((item, index) => {
-          const text = index === 0 ? 'Today' : DateTime.fromSeconds(item.time).toFormat('ccc')
-          return <Day key={item.time} text={text} {...item} />
-        })}
-      </Row>
-    </Column>
-  )
+interface DailyData {
+  time: number
+  temperatureHigh: number
+  temperatureLow: number
 }
+interface DailyProps {
+  data: DailyData[]
+}
+
+export const Daily = ({data}: DailyProps) => (
+  <Column>
+    <Row className="pb-4">
+      {addIndex<DailyData, unknown>(map)(
+        pipe(
+          (item: DailyData, idx) => ({
+            ...item,
+            text: ifElse(
+              equals(0),
+              always('Today'),
+              always(DateTime.fromSeconds(item.time).toFormat('ccc'))
+            )(idx)
+          }),
+          mapProps(setKey('time'))(Day)
+        )
+      )(data)}
+    </Row>
+  </Column>
+)

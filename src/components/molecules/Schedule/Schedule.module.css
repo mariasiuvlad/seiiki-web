@@ -5,10 +5,13 @@
 .label {
   @apply text-xs uppercase px-2 text-white rounded-sm;
 
-  &.isRecurring {
+  &.recurring {
     @apply bg-purple-600;
   }
-  &.isOneTime {
+  &.oneTime {
     @apply bg-green-600;
+  }
+  &.command {
+    @apply bg-yellow-600;
   }
 }
