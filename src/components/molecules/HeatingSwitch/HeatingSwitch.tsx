@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import {Column} from '../Flex'
+import {Column} from '../../atoms/Flex'
 import useHeatingAgent from 'hooks/useHeatingAgent'
 
 import style from './HeatingSwitch.module.css'

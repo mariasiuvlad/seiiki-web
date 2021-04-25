@@ -4,7 +4,7 @@ import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
 import {formatDate} from 'lib/date'
-import Typography from '../../atoms/Typography'
+import Typography from 'components/atoms/Typography'
 import {Row} from 'components/atoms/Flex'
 import httpClient from 'lib/api'
 import useSWR from 'swr'

@@ -7,10 +7,10 @@ import {Column} from 'components/atoms/Flex'
 import ErrorBoundary from 'components/atoms/ErrorBoundary'
 
 import Weather from 'components/molecules/Weather'
-import Conditions from 'components/organisms/Conditions'
+import Conditions from 'components/molecules/Conditions'
 import Schedule from 'components/molecules/Schedule'
-import HeatingSwitch from 'components/atoms/HeatingSwitch'
-import TwoHours from 'components/atoms/TwoHours'
+import HeatingSwitch from 'components/molecules/HeatingSwitch'
+import TwoHours from 'components/molecules/TwoHours'
 
 const ErrorComponent = () => (
   <div className="h-full w-full flex items-center justify-center">

@@ -8,7 +8,7 @@ import useWeather from 'hooks/useWeather'
 import Chart from './Chart'
 
 import style from './Weather.module.css'
-import {Daily} from './Daily'
+// import {Daily} from './Daily'
 
 export interface WeatherProps {
   className?: string

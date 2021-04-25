@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react'
-import {DefaultError} from '../DefaultSuspense'
-import ErrorBoundary from '../ErrorBoundary'
+import {DefaultError} from '../../atoms/DefaultSuspense'
+import ErrorBoundary from '../../atoms/ErrorBoundary'
 import HeatingSwitch from './HeatingSwitch'
 
 const loadingHeatingAgent = () => ({

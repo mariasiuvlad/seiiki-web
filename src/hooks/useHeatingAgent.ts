@@ -12,7 +12,7 @@ type THeatingAgentResponse = {
 export interface UseHeatingAgent {
   isOn: boolean
   onToggle: () => void
-  twoHours: () => void
+  nHours: (hours: number) => void
 }
 
 export default function useHeatingAgent(): UseHeatingAgent {
@@ -27,17 +27,20 @@ export default function useHeatingAgent(): UseHeatingAgent {
     [isOn]
   )
 
-  const twoHours = useCallback(async () => {
-    onToggle()
-    await httpClient('/api/schedule', {
-      method: 'POST',
-      data: {
-        timestamp: DateTime.now().plus({hours: 2}).toISO(),
-        command: 'HEATING_OFF'
-      }
-    })
-    mutate('/api/schedule')
-  }, [isOn])
+  const nHours = useCallback(
+    async (hours) => {
+      onToggle()
+      await httpClient('/api/schedule', {
+        method: 'POST',
+        data: {
+          timestamp: DateTime.now().plus({hours: hours}).toISO(),
+          command: 'HEATING_OFF'
+        }
+      })
+      mutate('/api/schedule')
+    },
+    [isOn]
+  )
 
-  return {isOn, onToggle, twoHours}
+  return {isOn, onToggle, nHours}
 }

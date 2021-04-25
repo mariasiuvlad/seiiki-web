@@ -2,8 +2,8 @@ import httpClient from 'lib/api'
 import {useState, useCallback} from 'react'
 import useSWR from 'swr'
 
-import {PeriodSelectorStateChange} from 'components/organisms/Conditions/PeriodSelector'
-import {SensorSelectorStateChange} from 'components/organisms/Conditions/SensorSelector'
+import {PeriodSelectorStateChange} from 'components/molecules/Conditions/PeriodSelector'
+import {SensorSelectorStateChange} from 'components/molecules/Conditions/SensorSelector'
 
 const periods = [
   {value: 12, label: 'last 12 hours'},
