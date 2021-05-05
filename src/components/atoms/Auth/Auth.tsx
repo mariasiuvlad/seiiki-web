@@ -18,14 +18,14 @@ export default function Auth({onSubmit}) {
             placeholder="username"
             className={cx('mb-4', {'border-red-500': errors.password})}
             type="text"
-            ref={register({validate: (v) => v === process.env.NEXT_PUBLIC_NAIVE_AUTH_PASSWORD})}
+            ref={register}
           />
           <TextInput
             name="password"
             placeholder="password"
             className={cx('mb-4', {'border-red-500': errors.password})}
             type="password"
-            ref={register({validate: (v) => v === process.env.NEXT_PUBLIC_NAIVE_AUTH_PASSWORD})}
+            ref={register}
           />
           <button className="btn primary" type="submit">
             submit
