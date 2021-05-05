@@ -12,7 +12,7 @@ const periods = [
 ]
 
 const useConditions = () => {
-  const {data: sensors} = useSWR('/api/sensor/list', httpClient, {suspense: true})
+  const {data: sensors} = useSWR<string[]>('/api/sensor/list', httpClient, {suspense: true})
 
   const [period, setPeriod] = useState(periods[0])
   const [sensor, setSensor] = useState(sensors[0])
@@ -29,6 +29,7 @@ const useConditions = () => {
 
   return {
     period,
+    periods,
     sensor,
     sensors,
     onSensorChange,

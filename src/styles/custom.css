@@ -39,15 +39,14 @@
     @apply flex flex-row justify-center;
     @apply focus:outline-none;
     @apply transition-colors;
+  }
+  .btn-primary {
+    @apply bg-gray-800 text-white dark:bg-white dark:text-black;
+    @apply hover:bg-gray-700 dark:hover:bg-gray-200;
+  }
 
-    &.primary {
-      @apply bg-gray-800 text-white dark:bg-white dark:text-black;
-      @apply hover:bg-gray-700 dark:hover:bg-gray-200;
-    }
-
-    &.secondary {
-      @apply border border-gray-800 dark:border-white;
-    }
+  .btn-secondary {
+    @apply border border-gray-800 dark:border-white;
   }
   .card {
     @apply relative flex flex-col rounded-md overflow-hidden;

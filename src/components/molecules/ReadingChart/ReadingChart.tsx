@@ -64,10 +64,11 @@ const useChart = (type) => {
   return [Container, Component]
 }
 
-const useDataHook = ({interval, sensor}) => {
+const useSensorHistory = ({interval, sensor}) => {
   const {data} = useSWR(`/api/sensor/chart?interval=${interval}&sensor=${sensor}`, httpClient, {
     suspense: true
   })
+
   return data
 }
 
@@ -75,13 +76,13 @@ export default function ReadingChart({
   className = '',
   interval,
   sensor,
-  useData = useDataHook,
   humi = false,
   temp = false,
-  type = 'line'
+  type = 'line',
+  useDataSource = useSensorHistory
 }) {
   const [ChartContainer, ChartElement] = useChart(type)
-  const data = useData({interval, sensor})
+  const data = useDataSource({interval, sensor})
 
   const chartData = useMemo(
     () =>

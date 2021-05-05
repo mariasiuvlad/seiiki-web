@@ -1,8 +1,7 @@
-import React, {FC} from 'react'
+import React, {FC, PropsWithChildren} from 'react'
 import cx from 'classnames'
 
 export interface TypographyProps {
-  text: string
   /**
    * HTML Tag to render as
    */
@@ -12,22 +11,43 @@ export interface TypographyProps {
    */
   className?: string
   /**
-   * Use rounded font variant
+   * Light font
    */
-  rounded?: boolean
+  light?: boolean
 }
 
-const Typography: FC<TypographyProps> = ({as = 'p', className = '', rounded = false, text}) => {
+const Typography: FC<PropsWithChildren<TypographyProps>> = ({
+  children,
+  as = 'p',
+  className = '',
+  light = false
+}) => {
   const CustomTag = as as keyof JSX.IntrinsicElements
 
   return (
-    <CustomTag
-      className={cx(className, {
-        rounded
-      })}>
-      {text}
+    <CustomTag className={cx(className, {'font-light': light, 'font-normal': !light})}>
+      {children}
     </CustomTag>
   )
 }
+
+export const TitlePrimary: FC<PropsWithChildren<TypographyProps>> = ({className = '', ...args}) => (
+  <Typography className={cx(className, 'text-2xl')} {...args} />
+)
+
+export const ParagraphPrimary: FC<PropsWithChildren<TypographyProps>> = ({
+  className = '',
+  ...args
+}) => <Typography className={cx(className, 'text-base')} {...args} />
+
+export const ParagraphSecondary: FC<PropsWithChildren<TypographyProps>> = ({
+  className = '',
+  ...args
+}) => <Typography className={cx(className, 'text-sm')} {...args} />
+
+export const ParagraphTertiary: FC<PropsWithChildren<TypographyProps>> = ({
+  className = '',
+  ...args
+}) => <Typography className={cx(className, 'text-xs')} {...args} />
 
 export default Typography

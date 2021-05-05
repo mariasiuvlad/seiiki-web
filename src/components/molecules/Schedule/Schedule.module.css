@@ -15,3 +15,15 @@
     @apply bg-yellow-600;
   }
 }
+
+.labelRecurring {
+  @apply bg-purple-600;
+}
+
+.labelOneTime {
+  @apply bg-green-600;
+}
+
+.labelCommand {
+  @apply bg-yellow-600;
+}

@@ -4,7 +4,7 @@ import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
 import {formatDate} from 'lib/date'
-import Typography from 'components/atoms/Typography'
+import {ParagraphSecondary, TitlePrimary} from 'components/atoms/Typography'
 import {Row} from 'components/atoms/Flex'
 import httpClient from 'lib/api'
 import useSWR from 'swr'
@@ -22,7 +22,7 @@ export interface SensorDisplayProps {
    * Custom className
    */
   className?: string
-  useSensorDisplayHook?(): SensorInfo
+  useDataSource?(sensor: string): SensorInfo
 }
 
 const useSensorDisplay = (sensor: string) => {
@@ -35,29 +35,23 @@ const useSensorDisplay = (sensor: string) => {
 const SensorDisplay: React.FC<SensorDisplayProps> = ({
   className = '',
   sensor,
-  useSensorDisplayHook = useSensorDisplay
+  useDataSource = useSensorDisplay
 }) => {
-  const {temp, humi, time} = useSensorDisplayHook(sensor)
+  const {temp, humi, time} = useDataSource(sensor)
   return (
     <div className={cx(className, style.root)}>
       <Row className="items-center justify-between">
-        <Typography
-          className="text-blue-700 dark:text-blue-300 text-2xl font-thin"
-          text={`${humi}%`}
-        />
-        <Typography
-          className="text-red-700 dark:text-red-300 text-2xl font-thin"
-          text={`${temp}°`}
-        />
+        <TitlePrimary light className="text-blue-700 dark:text-blue-300">
+          {humi}%
+        </TitlePrimary>
+        <TitlePrimary light className="text-red-700 dark:text-red-300">
+          {temp}°
+        </TitlePrimary>
       </Row>
       <Row className={style.conditionsContainer}>
-        <Typography
-          className={style.time}
-          text={`last update · ${compose(
-            formatDate(DateTime.TIME_24_SIMPLE),
-            DateTime.fromISO
-          )(time)}`}
-        />
+        <ParagraphSecondary light>
+          last update · {compose(formatDate(DateTime.TIME_24_SIMPLE), DateTime.fromISO)(time)}
+        </ParagraphSecondary>
       </Row>
     </div>
   )

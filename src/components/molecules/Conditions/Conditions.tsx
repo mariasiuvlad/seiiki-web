@@ -1,26 +1,23 @@
 import {Column, Row} from 'components/atoms/Flex'
-import ReadingChart from 'components/molecules/ReadingChart/Suspense'
-import SensorDisplay from 'components/molecules/SensorDisplay/Suspense'
+import ReadingChart from 'components/molecules/ReadingChart'
+import SensorDisplay from 'components/molecules/SensorDisplay'
 
 import useConditions from 'hooks/useConditions'
 
 import SensorSelector from './SensorSelector'
 import PeriodSelector from './PeriodSelector'
 
-const periods = [
-  {value: 12, label: 'last 12 hours'},
-  {value: 24, label: 'last 24 hours'},
-  {value: 48, label: 'last 48 hours'}
-]
+export type ConditionsProps = {
+  className?: string
+}
 
-export default function Conditions({className, useConditionsHook = useConditions}) {
-  const {period, sensor, sensors, onSensorChange, onPeriodChange} = useConditionsHook()
+export default function Conditions({className = ''}) {
+  const {period, periods, sensor, sensors, onSensorChange, onPeriodChange} = useConditions()
 
   return (
     <Column className={className}>
-      <Row className="justify-between items-baseline mx-4 border-b dark:border-gray-900">
+      <Row className="justify-between items-baseline border-b dark:border-gray-900">
         <SensorSelector
-          className="py-2"
           items={sensors}
           defaultSelectedItem={sensor}
           onSelectedItemChange={onSensorChange}

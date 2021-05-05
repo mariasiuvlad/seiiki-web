@@ -31,13 +31,13 @@ const ScheduledEvent: React.FC<TSchedule> = (event) => (
   <Row className="items-center justify-between">
     <p className="mr-4 font-light">{formatDate(DateTime.TIME_24_SIMPLE)(nextInvocation(event))}</p>
     <Row className="w-48 gap-2">
-      <p className={cx(style.label, style.command, 'flex-1 text-center')}>
+      <p className={cx(style.label, style.labelCommand, 'flex-1 text-center')}>
         {commandDisplayName(prop('command')(event))}
       </p>
       <p
         className={cx(style.label, 'flex-1 text-center', {
-          [style.recurring]: isRecurring(event),
-          [style.oneTime]: !isRecurring(event)
+          [style.labelRecurring]: isRecurring(event),
+          [style.labelOneTime]: !isRecurring(event)
         })}>
         {isRecurring(event) ? 'Repeating' : 'One time'}
       </p>

@@ -1,0 +1,23 @@
+.toggle {
+  @apply flex flex-row w-12 h-8 p-2 rounded-full items-center transition-colors shadow-inner;
+}
+
+.toggleOn {
+  @apply bg-green-700;
+}
+
+.toggleOff {
+  @apply bg-gray-200 dark:bg-gray-700;
+}
+
+.knob {
+  @apply transform w-4 h-4 rounded-full bg-white transition-transform  shadow-md;
+}
+
+.knobOn {
+  @apply translate-x-full dark:bg-white;
+}
+
+.knobOff {
+  @apply translate-x-0 dark:bg-gray-800;
+}

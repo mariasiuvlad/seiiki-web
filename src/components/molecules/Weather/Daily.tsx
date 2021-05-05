@@ -8,11 +8,11 @@ import {mapProps, setKey} from 'lib/ramda'
 export const Day = ({text, temperatureLow, temperatureHigh}) => {
   return (
     <Column className="mx-2 items-center">
-      <Typography className="text-center text-sm uppercase text-gray-200" text={text} />
+      <Typography className="text-center text-sm uppercase text-gray-200">{text}</Typography>
       <Row className="items-center text-white">
-        <Typography className="text-base font-light" text={`${Math.round(temperatureLow)}`} />
-        <Typography className="font-extralight text-gray-200 mx-1" text="/" />
-        <Typography className="text-base font-light" text={`${Math.round(temperatureHigh)}`} />
+        <Typography className="text-base font-light">{Math.round(temperatureLow)}</Typography>
+        <Typography className="font-light text-gray-200 mx-1">/</Typography>
+        <Typography className="text-base font-light">{Math.round(temperatureHigh)}</Typography>
       </Row>
     </Column>
   )

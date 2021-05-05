@@ -2,7 +2,7 @@ import React from 'react'
 import cx from 'classnames'
 
 import {Column, Row} from 'components/atoms/Flex'
-import Typography from 'components/atoms/Typography'
+import {ParagraphTertiary, TitlePrimary} from 'components/atoms/Typography'
 
 import useWeather from 'hooks/useWeather'
 import Chart from './Chart'
@@ -10,27 +10,28 @@ import Chart from './Chart'
 import style from './Weather.module.css'
 // import {Daily} from './Daily'
 
-export interface WeatherProps {
+export type WeatherProps = {
   className?: string
-  useWeatherHook?(): any
+  useDataSource?(): any
 }
 
-const Weather: React.FC<WeatherProps> = ({className, useWeatherHook = useWeather}) => {
-  const {currently, daily, hourly} = useWeatherHook()
+const Weather: React.FC<WeatherProps> = ({className, useDataSource = useWeather}) => {
+  const {currently, daily, hourly} = useDataSource()
 
   return (
     <Column className={cx(className, style.root)}>
-      <Column className="justify-start dark:border-gray-900 p-4">
-        <Row className="text-white font-extralight text-2xl">
-          <Typography className="mr-4" text={`${Math.round(currently.temperature)}°`} />
-          <Typography text={currently.summary} />
+      <Column className="text-white justify-start dark:border-gray-900 p-4">
+        <Row>
+          <TitlePrimary light className="mr-4">
+            {Math.round(currently.temperature)}°
+          </TitlePrimary>
+          <TitlePrimary light>{currently.summary}</TitlePrimary>
         </Row>
-        <Typography className="uppercase text-xs text-gray-200" text={daily.summary} />
+        <ParagraphTertiary className="uppercase">{daily.summary}</ParagraphTertiary>
       </Column>
       <Row className="overflow-x-auto flex-grow">
         <Chart {...hourly} />
       </Row>
-      {/* <Daily {...daily} /> */}
     </Column>
   )
 }

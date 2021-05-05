@@ -7,5 +7,5 @@
 }
 
 .time {
-  @apply text-sm font-extralight h-8 leading-8 text-left;
+  @apply h-8 leading-8;
 }
