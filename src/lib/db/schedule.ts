@@ -17,3 +17,6 @@ export const List = `
 export const Delete = `
   DELETE FROM schedule WHERE uuid = $1
 `
+export const CheckLogin= `
+  SELECT * FROM public.user WHERE username = $1;
+`

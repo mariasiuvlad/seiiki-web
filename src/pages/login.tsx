@@ -9,7 +9,7 @@ export default function Login() {
   const {isLoggedIn, onSubmit} = useAuth()
 
   useEffect(() => {
-    if (isLoggedIn) Router.push('/')
+    // if (isLoggedIn) Router.push('/')
   }, [isLoggedIn])
 
   return (
