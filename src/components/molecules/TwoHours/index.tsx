@@ -3,7 +3,7 @@ import cx from 'classnames'
 import useHeatingAgent from 'hooks/useHeatingAgent'
 import {Row} from 'components/atoms/Flex'
 
-const TwoHours = ({className}) => {
+const TwoHours = ({className = ''}) => {
   const {nHours} = useHeatingAgent()
 
   return (

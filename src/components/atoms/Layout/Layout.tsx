@@ -15,7 +15,7 @@ const Layout = ({children}) => {
         {isLoggedIn && (
           <Row className="items-center">
             <h2 className="font-light mr-4">Welcome, {user.username}</h2>
-            <Button variant="primary" label="Logout" onClick={logout} />
+            <Button variant="secondary" label="Logout" onClick={logout} />
           </Row>
         )}
       </Row>

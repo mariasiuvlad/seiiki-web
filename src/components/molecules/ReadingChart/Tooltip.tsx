@@ -11,10 +11,10 @@ const ConditionsTooltipItem = ({value, dataKey}: Payload<string, string>) => (
   <div className="flex flex-row items-center" key={dataKey as string}>
     <Typography
       key={dataKey as string}
-      className={cx(style[dataKey as string], 'tracking-wider uppercase text-xs mr-4')}
-      text={dataKey as string}
-    />
-    <Typography className="text-sm" text={value} />
+      className={cx(style[dataKey as string], 'tracking-wider uppercase text-xs mr-4')}>
+      {dataKey}
+    </Typography>
+    <Typography className="text-sm">{value}</Typography>
   </div>
 )
 
