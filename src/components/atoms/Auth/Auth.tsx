@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form'
 
 import TextInput from 'components/atoms/TextInput'
 import {Column} from '../Flex'
+import Button from '../Button'
 
 export default function Auth({onSubmit}) {
   const {handleSubmit, register, errors} = useForm({reValidateMode: 'onSubmit'})
@@ -27,9 +28,7 @@ export default function Auth({onSubmit}) {
             type="password"
             ref={register}
           />
-          <button className="btn primary" type="submit">
-            submit
-          </button>
+          <Button label="Login" variant="primary" type="submit" />
         </Column>
       </form>
     </Column>

@@ -1,9 +1,10 @@
 import cx from 'classnames'
 
-export type ButtonProps = {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string
   label: string
   variant: 'primary' | 'secondary'
+  onClick?(): void
 }
 
 const styles = {
@@ -11,8 +12,10 @@ const styles = {
   secondary: 'btn-secondary'
 }
 
-const Button: React.FC<ButtonProps> = ({className = '', label, variant}) => (
-  <button className={cx(className, 'btn', styles[variant])}>{label}</button>
+const Button: React.FC<ButtonProps> = ({className = '', label, variant, ...rest}) => (
+  <button className={cx(className, 'btn', styles[variant])} {...rest}>
+    {label}
+  </button>
 )
 
 export default Button

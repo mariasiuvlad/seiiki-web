@@ -1,20 +1,20 @@
 import Auth from 'components/atoms/Auth'
-import useAuth from 'context/auth'
 
 import Layout from 'components/atoms/Layout'
+import {useAuth} from 'context/provider'
 import Router from 'next/router'
 import {useEffect} from 'react'
 
 export default function Login() {
-  const {isLoggedIn, onSubmit} = useAuth()
+  const {isLoggedIn, login} = useAuth()
 
   useEffect(() => {
-    // if (isLoggedIn) Router.push('/')
+    if (isLoggedIn) Router.push('/')
   }, [isLoggedIn])
 
   return (
     <Layout>
-      <Auth onSubmit={onSubmit} />
+      <Auth onSubmit={login} />
     </Layout>
   )
 }

@@ -12,9 +12,13 @@ export default async function handler(req, res) {
       res.end("You don't exist")
     }
 
+    const user = rows[0]
+
+    // @TODO check password is correct
+
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(rows))
+    res.end(JSON.stringify(user))
   } catch (error) {
     console.log(error)
     res.statusCode = 404
