@@ -66,7 +66,9 @@ const Selector: React.FC<SensorSelectorProps> = ({
         </Row>
       </button>
       <Column className={cx(style.sensorSelector, {hidden: !isOpen})}>
-        <ul {...getMenuProps()} className={cx('outline-none bg-gray-50 flex-grow')}>
+        <ul
+          {...getMenuProps()}
+          className={cx('outline-none flex-grow bg-gray-100 dark:bg-gray-800')}>
           {isOpen && addIndex(map)(itemGenerator)(items)}
         </ul>
       </Column>

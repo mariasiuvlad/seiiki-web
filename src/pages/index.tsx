@@ -10,7 +10,6 @@ const HomePage = dynamic(() => import('components/organisms/Home'), {
 
 export default function Home() {
   const {isLoggedIn} = useAuth()
-  console.log('@isLoggedIn', isLoggedIn)
 
   useEffect(() => {
     if (!isLoggedIn) Router.push('/login')

@@ -26,7 +26,6 @@ function useProvideAuth(initial: TAuthContext): TAuthProvider {
 
   const login = useCallback(async (data) => {
     const res = await httpClient('/api/auth/login', {data, method: 'POST'})
-    console.log('@res', res)
     setState({user: res})
   }, [])
 

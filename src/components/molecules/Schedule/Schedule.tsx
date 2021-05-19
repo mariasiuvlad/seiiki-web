@@ -6,11 +6,12 @@ import useSchedule, {isRecurring, nextInvocation, TSchedule} from 'hooks/useSche
 import {Column, Row} from 'components/atoms/Flex'
 
 import style from './Schedule.module.css'
-import * as Icons from 'icons'
 import {map, prop} from 'ramda'
 import {mapProps, setKey} from 'lib/ramda'
 import {formatDate} from 'lib/date'
 import Modal from './Modal'
+import {IconButton} from 'components/atoms/Button/Button'
+import {TitlePrimary} from 'components/atoms/Typography'
 
 const Commands = {
   HEATING_ON: 'Heating on',
@@ -31,11 +32,11 @@ const ScheduledEvent: React.FC<TSchedule> = (event) => (
   <Row className="items-center justify-between">
     <p className="mr-4 font-light">{formatDate(DateTime.TIME_24_SIMPLE)(nextInvocation(event))}</p>
     <Row className="w-48 gap-2">
-      <p className={cx(style.label, style.labelCommand, 'flex-1 text-center')}>
+      <p className={cx(style.label, style.labelCommand)}>
         {commandDisplayName(prop('command')(event))}
       </p>
       <p
-        className={cx(style.label, 'flex-1 text-center', {
+        className={cx(style.label, {
           [style.labelRecurring]: isRecurring(event),
           [style.labelOneTime]: !isRecurring(event)
         })}>
@@ -53,10 +54,8 @@ const Schedule = ({className}) => {
     <>
       <Column className={cx(className)}>
         <Row className={cx(style.header)}>
-          <h2>Schedule</h2>
-          <button onClick={open}>
-            <Icons.AddCircle className="w-6 h-6 fill-current" />
-          </button>
+          <TitlePrimary light>Schedule</TitlePrimary>
+          <IconButton onClick={open} icon="AddCircle" />
         </Row>
         {map(mapProps(setKey('uuid'))(ScheduledEvent), events)}
       </Column>

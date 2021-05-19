@@ -35,19 +35,21 @@ export const TitlePrimary: FC<PropsWithChildren<TypographyProps>> = ({className 
   <Typography className={cx(className, 'text-2xl')} {...args} />
 )
 
-export const ParagraphPrimary: FC<PropsWithChildren<TypographyProps>> = ({
-  className = '',
-  ...args
-}) => <Typography className={cx(className, 'text-base')} {...args} />
+export const TitleSecondary: FC<PropsWithChildren<TypographyProps>> = ({className, ...args}) => (
+  <Typography className={cx(className, 'text-xl')} {...args} />
+)
+
+export const ParagraphPrimary: FC<PropsWithChildren<TypographyProps>> = ({className, ...args}) => (
+  <Typography className={cx(className, 'text-base')} {...args} />
+)
 
 export const ParagraphSecondary: FC<PropsWithChildren<TypographyProps>> = ({
-  className = '',
+  className,
   ...args
 }) => <Typography className={cx(className, 'text-sm')} {...args} />
 
-export const ParagraphTertiary: FC<PropsWithChildren<TypographyProps>> = ({
-  className = '',
-  ...args
-}) => <Typography className={cx(className, 'text-xs')} {...args} />
+export const ParagraphTertiary: FC<PropsWithChildren<TypographyProps>> = ({className, ...args}) => (
+  <Typography className={cx(className, 'text-xs')} {...args} />
+)
 
 export default Typography
