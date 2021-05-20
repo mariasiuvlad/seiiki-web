@@ -3,10 +3,12 @@ import {Column, Row} from '../Flex'
 
 import style from './Layout.module.css'
 import Button from '../Button'
-import {useAuth} from 'context/provider'
+import useAuth, {actions, selectors} from 'store/auth'
 
 const Layout = ({children}) => {
-  const {user, isLoggedIn, logout} = useAuth()
+  const user = useAuth((state) => state.user)
+  const logout = useAuth(actions.logout)
+  const isLoggedIn = useAuth(selectors.isLoggedIn)
 
   return (
     <Column className={style.root}>
