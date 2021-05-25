@@ -95,7 +95,7 @@ export default function ReadingChart({
   )
 
   return (
-    <ResponsiveContainer width="100%" height={160} className={cx(className)}>
+    <ResponsiveContainer width="100%" height={120} className={cx(className)}>
       <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
         <XAxis
           hide

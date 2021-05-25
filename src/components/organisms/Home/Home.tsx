@@ -1,16 +1,18 @@
 import React, {Suspense} from 'react'
+import cx from 'classnames'
 import Head from 'next/head'
 
 import {Loader} from 'icons'
 
-import {Column} from 'components/atoms/Flex'
+import {Column, Row} from 'components/atoms/Flex'
 import ErrorBoundary from 'components/atoms/ErrorBoundary'
 
 import Weather from 'components/molecules/Weather'
 import Conditions from 'components/molecules/Conditions'
-import Schedule from 'components/molecules/Schedule'
+import Schedule, {ScheduleExpanded} from 'components/molecules/Schedule'
 import HeatingSwitch from 'components/molecules/HeatingSwitch'
 import TwoHours from 'components/molecules/TwoHours'
+import Dashboard from '../Dashboard'
 
 const ErrorComponent = () => (
   <div className="h-full w-full flex items-center justify-center">
@@ -24,6 +26,14 @@ const Fallback: React.FC = () => (
   </div>
 )
 
+const widgets = [
+  {widget: HeatingSwitch, className: 'h-14 w-full'},
+  {widget: TwoHours, className: 'h-12'},
+  {widget: Conditions, screen: Conditions, className: 'card h-56'},
+  {widget: Schedule, screen: ScheduleExpanded, className: 'card h-56'},
+  {widget: Weather, screen: Weather, className: 'card h-56'}
+]
+
 const Home: React.FC = () => {
   return (
     <>
@@ -31,15 +41,25 @@ const Home: React.FC = () => {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Column className="md:w-full md:items-center">
-        <Column className="mx-4 max-w-xl">
-          <HeatingSwitch className="w-full my-4" />
-          <TwoHours className="mb-4" />
-          <Schedule className="card px-4 py-2" />
-          <Conditions className="card h-64 mt-4" />
-          <Weather className="card my-4" />
+      <Row className="md:w-full md:items-center justify-items-stretch p-4 gap-4 w-screen">
+        <Column className="w-72 gap-2">
+          {widgets.map(({widget: Component, className}) => {
+            return (
+              <Row className={className}>
+                <Suspense
+                  fallback={
+                    <Row className={cx(className, 'items-center justify-center')}>
+                      <Loader className="w-16 h-16 fill-current opacity-30" />
+                    </Row>
+                  }>
+                  <Component className="rounded-b overflow-hidden w-full h-full" />
+                </Suspense>
+              </Row>
+            )
+          })}
         </Column>
-      </Column>
+        <Dashboard />
+      </Row>
     </>
   )
 }

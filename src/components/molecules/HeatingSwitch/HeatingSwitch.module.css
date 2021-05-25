@@ -1,5 +1,5 @@
 .root {
-  @apply flex flex-row items-center h-16 justify-between rounded-md p-2 px-4 font-sans transition-colors font-light;
+  @apply flex flex-row items-center justify-between rounded-md p-2 px-4 font-sans transition-colors font-light;
 }
 
 .rootOn {

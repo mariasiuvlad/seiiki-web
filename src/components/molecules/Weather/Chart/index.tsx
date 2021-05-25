@@ -52,7 +52,7 @@ const Chart = ({data}) => {
       data={map(evolve({temperature: add(20)}))(data)}
       margin={{left: -25, right: -25, bottom: -30}}>
       <Area
-        className="text-blue-600 dark:text-gray-400"
+        className="text-blue-600 dark:text-blue-400"
         strokeWidth={2}
         dot={false}
         type="monotone"

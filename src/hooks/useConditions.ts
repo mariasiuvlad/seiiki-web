@@ -1,9 +1,8 @@
+import {SelectOption} from 'components/atoms/Select/Select'
+import {UseSelectStateChange} from 'downshift'
 import httpClient from 'lib/api'
 import {useState, useCallback} from 'react'
 import useSWR from 'swr'
-
-import {PeriodSelectorStateChange} from 'components/molecules/Conditions/PeriodSelector'
-import {SensorSelectorStateChange} from 'components/molecules/Conditions/SensorSelector'
 
 const periods = [
   {value: 12, label: 'last 12 hours'},
@@ -17,12 +16,12 @@ const useConditions = () => {
   const [period, setPeriod] = useState(periods[0])
   const [sensor, setSensor] = useState(sensors[0])
 
-  const onSensorChange: (changes: SensorSelectorStateChange) => void = useCallback(
-    ({selectedItem}) => setSensor(selectedItem),
+  const onSensorChange: (changes: UseSelectStateChange<SelectOption<string>>) => void = useCallback(
+    ({selectedItem}) => setSensor(selectedItem.value),
     []
   )
 
-  const onPeriodChange: (changes: PeriodSelectorStateChange) => void = useCallback(
+  const onPeriodChange: (changes: UseSelectStateChange<SelectOption<number>>) => void = useCallback(
     ({selectedItem}) => setPeriod(selectedItem),
     []
   )

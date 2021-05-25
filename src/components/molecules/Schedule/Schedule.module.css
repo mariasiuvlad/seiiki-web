@@ -1,29 +1,19 @@
 .header {
-  @apply justify-between text-2xl font-light pb-2 mb-2 border-b dark:border-gray-900;
+  @apply justify-between items-center font-light dark:border-gray-900;
 }
 
 .label {
-  @apply text-xs uppercase px-2 text-white rounded-sm flex-1 text-center;
-
-  &.recurring {
-    @apply bg-purple-600;
-  }
-  &.oneTime {
-    @apply bg-green-600;
-  }
-  &.command {
-    @apply bg-yellow-600;
-  }
+  @apply text-xs px-2 text-white font-semibold rounded-sm flex-1 text-center;
 }
 
 .labelRecurring {
-  @apply bg-purple-600;
+  @apply text-purple-600 dark:text-purple-300;
 }
 
 .labelOneTime {
-  @apply bg-green-600;
+  @apply text-green-600 dark:text-green-300;
 }
 
 .labelCommand {
-  @apply bg-yellow-600;
+  @apply text-yellow-600 dark:text-yellow-300;
 }

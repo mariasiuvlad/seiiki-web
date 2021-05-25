@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 @layer base {
   button {
     @apply focus:outline-none;
@@ -30,26 +32,37 @@
     font-weight: 400;
     font-display: swap;
   }
+
+  @font-face {
+    font-family: 'SFProRounded';
+    src: url('/fonts/SFProRounded/SFProRounded-Semibold.otf');
+    font-style: medium;
+    font-weight: 600;
+    font-display: swap;
+  }
 }
 
 @layer components {
   .btn {
+    @apply gap-2;
     @apply text-xs uppercase tracking-tight;
-    @apply py-2 px-4 rounded-sm;
+    @apply py-2 px-4;
     @apply flex flex-row justify-center;
     @apply focus:outline-none;
     @apply transition-colors;
   }
   .btn-primary {
+    @apply rounded-sm;
     @apply bg-gray-800 text-white dark:bg-white dark:text-black;
     @apply hover:bg-gray-700 dark:hover:bg-gray-200;
   }
 
   .btn-secondary {
+    @apply rounded-sm;
     @apply border border-gray-800 dark:border-white;
   }
   .card {
-    @apply relative flex flex-col rounded-md overflow-hidden;
+    @apply relative flex flex-col overflow-hidden;
     @apply bg-gray-50 dark:bg-gray-800 shadow-md;
   }
 

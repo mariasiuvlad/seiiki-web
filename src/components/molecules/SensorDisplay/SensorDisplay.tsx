@@ -4,7 +4,7 @@ import {DateTime} from 'luxon'
 
 import style from './SensorDisplay.module.css'
 import {formatDate} from 'lib/date'
-import {ParagraphSecondary, TitlePrimary} from 'components/atoms/Typography'
+import {ParagraphTertiary, TitlePrimary} from 'components/atoms/Typography'
 import {Row} from 'components/atoms/Flex'
 import httpClient from 'lib/api'
 import useSWR from 'swr'
@@ -40,18 +40,16 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({
   const {temp, humi, time} = useDataSource(sensor)
   return (
     <div className={cx(className, style.root)}>
-      <Row className="items-center justify-between">
+      <Row className="items-center gap-4">
         <TitlePrimary light className="text-blue-700 dark:text-blue-300">
           {humi}%
         </TitlePrimary>
         <TitlePrimary light className="text-red-700 dark:text-red-300">
           {temp}°
         </TitlePrimary>
-      </Row>
-      <Row className={style.conditionsContainer}>
-        <ParagraphSecondary light>
-          last update · {compose(formatDate(DateTime.TIME_24_SIMPLE), DateTime.fromISO)(time)}
-        </ParagraphSecondary>
+        <ParagraphTertiary className="font-semibold text-gray-400 text-right flex-grow">
+          {compose(formatDate(DateTime.TIME_24_SIMPLE), DateTime.fromISO)(time)}
+        </ParagraphTertiary>
       </Row>
     </div>
   )

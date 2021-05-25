@@ -1,0 +1,46 @@
+.root {
+  @apply inline-block bg-white dark:bg-gray-900 text-white transition-colors;
+  /* width: 231px; */
+}
+
+.header {
+  @apply bg-white text-gray-600 items-stretch dark:bg-gray-800  dark:text-gray-200;
+}
+
+.headerButton {
+  @apply font-semibold hover:bg-gray-300 dark:hover:bg-gray-700 items-center;
+}
+
+.month {
+  @apply gap-2 justify-center flex-grow py-2 dark:bg-gray-900;
+}
+
+.grid {
+  @apply p-2;
+  @apply flex-grow;
+  @apply grid-cols-7;
+  @apply cursor-pointer;
+  @apply gap-x-2 gap-y-2;
+}
+
+.weekday {
+  @apply w-8 h-8 md:w-10 md:h-10 text-center py-2 text-gray-800 dark:text-white font-semibold;
+}
+
+.weekend {
+  @apply text-blue-400;
+}
+
+.day {
+  @apply flex flex-row items-center justify-center;
+  @apply font-semibold w-10 h-10;
+  @apply rounded-full;
+  @apply text-gray-400 dark:text-gray-400;
+  @apply hover:bg-blue-50 hover:text-blue-500 dark:hover:bg-gray-800;
+}
+.current {
+  @apply text-gray-500 dark:text-gray-300;
+}
+.selected {
+  @apply bg-blue-50 dark:bg-gray-800 text-blue-400;
+}

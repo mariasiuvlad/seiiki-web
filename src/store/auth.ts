@@ -1,6 +1,6 @@
 import httpClient from 'lib/api'
-import create from 'zustand'
-import {path, pipe, prop} from 'ramda'
+import create, {UseStore} from 'zustand'
+import {compose, path, pipe, prop} from 'ramda'
 import log from './middleware/log'
 import persist from './middleware/persist'
 
@@ -24,12 +24,12 @@ type TAuthStore = {
 const login: (data: TRequestData) => Promise<TUserData> = (data) =>
   httpClient('/api/auth/login', {data, method: 'POST'})
 
-const createStore = pipe(
-  log,
+const createStore = compose(
+  create,
   persist({
     name: 'auth-storage'
   }),
-  create
+  log
 )
 const useAuth = createStore((set) => ({
   user: undefined,
@@ -39,7 +39,7 @@ const useAuth = createStore((set) => ({
   logout: () => set({user: undefined})
 }))
 
-export default useAuth
+export default useAuth as UseStore<TAuthStore>
 
 export const selectors = {
   isLoggedIn: pipe(

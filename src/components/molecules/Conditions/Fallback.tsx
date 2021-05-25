@@ -8,7 +8,7 @@ import {Column} from 'components/atoms/Flex'
 
 export const Fallback = ({className}) => {
   return (
-    <Column className={cx(className, style.root, 'card items-center justify-center')}>
+    <Column className={cx(className, 'h-60')}>
       <Loader className="w-16 h-16 fill-current opacity-30" />
     </Column>
   )

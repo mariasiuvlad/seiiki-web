@@ -1,36 +1,32 @@
 import React from 'react'
 import {Portal} from 'react-portal'
-import TextInput from 'components/atoms/TextInput'
 import Button from 'components/atoms/Button'
 import {Column} from 'components/atoms/Flex'
-import {ParagraphSecondary} from 'components/atoms/Typography'
-import {IconButton} from 'components/atoms/Button/Button'
+import ScheduleEventForm from 'components/forms/ScheduleEventForm'
 
 const Backdrop = ({children}) => {
   return (
-    <Column className="absolute top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-gray-500 bg-opacity-50">
+    <Column className="absolute top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-black bg-opacity-90">
       {children}
     </Column>
   )
 }
 
-const Modal = ({onClose}) => (
-  <Portal>
-    <Backdrop>
-      <Column className="card font-light p-4">
-        <IconButton onClick={onClose} icon="CloseCircle" className="absolute right-2 top-2" />
-        <Column className="my-4">
-          <ParagraphSecondary>Cron</ParagraphSecondary>
-          <TextInput />
+const Modal = ({onClose}) => {
+  return (
+    <Portal>
+      <Backdrop>
+        <Column className="gap-2 items-end">
+          <Button
+            icon="XIcon"
+            onClick={onClose}
+            className="text-gray-300 dark:text-gray-300 hover:text-red-500 rounded-md"
+          />
+          <ScheduleEventForm />
         </Column>
-        <select className="mb-4 dark:bg-gray-800 dark:text-white">
-          <option>Heating On</option>
-          <option>Heating Off</option>
-        </select>
-        <Button label="Save" variant="primary" onClick={close} />
-      </Column>
-    </Backdrop>
-  </Portal>
-)
+      </Backdrop>
+    </Portal>
+  )
+}
 
 export default Modal

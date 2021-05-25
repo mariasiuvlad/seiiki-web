@@ -1,7 +1,0 @@
-.list {
-  @apply rounded overflow-hidden outline-none absolute z-10 bg-gray-50 dark:bg-gray-800;
-}
-
-.highlighted {
-  @apply bg-gray-300 dark:bg-gray-600;
-}

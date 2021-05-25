@@ -2,7 +2,12 @@ import React from 'react'
 import cx from 'classnames'
 
 import {Column, Row} from 'components/atoms/Flex'
-import {ParagraphTertiary, TitlePrimary} from 'components/atoms/Typography'
+import {
+  ParagraphSecondary,
+  ParagraphTertiary,
+  TitlePrimary,
+  TitleSecondary
+} from 'components/atoms/Typography'
 
 import useWeather from 'hooks/useWeather'
 import Chart from './Chart'
@@ -20,14 +25,14 @@ const Weather: React.FC<WeatherProps> = ({className, useDataSource = useWeather}
 
   return (
     <Column className={cx(className, style.root)}>
-      <Column className="text-white justify-start dark:border-gray-900 p-4">
-        <Row>
-          <TitlePrimary light className="mr-4">
-            {Math.round(currently.temperature)}°
-          </TitlePrimary>
-          <TitlePrimary light>{currently.summary}</TitlePrimary>
+      <Column className="text-white dark:border-gray-900 gap-2 p-2">
+        <Row className="mx-2">
+          <TitleSecondary className="mr-4">{Math.round(currently.temperature)}°</TitleSecondary>
+          <TitleSecondary>{currently.summary}</TitleSecondary>
         </Row>
-        <ParagraphTertiary className="uppercase">{daily.summary}</ParagraphTertiary>
+        <ParagraphSecondary className="font-semibold mx-2 text-left text-yellow-200">
+          {daily.summary}
+        </ParagraphSecondary>
       </Column>
       <Row className="overflow-x-auto flex-grow">
         <Chart {...hourly} />
