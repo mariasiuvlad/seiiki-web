@@ -46,6 +46,7 @@ const ScheduleEventForm: React.FC<ScheduleEventFormProps> = ({className}) => {
             {value: 'HEATING_ON', label: 'Heating On'}
           ]}
           onSelectedItemChange={onActionChange}
+          defaultSelectedItem={{value: 'HEATING_OFF', label: 'Heating Off'}}
         />
         <Select
           className="hover:bg-blue-100 dark:hover:bg-gray-700 font-semibold text-gray-600 dark:text-gray-200 flex-1"

@@ -14,7 +14,7 @@ export type ConditionsProps = {
 }
 
 export default function Conditions({className = ''}) {
-  const {period, periods, sensor, sensors, onSensorChange, onPeriodChange} = useConditions()
+  const {period, sensor, sensors, onSensorChange} = useConditions()
 
   return (
     <Column className={cx(className, 'flex-grow gap-2 justify-between')}>
@@ -25,13 +25,6 @@ export default function Conditions({className = ''}) {
           items={sensors.map((s) => ({value: s, label: s}))}
           defaultSelectedItem={{value: sensor, label: sensor}}
           onSelectedItemChange={onSensorChange}
-        />
-        <Select
-          className={style.headerButton}
-          containerClassName="flex-1"
-          items={periods}
-          defaultSelectedItem={period}
-          onSelectedItemChange={onPeriodChange}
         />
       </Row>
       <SensorDisplay sensor={sensor} className="h-12 px-3" />

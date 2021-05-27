@@ -1,17 +1,18 @@
 .list {
-  @apply absolute top-10 left-0 right-0 z-10 dark:bg-gray-800 bg-gray-50 border dark:border-gray-500;
+  @apply dark:bg-gray-800 bg-gray-100 border dark:border-gray-500;
   @apply rounded outline-none;
   @apply max-h-24 overflow-y-scroll;
+  @apply z-10;
 }
 
 .option {
-  @apply text-gray-600 dark:text-gray-200 font-semibold;
-}
-
-.selected {
-  /* @apply bg-gray-800; */
+  @apply text-gray-600 dark:text-gray-200;
 }
 
 .highlighted {
-  @apply bg-gray-300 dark:bg-gray-700;
+  @apply bg-gray-200 dark:bg-gray-700;
+}
+
+.selected {
+  @apply bg-gray-300 dark:bg-gray-600 font-semibold;
 }

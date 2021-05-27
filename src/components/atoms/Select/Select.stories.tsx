@@ -21,9 +21,7 @@ const defaultArgs = {
 }
 
 const Template: Story<SelectProps> = (args) => (
-  <div className="h-96 w-96">
-    <Select {...args} />
-  </div>
+  <Select containerClassName="inline-block mb-20" {...args} />
 )
 
 export const Default = Template.bind({})

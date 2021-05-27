@@ -45,7 +45,7 @@ const Home: React.FC = () => {
         <Column className="w-72 gap-2">
           {widgets.map(({widget: Component, className}) => {
             return (
-              <Row className={className}>
+              <Row className={className} key={Math.random()}>
                 <Suspense
                   fallback={
                     <Row className={cx(className, 'items-center justify-center')}>

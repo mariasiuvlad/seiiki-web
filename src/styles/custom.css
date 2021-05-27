@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
 
 @layer base {
   button {
@@ -62,7 +62,7 @@
     @apply border border-gray-800 dark:border-white;
   }
   .card {
-    @apply relative flex flex-col overflow-hidden;
+    @apply flex flex-col overflow-hidden;
     @apply bg-gray-50 dark:bg-gray-800 shadow-md;
   }
 

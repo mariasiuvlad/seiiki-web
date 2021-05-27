@@ -9,7 +9,7 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      sans: ['SFProRounded', 'sans-serif']
+      sans: ['SFProRounded', 'Roboto', 'sans-serif']
     },
     extend: {
       colors: {
