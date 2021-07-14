@@ -1,6 +1,6 @@
 import React from 'react'
 import {DateTime} from 'luxon'
-import {AreaChart, Area, XAxis} from 'recharts'
+import {AreaChart, Area, XAxis, CartesianGrid} from 'recharts'
 
 import TailwindConfig from 'config/tailwind'
 import {add, evolve, map} from 'ramda'
@@ -10,11 +10,12 @@ const TimeTick = ({x, y, payload}) => {
     <g transform={`translate(${x},${y - 8})`}>
       <text
         dy={-20}
-        textAnchor="middle"
+        dx={40}
+        textAnchor="start"
         fill={TailwindConfig.theme.textColor.gray[200]}
         fontSize={TailwindConfig.theme.fontSize.xs[0]}
         fontFamily="inherit">
-        {DateTime.fromSeconds(payload.value).toLocaleString(DateTime.TIME_SIMPLE)}
+        {DateTime.fromSeconds(payload.value).toLocaleString(DateTime.TIME_24_SIMPLE)}
       </text>
     </g>
   )
@@ -36,9 +37,9 @@ const TemperatureTick = ({x, y, payload}) => {
 
 const IconTick = ({x, y, payload}) => {
   return (
-    <g transform={`translate(${x - 16},${y + 20})`}>
+    <g transform={`translate(${x - 10},${y + 12})`}>
       <foreignObject className="w-8 h-8">
-        <i className={`wi wi-forecast-io-${payload.value} text-white`}></i>
+        <i className={`wi wi-forecast-io-${payload.value} text-yellow-200`}></i>
       </foreignObject>
     </g>
   )
@@ -52,9 +53,9 @@ const Chart = ({data}) => {
       data={map(evolve({temperature: add(20)}))(data)}
       margin={{left: -25, right: -25, bottom: -30}}>
       <Area
-        className="text-blue-600 dark:text-blue-400"
+        className="text-blue-700 dark:text-blue-400"
         strokeWidth={2}
-        dot={false}
+        dot={true}
         type="monotone"
         dataKey="temperature"
         stroke="currentColor"
@@ -71,7 +72,7 @@ const Chart = ({data}) => {
       />
       <XAxis
         xAxisId={0}
-        interval={0}
+        interval={2}
         dataKey="time"
         orientation="bottom"
         tick={TimeTick}
@@ -87,6 +88,7 @@ const Chart = ({data}) => {
         tick={IconTick}
         tickLine={false}
       />
+      <CartesianGrid strokeDasharray="4" horizontal={false} />
     </AreaChart>
   )
 }

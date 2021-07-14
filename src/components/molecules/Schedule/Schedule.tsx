@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React from 'react'
 import cx from 'classnames'
 import {DateTime} from 'luxon'
 import {mutate} from 'swr'
@@ -8,8 +8,8 @@ import {map, prop} from 'ramda'
 import {mapProps, setKey} from 'lib/ramda'
 import httpClient from 'lib/api'
 import {formatDate} from 'lib/date'
-import Modal from './Modal'
-import {ParagraphSecondary, ParagraphTertiary, TitlePrimary} from 'components/atoms/Typography'
+import {useModal} from './Modal'
+import {ParagraphSecondary, ParagraphTertiary} from 'components/atoms/Typography'
 import ScheduleEventForm from 'components/forms/ScheduleEventForm'
 import Button from 'components/atoms/Button'
 import style from './Schedule.module.css'
@@ -21,14 +21,6 @@ const Commands = {
 }
 
 const commandDisplayName = (command) => Commands[command]
-
-const useModal = () => {
-  const [isOpen, setOpen] = useState(false)
-  const open = useCallback(() => setOpen(true), [])
-  const close = useCallback(() => setOpen(false), [])
-
-  return {isOpen, open, close}
-}
 
 const ScheduledEvent: React.FC<TSchedule> = (event) => {
   const onDeleteEvent = async () => {
@@ -59,7 +51,7 @@ const ScheduledEvent: React.FC<TSchedule> = (event) => {
 
 const Schedule = ({className}) => {
   const events = useSchedule()
-  const {isOpen, open, close} = useModal()
+  const {isOpen, open, close, Modal} = useModal()
 
   return (
     <>
@@ -84,31 +76,11 @@ const Schedule = ({className}) => {
           </Column>
         )}
       </Column>
-      {isOpen && <Modal onClose={close} />}
-    </>
-  )
-}
-
-export const ScheduleExpanded = ({className}) => {
-  const events = useSchedule()
-  const {isOpen, close} = useModal()
-
-  return (
-    <>
-      <Row className={cx(className, 'p-4 flex-wrap')}>
-        <Column className="p-2 gap-2 w-96">
-          <TitlePrimary light className="text-left">
-            Create scheduled action
-          </TitlePrimary>
+      {isOpen && (
+        <Modal onClose={close}>
           <ScheduleEventForm />
-        </Column>
-        <Column className="p-2 gap-2 flex-grow">
-          <TitlePrimary light>Events</TitlePrimary>
-          <Column>{map(mapProps(setKey('uuid'))(ScheduledEvent), events)}</Column>
-        </Column>
-      </Row>
-
-      {isOpen && <Modal onClose={close} />}
+        </Modal>
+      )}
     </>
   )
 }

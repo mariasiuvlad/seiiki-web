@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {useCallback, useState} from 'react'
 import {Portal} from 'react-portal'
 import Button from 'components/atoms/Button'
 import {Column} from 'components/atoms/Flex'
-import ScheduleEventForm from 'components/forms/ScheduleEventForm'
 
 const Backdrop = ({children}) => {
   return (
@@ -12,7 +11,7 @@ const Backdrop = ({children}) => {
   )
 }
 
-const Modal = ({onClose}) => {
+const Modal = ({onClose, children}) => {
   return (
     <Portal>
       <Backdrop>
@@ -22,11 +21,19 @@ const Modal = ({onClose}) => {
             onClick={onClose}
             className="text-gray-300 dark:text-gray-300 hover:text-red-500 rounded-md"
           />
-          <ScheduleEventForm />
+          {children}
         </Column>
       </Backdrop>
     </Portal>
   )
+}
+
+export const useModal = () => {
+  const [isOpen, setOpen] = useState(false)
+  const open = useCallback(() => setOpen(true), [])
+  const close = useCallback(() => setOpen(false), [])
+
+  return {isOpen, open, close, Modal}
 }
 
 export default Modal

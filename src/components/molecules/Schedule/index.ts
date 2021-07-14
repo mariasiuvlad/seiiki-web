@@ -1,1 +1,1 @@
-export {default, ScheduleExpanded} from './Schedule'
+export {default} from './Schedule'

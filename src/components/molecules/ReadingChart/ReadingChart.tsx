@@ -22,6 +22,8 @@ import {Column} from 'components/atoms/Flex'
 import Select from 'components/atoms/Select'
 import {SelectOption} from 'components/atoms/Select/Select'
 import {UseSelectStateChange} from 'downshift'
+import {ParagraphPrimary} from 'components/atoms/Typography'
+import Button from 'components/atoms/Button'
 
 export const chartContainerMap = {
   line: LineChart,
@@ -115,64 +117,68 @@ export default function ReadingChart({
         ]}
         onSelectedItemChange={onPeriodChange}
       />
-      <ResponsiveContainer width="100%" height={120} className={cx(className)}>
-        <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
-          <XAxis
-            hide
-            dataKey="timestamp"
-            tick={false}
-            axisLine={false}
-            tickFormatter={compose(formatDate(DateTime.TIME_24_SIMPLE), prop('timestamp'))}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          {/* render humidity chart */}
-          {humi && [
-            <YAxis
-              key="humiAxis"
+      {chartData.length ? (
+        <ResponsiveContainer width="100%" height={120} className={cx(className)}>
+          <ChartContainer margin={{top: 0, bottom: 0, left: 0, right: 0}} data={chartData}>
+            <XAxis
               hide
+              dataKey="timestamp"
               tick={false}
               axisLine={false}
-              yAxisId="humi"
-              domain={['dataMin - 2', 'dataMax + 2']}
-              orientation="right"
-            />,
-            <ChartElement
-              key="humiElement"
-              type="basis"
-              dataKey="humi"
-              className={style.humi}
-              strokeWidth={2}
-              stroke="currentColor"
-              fill="currentColor"
-              yAxisId="humi"
-              dot={false}
+              tickFormatter={compose(formatDate(DateTime.TIME_24_SIMPLE), prop('timestamp'))}
             />
-          ]}
-          {/* render temperature chart */}
-          {temp && [
-            <YAxis
-              key="tempAxis"
-              hide
-              width={0}
-              yAxisId="temp"
-              tick={false}
-              axisLine={false}
-              domain={['dataMin - 0.1', 'dataMax + 0.1']}
-            />,
-            <ChartElement
-              key="tempElement"
-              type="basis"
-              dataKey="temp"
-              strokeWidth={2}
-              className={style.temp}
-              stroke="currentColor"
-              fill="currentColor"
-              yAxisId="temp"
-              dot={false}
-            />
-          ]}
-        </ChartContainer>
-      </ResponsiveContainer>
+            <Tooltip content={<CustomTooltip />} />
+            {/* render humidity chart */}
+            {humi && [
+              <YAxis
+                key="humiAxis"
+                hide
+                tick={false}
+                axisLine={false}
+                yAxisId="humi"
+                domain={['dataMin - 2', 'dataMax + 2']}
+                orientation="right"
+              />,
+              <ChartElement
+                key="humiElement"
+                type="basis"
+                dataKey="humi"
+                className={style.humi}
+                strokeWidth={2}
+                stroke="currentColor"
+                fill="currentColor"
+                yAxisId="humi"
+                dot={false}
+              />
+            ]}
+            {/* render temperature chart */}
+            {temp && [
+              <YAxis
+                key="tempAxis"
+                hide
+                width={0}
+                yAxisId="temp"
+                tick={false}
+                axisLine={false}
+                domain={['dataMin - 0.1', 'dataMax + 0.1']}
+              />,
+              <ChartElement
+                key="tempElement"
+                type="basis"
+                dataKey="temp"
+                strokeWidth={2}
+                className={style.temp}
+                stroke="currentColor"
+                fill="currentColor"
+                yAxisId="temp"
+                dot={false}
+              />
+            ]}
+          </ChartContainer>
+        </ResponsiveContainer>
+      ) : (
+        <ParagraphPrimary>No chart data</ParagraphPrimary>
+      )}
     </Column>
   )
 }

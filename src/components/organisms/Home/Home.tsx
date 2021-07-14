@@ -9,10 +9,9 @@ import ErrorBoundary from 'components/atoms/ErrorBoundary'
 
 import Weather from 'components/molecules/Weather'
 import Conditions from 'components/molecules/Conditions'
-import Schedule, {ScheduleExpanded} from 'components/molecules/Schedule'
+import Schedule from 'components/molecules/Schedule'
 import HeatingSwitch from 'components/molecules/HeatingSwitch'
 import TwoHours from 'components/molecules/TwoHours'
-import Dashboard from '../Dashboard'
 
 const ErrorComponent = () => (
   <div className="h-full w-full flex items-center justify-center">
@@ -27,12 +26,31 @@ const Fallback: React.FC = () => (
 )
 
 const widgets = [
-  {widget: HeatingSwitch, className: 'h-14 w-full'},
-  {widget: TwoHours, className: 'h-12'},
-  {widget: Conditions, screen: Conditions, className: 'card h-56'},
-  {widget: Schedule, screen: ScheduleExpanded, className: 'card h-56'},
-  {widget: Weather, screen: Weather, className: 'card h-56'}
+  {widget: HeatingSwitch},
+  {widget: TwoHours},
+  {widget: Conditions},
+  {widget: Schedule},
+  {widget: Weather}
 ]
+
+const Widgets = () => (
+  <>
+    {widgets.map(({widget: Component, className = ''}) => {
+      return (
+        <Row className={className} key={Math.random()}>
+          <Suspense
+            fallback={
+              <Row className={cx(className, 'items-center justify-center')}>
+                <Loader className="w-16 h-16 fill-current opacity-30" />
+              </Row>
+            }>
+            <Component className="rounded-b overflow-hidden w-full h-full" />
+          </Suspense>
+        </Row>
+      )
+    })}
+  </>
+)
 
 const Home: React.FC = () => {
   return (
@@ -41,25 +59,9 @@ const Home: React.FC = () => {
         <title>Homepage</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Row className="md:w-full md:items-center justify-items-stretch p-4 gap-4 w-screen">
-        <Column className="w-72 gap-2">
-          {widgets.map(({widget: Component, className}) => {
-            return (
-              <Row className={className} key={Math.random()}>
-                <Suspense
-                  fallback={
-                    <Row className={cx(className, 'items-center justify-center')}>
-                      <Loader className="w-16 h-16 fill-current opacity-30" />
-                    </Row>
-                  }>
-                  <Component className="rounded-b overflow-hidden w-full h-full" />
-                </Suspense>
-              </Row>
-            )
-          })}
-        </Column>
-        <Dashboard />
-      </Row>
+      <Column className="h-screen gap-2 p-2 max-w-lg">
+        <Widgets />
+      </Column>
     </>
   )
 }
