@@ -25,7 +25,9 @@ const Fallback: React.FC = () => (
   </div>
 )
 
-const widgets = [
+type WidgetConfig = {widget: React.FC<any>; className?: string}
+
+const widgets: WidgetConfig[] = [
   {widget: HeatingSwitch},
   {widget: TwoHours},
   {widget: Conditions},
